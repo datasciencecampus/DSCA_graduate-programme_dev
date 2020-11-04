@@ -1,0 +1,155 @@
+---
+title: 'Governance: Data Protection'
+author: "R Leyshon"
+date: "`r format(Sys.Date(), '%d %B %Y')`"
+output:
+  ioslides_presentation:
+    logo: ../../www/DataScienceCampus_logo_square.png
+    widescreen: true
+    css: ../../www/custom.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+```
+
+## Learning Outcomes:
+
+* Awareness of legislation affecting compliant collection, use and storage of personal data.
+* Awareness of implications upon our day to day work.
+* Consideration of potential sanctions set out in legislation.
+
+
+## DPA Brief Overview
+[**D**ata **P**rotection **A**ct](https://www.gov.uk/data-protection)  
+Established many data access rights and responsibilities, such as:
+
+- Subject Access Requests
+- Legal framework for protected characteristics
+- rights to access, erasure and correction
+
+
+## GDPR Brief Overview
+[**G**eneral **D**ata **P**rotection **R**egulation](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/)  
+Updated many of the terms set out in the DPA and added additional guidance:
+
+- Setting out rights for minors
+- Fair usage warnings
+- Explaining AI-derived decisions
+- Limitations to extent of collection and purpose, retention
+- Responsibilities of data controllers, processors, DPOs, ICO 
+- Increased fines & sentences for non-compliance
+
+
+## Task
+
+Within your assigned groups, research the **DPA** or **GDPR**. You may use information from the websites provided and from the guest speaker if one has been used. Work as a team to complete all areas of the table on the next slide. 
+
+You will then be asked to present back to your colleagues. You can then use these presentations to complete the table for the legislation that you were not asked to present upon.
+
+
+
+## DPA & GDPR
+Navigate to the links in the previous slides. Use the information provided at these sites to populate the  table below:
+
++------------------+-----------------------------+----------------------------------+
+|                  |**DPA**                      |**GDPR**                          |
++==================+=============================+==================================+
+|Summary           |                             |                                  |
+|                  |                             |                                  |
++------------------+-----------------------------+----------------------------------+
+|Date Updated      |                             |                                  |
+|                  |                             |                                  |
++------------------+-----------------------------+----------------------------------+
+|Legal Requirements|                             |                                  |
+|                  |                             |                                  |
++------------------+-----------------------------+----------------------------------+
+|Individual Rights |                             |                                  |
+|                  |                             |                                  |
++------------------+-----------------------------+----------------------------------+
+|Penalties / Fines |                             |                                  |
+|                  |                             |                                  |
++------------------+-----------------------------+----------------------------------+
+
+
+
+## Scenarios
+
+<figure>
+  <img src="../../www/week_1/books-1000x671.jpg" alt="ICO Data Protection Act legislation image">
+  <figcaption>Source: 
+    <a href="https://ico.org.uk/for-organisations/data-protection-act-2018/" target="_blank">ICO Website</a>
+  </figcaption>
+</figure>
+
+
+
+## Scenario 1
+
+You successfully host a coffee and coding event with civil service colleagues. It seemed to go well but you would like to survey your attendees. You gain access to the Campus' Smart Survey license and spin up a questionnaire, anonymously enquiring on subjects such as:
+
+* Attendees opinions on the coding tasks used.
+
+* Which organisation the attendee represented.
+
+* Diversity & Inclusion questions, such as race, gender & disability status.
+
+
+## Response 1
+
+Smart survey responses are pseudo-anonymised. IP addresses are one of the collected fields and could potentially be used to identify any given respondent. 
+
+It is crucial that one of the Campus' question templates are used as the basis of your survey. This will contain the necessary **fair usage notices** that would ensure compliance with our duties under GDPR. 
+
+Campus currently collects data on organisations engaged with. However, collection of special category data such as that identified in the scenario are not currently collected. Collection of this data would require a **D**ata **P**rotection **I**mpact **A**ssessment form and risk assessment by the ONS **D**ata **P**rotection **O**fficer prior to collection.
+
+
+
+## Scenario 2
+
+As a researcher, you have (legitimately) surveyed a large number of households and now have access to sensitive personal data. A colleague in a partner institution in Canada has shown an interest in your work and has requested a copy of your data on which they wish to base their research proposal.
+
+Adapted from [St George's University London](https://www.sgul.ac.uk/about/our-professional-services/information-services/information-governance/data-protection/data-protection-scenarios)
+
+## Response 2
+
+Unless you explicitly indicated your intention to share the data with this colleague/their institution when the data was originally obtained, you should not provide a copy to anyone else or use it for any other unrelated projects (**Limitation of purpose**). Data should only be used for the specified purpose(s) for which it was collected in the first place. If you intend to reanalyse the data for a separate but related project you should always inform the data subjects that you will be doing so.
+
+You also need to be careful when transferring data to another country. Information can be sent to countries within the European Economic Area or EEA (the European Union plus Iceland, Lichtenstein and Norway). But it should only be sent outside the EEA if that territory offers adequate safeguards for the protection of the data. In the case of Canada it may only be sent to a company or organisation which has signed up to the ‘Safe Harbor’ agreement. A data transfer request would need to be pursued and the **I**nformation **C**ommissioner's **O**ffice **DPO** should be made aware. Involvement of the **ICO** may be sought.
+
+## Scenario 3
+
+You have a show and tell session booked in with a senior manager of in the probation service. The project uses personal data to predict offenders' likelihood to reoffend within the next 5 years, with an astonishing accuracy of 90 %. You have diligently booked a meeting room for a remote conference call where you will be undisturbed. However, on starting the meeting, the manager is unable to connect and asks you to use an alternative browser-based conferencing service.
+
+## Response 3
+
+While pressured situations like this can lead to stress, you should be cautious of using unsupported confreencing software. Many widely-available ocnferencing solutions store their data on servers located outside of the EEC and some have recently been in the media for security breaches. 
+
+Use a supported alternative if available. If not, Politely ask to reschedule the meeting until you are able to diagnose the cause of the connection issue or meet in person. Explain that sharing of sensitive information on unsupported platforms is against corporate guidance.
+
+## Review Outcomes:
+
+* Awareness of legislation affecting compliant collection, use and storage of personal data.
+* Consideration of potential sanctions set out in legislation.
+* Awareness of implications upon our day to day work.
+
+
+## Helpful Resources
+
+[Reggie GDPR guidance](https://intranet.ons.statistics.gov.uk/task/data-protection/undertaking-a-data-protection-impact-assessment/) 
+
+
+UKSA Data Protection Officer Email: [DPO@Statistics.gov.uk](mailto:DPO@Statistics.gov.uk)
+
+
+## Thank you for your time
+
+<figure align="right">
+  <img src="../../www/week_1/Thank_you_in_many_languages,_b&w.png" alt="Thank you in many languages word cloud">
+  <figcaption>Source: 
+    <a href="https://commons.wikimedia.org/wiki/File:Thank_you_in_many_languages,_b%26w.png" target="_blank">Wikimedia Commons</a>
+  </figcaption>
+</figure>
+
+

@@ -1,0 +1,13 @@
+## template gitignore 
+
+**/git_ignore
+.DS_STORE
+**/__pycache__
+.Rhistory
+.Rproj.user
+.RData
+.ipynb_checkpoints
+
+
+#################################
+

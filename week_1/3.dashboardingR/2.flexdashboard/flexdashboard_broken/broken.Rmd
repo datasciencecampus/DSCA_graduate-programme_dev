@@ -1,0 +1,252 @@
+---
+title: "Unnamed"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+**This markdown is broken. Your job is to get it up and running again.\n** *Delete once understood.*
+
+I've made lots of errors throughout. I keep getting Python code mixed up with R code. The good news is that I remembered to flag these issues. Wherever these problems occur, I've labelled them with 'task'. If you ctrl + F you can find all those instances. I would prioritise the issues you find within the code chunks first, from there on you should be able to knit the dashboard. *Delete once understood.*
+
+
+**task: ** edit the title in the YAML to something better & delete this line. *Delete once actioned.*
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+#dplyr, mainly for the pipes. Hide the conflict messages. 
+library(dplyr, warn.conflicts = FALSE)
+#ggplot2, for the charts
+library(ggplot2, warn.conflicts = FALSE)
+#plotly for interactive charts
+library(plotly, warn.conflicts = FALSE)
+#DT for interactive data table
+library(DT, warn.conflicts = FALSE)
+
+#load the MT cars dataset
+cars_data <- mtcars
+```
+
+
+
+**task: ** Add 2 pages:
+
+Page 1: Title - 'Exploratory Data Analysis'.
+Contains the first 3 charts (code chunks).
+
+Page 2: Title - 'See the data'.
+Contains the last code chunk with the data table.
+
+For help on how to do this, follow [this link](https://rmarkdown.rstudio.com/flexdashboard/)
+
+
+Column 
+-----------------------------------------------------------------------
+
+**task: ** this column width should be set to 650 px *Delete once actioned.*
+
+### How does vehicle weight affect fuel efficiency?
+
+```{r, echo = FALSE}
+# In this code chunk, let's start with the good old scatter chart. But we'll make it interactive. I thought it may be interesting to investigate how the weight of a vehicle affects its fuel efficiency.
+
+#create a static ggplot that we can pass to ggplotly later for simple interactivity
+static_plot <- cars_data %>%
+  #pipe our cars data into ggplot
+  ggplot(
+    #set the aesthetics for the dimensions of the chart
+    aes(
+      #vehicle weight on x axis
+      x = wt,
+      #vehicle mpg on y axis
+      y = mpg,
+      #add a text aesthetic. Plotly can render this as a hover tooltip. 
+      text = paste("model:", row.names(cars_data))
+      )#end of aes
+    ) + #end of ggplot base layer
+  
+  #task: What's up with my scatterplot?
+  #add point data to the axes
+  sns.scatterplot() + 
+  #edit the charts axes labels
+  #task: I've messed up the labels somehow
+  labs(
+    x = "Mass of vehicle (1000 lbs)",
+    plt.ylabel("Fuel efficiency (MPG)")
+  ) + #end of labels
+  #apply a theme to remove the grey back panel from the ggplot
+  theme_bw()
+  
+#pass the static ggplot to the plotly::ggplotly function adds some simple 'out of the box' interactivity. Note that plotly has its own syntax for building charts, too. This is a bit more rigorous than the method we are using here. 
+static_plot %>% ggplotly()
+
+```
+
+Column 
+-----------------------------------------------------------------------
+
+**task: ** this column width should be set to 350 px *Delete once actioned.*
+
+### Fuel efficiencies for the top 7 most powerful vehicles
+
+```{r}
+
+# In this code chunk, I've gone for a static plot. I couldn't see how interactivity would add value here, so it would just be a distraction. 
+# 
+# I wanted to look at the fuel efficiency for the most powerful cars in the dataset. This time a bar chart of the top 7 powerful cars. I'd like the model names on the x axis & horsepower on the y axis. To colour the bars by mpg, you need to use the fill aesthetic (colour would adjust the bar outlines). 
+
+#curate the data. Just the top 7 powerful vehicles for this task.
+top7Powerful <- cars_data %>% 
+  #top_n will slice the dataframe. Give it the number of rows you want and the column to rank on
+  top_n(7, hp)
+  
+#As we're not going for interactivity, no need to assign the chart to an object
+top7Powerful %>% 
+  #create the ggplot base layer
+  ggplot(
+    #add data dimensions to the chart aesthetics
+    aes(
+      #the vehicle models are stored in the dataframe rownames (like index in python).
+      #ggplot tries to plot the models alphabetically. To reorder by power, use base R's
+      #reorder()
+      x = reorder(rownames(top7Powerful), hp),
+      #power on the y axis
+      y = hp,
+      #fuel efficiency to the fill aesthetic
+      fill = mpg
+      )#end of aesthetics
+    ) + #end of ggplot base layer
+  #add bars to the base layer
+  geom_col() +
+  #the vehicle names are too crowded, coord_flip realigns the graphic horizontally 
+  coord_flip() +
+  #remove the greay back panel again
+  theme_bw() +
+  #customise the axes labels
+  #task: again with the labels
+  labs(
+    plt.xlabel("Vehicle Model"),
+    y = "Horsepower"
+    )#end of labels
+
+
+```
+
+### How does the number of gears affect fuel efficiency distribution?
+
+```{r}
+
+# In this chart I wanted to investigate whether cars with more gears had better fuel economy. I wanted to see the distribution of fuel efficiencies for the vehicles. Therefore I've chosen a boxplot. As the dataset is American in origin, there are mostly automatic transmission cars (am == 0). I chose to highlight this in the chart by overlaying the points too, and colouting them based on their transmission type.
+
+#task: no syntax errors in this code chunk, but I've managed to muddle my ordering somehow...
+  
+  
+
+
+
+#pass to plotly::ggplotly() for interactivity, constrain the tooltip to just the y aesthetic
+ggplotly(static_barchart, tooltip = 'y')
+
+
+
+#this one will be interactive, so let's assign the ggplot to a variable
+static_barchart <- cars_data %>% 
+
+
+  #add the boxplot layer
+  geom_boxplot(
+    #set the fill colour
+    fill = 'lightblue',
+    #adjust the opacity to allow contrast with the points
+    alpha = 0.4
+    ) + #end of boxplot
+  #also plot points but with a small degree of random noise.(Helps with overplotting)
+  geom_jitter(
+    #I want to relabel any row where am column is 0 to auto, else label it manual. Map this to
+    #colour.
+    aes(colour = ifelse(am == 0, "automatic", "manual")),
+    #I don't want any random noise on the mpg scale
+    height = 0,
+    #just a small amound of noise on the gear scale to separate clustered points
+    width = 0.01,
+    #adjusting transparency helps to avoid overplotting issues
+    alpha = 0.4
+    ) + #end of geom_jitter
+  #remove the grey panel
+  theme_bw() + 
+  #label the axes & legend
+  labs(
+    x = "Number of forward gears",
+    y = "Fuel efficiency (mpg)",
+    colour = "Transmission"
+    )
+
+
+  #add the ggplot base layer
+  ggplot(
+    #map dimensions to aesthetics
+    aes(
+      #gear data type is numeric. make it discrete by coercing to factor. 
+      x =  as.factor(gear),
+      #fuel efficiency on y axis
+      y = mpg) #end of aes
+    ) + #end of ggplot base layer
+
+
+
+
+
+
+
+```
+
+
+
+Column 
+-----------------------------------------------------------------------
+
+**task: ** specify the column width to 1000 px
+
+### Interactive Data Table
+
+
+
+```{r}
+
+#pipe cars_data into the datatable
+cars_data %>% datatable(
+  #rename all columns to make them user friendly, use c() to combine a vector of comma 
+  #separated values
+  
+  
+#task: can you present the column names of the data table in a more user-friendly way?
+#See https://rstudio.github.io/DT/ for help here.  
+  
+  
+  
+#Add some export options Use [this link](https://rstudio.github.io/DT/003-tabletools-buttons.html) to help.   
+  
+  #add the buttons extensions to the datatable
+
+  #edit the button options, use a list for all required options
+
+    #dom sets where the buttons will be located
+
+    #assign the required button options to a c() combined vector of comma separated values
+
+      #copy to clipboard
+
+      #export to csv
+
+      #export to xlsx
+
+      #export to pdf
+
+      #print to OneNote / printer
+
+
+  
+)#end of datatable
+
+```
+

@@ -1,0 +1,481 @@
+---
+title: "Richard Leyshon: Schools Analysis"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: simplex
+---
+
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+library(readxl)
+library(purrr)
+library(broom)
+library(tibble)
+library(stringr)
+library(plotly)
+library(knitr)
+library(DT)
+library(stringi)
+library(leaflet)
+library(leaflet.extras)
+library(stringr)
+library(mapview)
+library(htmlwidgets)
+library(ggmap)
+```
+
+
+
+```{r import, options}
+
+schoolsxl <- read_excel("DelegatedSchoolsBudget.xlsx",
+           skip = 3)
+
+schoolsxl <- schoolsxl[, -1]
+names(schoolsxl)[1] <- "Local_Authority"
+names(schoolsxl)[2] <- "School"
+names(schoolsxl)[3] <- "Pupil_Numbers"
+names(schoolsxl)[4] <- "ISB(�_Thousands)"
+schoolsxl <- schoolsxl[, -c(5:7)]
+
+
+```
+
+
+```{r remove NAs, options}
+
+schoolsNArem <- schoolsxl %>% 
+  separate(Local_Authority, sep = " - ", into = c("Local_Authority", "Phase"), remove = TRUE) %>% 
+  fill(Local_Authority) %>% 
+  fill(Phase) %>% 
+  mutate(Pupil_Numbers = as.numeric(Pupil_Numbers),
+         `ISB(£_Thousands)` = as.numeric(`ISB(£_Thousands)`)) %>% 
+  filter(!is.na(Pupil_Numbers)) %>% 
+  filter(!is.na(`ISB(£_Thousands)`)) %>%
+  filter(!is.na(School)) 
+
+```
+
+
+
+```{r facet Phase, options}
+#cleansing carried out in previous markdown, plus creation of composite key, LEA name and school number
+
+schools_cleansed <- schoolsNArem %>% 
+  separate(School, sep = 7, into = c("School Code", "schoolname"), remove = TRUE) %>% 
+  type.convert("School Code")
+  
+schools_cleansed$schoolname <- sub('-', '', schools_cleansed$schoolname) 
+
+schools_cleansed <- schools_cleansed %>%
+  mutate(schoolname = str_squish(schoolname)) %>% 
+  mutate(`School Code` = stri_sub(from = 4, to = 7, `School Code`)) %>%
+  mutate('composite key' = paste(Local_Authority, `School Code`))
+
+```
+
+
+
+```{r prim_cleansed, options}
+
+cleansedprimaries <- schools_cleansed %>%
+  mutate(Phase = str_squish(Phase)) %>%
+  filter(Phase == "Primary")
+
+```
+
+```{r middle_cleansed, options}
+cleansedmiddles <- schools_cleansed %>%
+  mutate(Phase = str_squish(Phase)) %>%
+  filter(Phase == "Middle")
+
+```
+
+
+```{r spec_cleansed, options}
+cleansedspecial <- schools_cleansed %>%
+  mutate(Phase = str_squish(Phase)) %>%
+  filter(Phase == "Special")
+
+```
+
+
+```{r sec_cleansed, options}
+
+cleansedsecondary <- schools_cleansed %>%
+  mutate(Phase = str_squish(Phase)) %>%
+  filter(Phase == "Secondary")
+
+```
+
+```{r nestedandtidymodel, options}
+# Nest phases to fit linear models by phase
+phase_nested <- schools_cleansed %>%
+  nest(-Phase)
+
+#map linear model over nested phases, use mutate to store in column 'model'
+nested_model <- phase_nested %>%
+  mutate(model = map(data, ~lm(`ISB(£_Thousands)` ~ Pupil_Numbers, .)))
+
+tidied_model <- nested_model %>%
+  mutate(tidied = map(model, tidy))
+
+unnested_tidied <- tidied_model %>%
+  unnest(tidied)
+
+
+phase_padjusted <- unnested_tidied %>%
+  mutate(p.adjusted = p.adjust(p.value))
+
+
+```
+
+
+
+```{r v1.3, options}
+#Import geocoded addresses created in schools dashboard v1.2
+full_addresses <- read.csv("school_geocode.csv")
+
+#Import delegated education dataset this time with all columns
+#cnames_1.3 <- c("Local.Authority", "School", "Pupil numbers", "ISB (£ Thousand)", "ISB Per Pupil (£)", "Notional SEN Budget (£ Thousand)", "Non-ISB Funds Devolved to Schools (£ Thousand)")
+
+#ctype_1.3 <- c("skip", "text", "text", "numeric", "numeric", "numeric", "numeric", "numeric")
+
+schoolsxl_1.3 <- read_excel("DelegatedSchoolsBudget.xlsx",
+#           col_names = cnames_1.3,
+ #          col_types = ctype_1.3,
+           skip = 3
+           )
+
+names(schoolsxl_1.3)[2] <- "Local.Authority"
+names(schoolsxl_1.3)[3] <- "School"
+names(schoolsxl_1.3)[4] <- "Pupil numbers"
+names(schoolsxl_1.3)[5] <- "ISB (£ Thousand)"
+names(schoolsxl_1.3)[6] <- "ISB Per Pupil (£)"
+names(schoolsxl_1.3)[7] <- "Notional SEN Budget (£ Thousand)"
+names(schoolsxl_1.3)[8] <- "Non-ISB Funds Devolved to Schools (£ Thousand)"
+schoolsxl_1.3[1] <- NULL
+
+
+#Perform the cleansing steps once more
+schoolsNArem_1.3 <- schoolsxl_1.3 %>% 
+  separate(`Local.Authority`, sep = " - ", into = c("Local.Authority", "Phase"), remove = TRUE) %>% 
+  fill(`Local.Authority`) %>% 
+  fill(Phase) %>% 
+  filter(!is.na(`Pupil numbers`)) %>% 
+  filter(!is.na("ISB (£ Thousand)")) %>%
+  filter(!is.na(School))
+
+schools_cleansed_1.3 <- schoolsNArem_1.3 %>% 
+  separate(School, sep = 7, into = c("School Code", "schoolname"), remove = TRUE) %>% 
+  type.convert("School Code")
+  
+schools_cleansed_1.3$schoolname <- sub('-', '', schools_cleansed_1.3$schoolname) 
+
+schools_cleansed_1.3 <- schools_cleansed_1.3 %>%
+  mutate(schoolname = str_squish(schoolname)) %>% 
+  mutate(`School Code` = stri_sub(from = 4, to = 7, `School Code`)) %>%
+  mutate('composite key' = paste(`Local.Authority`, `School Code`))
+
+```
+
+```{r new_join_1.3, options}
+
+#rename key in full addresses
+full_addresses4join <- full_addresses %>% 
+  mutate(School.Code = stri_sub(from = 4, to = 7, School.Number)) %>%
+  mutate(composite.key = paste(Local.Authority, School.Code))
+ # rename(`composite key` = composite.key)
+
+#Perform join based on composite key
+joined_schools_1.3 <- left_join(full_addresses4join, schools_cleansed_1.3, by = c("composite.key" = "composite key"))
+
+
+
+```
+
+
+```{r TidyUp, options}
+#Remove duplicate columns
+map_dataset <- joined_schools_1.3[, -c(1, 6, 7, 9:14, 17, 20:22, 25)]
+
+#User Friendly Names
+cleansed_map_dataset <- map_dataset %>%
+  rename(
+    "Local.Authority" = Local.Authority.x,
+    "Language Medium" = Welsh.Medium.Type...see.notes,
+    "Phone Number" = Phone.Number
+  )
+cleansed_map_dataset$lat <- jitter(cleansed_map_dataset$lat, amount = 0.001)
+cleansed_map_dataset$lon <- jitter(cleansed_map_dataset$lon, amount = 0.001)
+
+```
+
+Interactive Map
+=========================================================================
+
+### 2018/19 Individual Schools Budget Analysis. Data Source = [Stats Wales](https://statswales.gov.wales/Catalogue/Local-Government/Finance/Revenue/Delegated-School-Budgets/delegatedschoolbudgets-by-authority)
+*Please note that a small amound of random noise has been added to school location coordinates in order to avoid overplotting schools that share a campus*
+
+```{r label, options}
+
+joined_nurseries <- cleansed_map_dataset %>% 
+  filter(Phase == "Nursery")
+
+joined_primaries <- cleansed_map_dataset %>% 
+  filter(Phase == "Primary")
+
+joined_secondaries <- cleansed_map_dataset %>% 
+  filter(Phase == "Secondary")
+
+joined_middles <- cleansed_map_dataset %>% 
+  filter(Phase == "Middle")
+
+joined_specials <- cleansed_map_dataset %>% 
+  filter(Phase == "Special")
+
+
+
+
+
+interactive_map <- leaflet() %>%
+  addTiles(group = "OSM") %>% 
+  addProviderTiles("Stamen.TonerLite", group = "Stamen") %>%
+  addProviderTiles("Esri", group = "Esri") %>% 
+  addCircleMarkers(data = joined_nurseries, group = "Nursery", color = "#004949",
+                   popup = ~paste0("<b>", `School.Name`, "</b>", "<br>",
+                                   "Pupil Numbers = ", `Pupil numbers`, "<br>",
+                                   "ISB (£ Thousand) = ", "ISB (£ Thousand)", "<br>",
+                                   "ISB Per Pupil (£) = ", `ISB Per Pupil (£)`, "<br>",
+                                   "Notional SEN Budget (£ Thousand) = ", `Notional SEN Budget (£ Thousand)`, "<br>",
+                                   "Non-ISB Funds Devolved to Schools (£ Thousand) = ", `Non-ISB Funds Devolved to Schools (£ Thousand)`, "<br>",
+                                   `Local.Authority`),
+                   opacity = 0.2) %>% 
+  addCircleMarkers(data = joined_primaries, group = "Primary", color = "#ff6db6",
+                   popup = ~paste0("<b>", `School.Name`, "</b>", "<br>",
+                                   "Pupil Numbers = ", `Pupil numbers`, "<br>",
+                                   "ISB (£ Thousand) = ", "ISB (£ Thousand)", "<br>",
+                                   "ISB Per Pupil (£) = ", `ISB Per Pupil (£)`, "<br>",
+                                   "Notional SEN Budget (£ Thousand) = ", `Notional SEN Budget (£ Thousand)`, "<br>",
+                                   "Non-ISB Funds Devolved to Schools (£ Thousand) = ", `Non-ISB Funds Devolved to Schools (£ Thousand)`, "<br>",
+                                   `Local.Authority`),
+                   opacity = 0.2) %>% 
+  addCircleMarkers(data = joined_secondaries, group = "Secondary", color = "#b66dff",
+                   popup = ~paste0("<b>", `School.Name`, "</b>", "<br>",
+                                   "Pupil Numbers = ", `Pupil numbers`, "<br>",
+                                   "ISB (£ Thousand) = ", "ISB (£ Thousand)", "<br>",
+                                   "ISB Per Pupil (£) = ", `ISB Per Pupil (£)`, "<br>",
+                                   "Notional SEN Budget (£ Thousand) = ", `Notional SEN Budget (£ Thousand)`, "<br>",
+                                   "Non-ISB Funds Devolved to Schools (£ Thousand) = ", `Non-ISB Funds Devolved to Schools (£ Thousand)`, "<br>",
+                                   `Local.Authority`),
+                   opacity = 0.2) %>%
+  addCircleMarkers(data = joined_middles, group = "Middle", color = "#b6dbff",
+                   popup = ~paste0("<b>", `School.Name`, "</b>", "<br>",
+                                   "Pupil Numbers = ", `Pupil numbers`, "<br>",
+                                   "ISB (£ Thousand) = ", "ISB (£ Thousand)", "<br>",
+                                   "ISB Per Pupil (£) = ", `ISB Per Pupil (£)`, "<br>",
+                                   "Notional SEN Budget (£ Thousand) = ", `Notional SEN Budget (£ Thousand)`, "<br>",
+                                   "Non-ISB Funds Devolved to Schools (£ Thousand) = ", `Non-ISB Funds Devolved to Schools (£ Thousand)`, "<br>",
+                                   `Local.Authority`),
+                   opacity = 0.8) %>%
+  addCircleMarkers(data = joined_specials, group = "Special", color = "#24ff24",
+                   popup = ~paste0("<b>", `School.Name`, "</b>", "<br>",
+                                   "Pupil Numbers = ", `Pupil numbers`, "<br>",
+                                   "ISB (£ Thousand) = ", "ISB (£ Thousand)", "<br>",
+                                   "ISB Per Pupil (£) = ", `ISB Per Pupil (£)`, "<br>",
+                                   "Notional SEN Budget (£ Thousand) = ", `Notional SEN Budget (£ Thousand)`, "<br>",
+                                   "Non-ISB Funds Devolved to Schools (£ Thousand) = ", `Non-ISB Funds Devolved to Schools (£ Thousand)`, "<br>",
+                                   `Local.Authority`),
+                   opacity = 0.2) %>% 
+  addLayersControl(
+    options = layersControlOptions(collapsed = FALSE),
+    baseGroups = c("Stamen", "OSM", "Esri"), 
+    overlayGroups = c("Nursery", "Primary", "Secondary", "Middle", "Special")
+  ) %>%
+  addResetMapButton() %>% 
+  addLegend(position = "bottomright",
+            labels = c("Nursery", "Primary", "Secondary", "Middle", "Special"),
+            colors = c("#004949", "#ff6db6", "#b66dff", "#b6dbff", "#24ff24")) %>% 
+  addMouseCoordinates() 
+
+
+interactive_map
+```
+
+
+
+
+Primaries {.storyboard}
+=======================================================================
+
+
+
+### Primary Phase: Individual Schools Budget vs Pupil Numbers
+
+```{r primary_phaseplot}
+
+primary_static <- cleansedprimaries %>%
+  ggplot(aes(x = Pupil_Numbers, y = `ISB(£_Thousands)`, label = schoolname)) +
+  geom_point(alpha = 0.3) +
+  geom_smooth()
+
+ggplotly(primary_static)
+ 
+```
+
+
+
+### Linear Regression Analysis
+
+```{r Prim_Model, options}
+
+primary_model <- phase_padjusted %>% 
+  filter(Phase == "Primary")
+primary_model
+
+
+```
+The regression shows that for the primary phase in Welsh schools, each individual student increases the Individual Schools Budget by £3,200. The p value returns a strong statistical significance (p adjusted = 0). Essentially, in 99.9% of cases, an increase in ISB is explained by an increase in pupil numbers. The standard error is extremely low, at a value of 0.0247. This means that on average, the model will be incorrect by £25 plus or minus the median value. 
+
+Note that the nursery phase returned a non-significant p value and therefore was not analysed. This is likely due to the small number of nursery schools within Wales. 
+
+
+### Interactive Data Table
+
+```{r prim_datatable, options}
+cleansedprimaries %>% 
+  datatable(rownames = F,
+            extensions = 'Buttons',
+            options = list(
+              dom = 'Bfrtip',
+              buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+            ))
+
+```
+
+Secondaries {.storyboard}
+======================================================================================
+
+### Secondary Phase: Individual Schools Budget vs Pupil Numbers
+
+```{r secondary_plotly, options}
+secondary_static <- cleansedsecondary %>%
+  ggplot(aes(x = Pupil_Numbers, y = `ISB(£_Thousands)`, label = schoolname)) +
+  geom_point(alpha = 0.3) +
+  geom_smooth()
+
+ggplotly(secondary_static)
+
+```
+
+### Linear Regression Analysis
+
+```{r Sec_Model, options}
+secondary_model <- phase_padjusted %>% 
+  filter(Phase == "Secondary")
+secondary_model
+
+```
+The regression shows that for the secondary phase in Welsh schools, each individual student increases the Individual Schools Budget by £4,150. The p value returns a strong statistical significance (p adjusted = 1.38e-126). In 99.9% of cases, an increase in ISB is explained by an increase in pupil numbers. The standard error is extremely low for this phase, at a value of 0.0701. This means that on average, the model will be incorrect by £70 plus or minus the median value. 
+
+### Interactive Data Table
+```{r secondarydatatable, options}
+cleansedsecondary %>% 
+  datatable(rownames = F,
+            extensions = 'Buttons',
+            options = list(
+              dom = 'Bfrtip',
+              buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+            ))
+
+```
+
+Middles {.storyboard}
+================================================================================
+
+
+### Middle Phase: Individual Schools Budget vs Pupil Numbers
+
+```{r middle_plotly}
+
+middle_static <- cleansedmiddles %>% 
+  ggplot(aes(x = Pupil_Numbers, y = `ISB(£_Thousands)`, label = schoolname)) +
+  geom_point(alpha = 0.3) +
+  geom_smooth()
+
+ggplotly(middle_static)
+```
+
+
+
+### Linear Regression Analysis
+
+```{r Mid_Model, options}
+middle_model <- phase_padjusted %>% 
+  filter(Phase == "Middle")
+middle_model
+
+```
+
+The regression shows that for the middle phase in Welsh schools, each individual student increases the Individual Schools Budget by £4,390. The p value returns a strong statistical significance (p adjusted = 2.53e-12). In 99.9% of cases, an increase in ISB is explained by an increase in pupil numbers. The standard error is very low, at a value of 0.24. This means that on average, the model will be incorrect by £224 plus or minus the median value. 
+
+### Interactive Data Table
+
+```{r middledatatable, options}
+cleansedmiddles %>% 
+  datatable(rownames = F,
+            extensions = 'Buttons',
+            options = list(
+              dom = 'Bfrtip',
+              buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+            ))
+
+```
+
+Specials {.storyboard}
+========================================================================================
+
+
+### Special Phase: Individual Schools Budget vs Pupil Numbers
+
+```{r Special_plotly}
+
+special_static <- cleansedspecial %>%
+  ggplot(aes(x = Pupil_Numbers, y = `ISB(£_Thousands)`, label = schoolname)) +
+  geom_point(alpha = 0.3) +
+  geom_smooth()
+
+ggplotly(special_static)
+
+```
+
+
+### Linear Regression Analysis
+
+```{r Spec_Model, options}
+special_model <- phase_padjusted %>% 
+  filter(Phase == "Special")
+special_model
+
+```
+The regression shows that for the special phase in Welsh schools, each individual student increases the Individual Schools Budget by £18,300. The p value returns a strong statistical significance (p adjusted = 6.63e-13). In 99.9% of cases, an increase in ISB is explained by an increase in pupil numbers. 
+
+However, the standard error is relatively larger than the other phases in this report, at a value of 1.63. This means that on average, the model will be incorrect by £1,630 plus or minus the median value. This increase in standard error is symptomatic of having a relatively small sample size in relation to the correlation coefficient and therefore would advise caution in drawing conclusions from this dataset.
+
+### Interactive Data Table
+```{r specialdatatable, options}
+cleansedspecial %>% 
+  datatable(rownames = F,
+            extensions = 'Buttons',
+            options = list(
+              dom = 'Bfrtip',
+              buttons = c('copy', 'csv', 'excel', 'pdf', 'print')
+            ))
+
+```

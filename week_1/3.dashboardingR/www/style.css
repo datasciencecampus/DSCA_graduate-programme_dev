@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap");
+
+
+p {
+  padding-top: 5px;
+  font-family: Arial;
+  color: #003c58;
+}
+
+
+
+
+h3 {
+  background-color: #003c58;
+  color: white;
+  font-family: Arial;
+  padding-left: 3px;
+  border-radius: 4px;
+  height: 40px;
+  padding-top: 10px;
+}
+
+
+
+.banner {
+  background-image: linear-gradient(to right, #ce3487 , #d74328);
+  font-family: Arial black;
+  height: 70px;
+  padding-left: 3px;
+  border-radius: 4px;
+}
+
+.myclass1 {
+  background-color: #a8bd3a;
+  background-color: rgba(168, 189, 58, 0.5);
+}
+
+
+#appname {
+  display: inline-block;
+  color: white;
+  font-family: 'Dancing Script', cursive;
+  padding-left: 20px;
+  font-size: 40px;
+}
+
+#sourcecode {
+  display: inline-block;
+  color: white;
+  padding-right: 5px;
+  height: 45px;
+  text-decoration: underline;
+  font-family: Arial;
+}
+
+#sourcecode:hover {
+  color: #003c58;
+}
+
+#optional {
+  display: block;
+  position: relative;
+  right: 2.5%;
+  width: 105%;
+}
+
