@@ -9,3 +9,9 @@
 ## 4.command_line_basics
 
 ## 5.git_github 
+
+## Actions for 2021:
+
+Clashes with corporate induction to be mitigated for next year with outlook reminders to contact the team responsible for programming the induction events.
+Dashboarding in R to be moved out of week 1, replaced with Basic statistics for Data Science.
+Dashboarding in R to be offered as an alternative to Dashboarding in Python, both as a 1 day course. Combined with Business Insight software training in that same week, entitled "Actionable Insights", or some better name.
