@@ -2,15 +2,15 @@
 
 ## 1.ethics_governance
 
-## 2.understanding_data_AI
+## 2.understandingdata&ai
 
 ## 3.dashboardingR
 
-## 4.command_line_basics
+## 4.command_line_git
 
-## 5.git_github 
+***
 
-## Actions for 2021:
+# Actions for 2021:
 
 1. Clashes with corporate induction to be mitigated for next year with outlook reminders to contact the team responsible for programming the induction events.  
 
