@@ -6,7 +6,7 @@ output:
   ioslides_presentation:
     logo: ../../www/DataScienceCampus_logo_square.png
     widescreen: true
-    css: ../../www/custom.css
+    css: ../../www/week_1/custom.css
 ---
 
 ```{r setup, include=FALSE}

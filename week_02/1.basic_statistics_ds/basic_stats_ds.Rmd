@@ -1,0 +1,55 @@
+---
+title: "Basic Stats in Data Science"
+author: "R Leyshon"
+date: "20/11/2020"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    number_sections: true
+    css: "../../www/style/style.css"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+```
+
+
+
+# Introduction
+
+Statistics is a broadly applied term. For the purposes of this course, we use the term in reference to **any process undertaken to communicate understanding about a population (of numbers)**. Some widely used, topical and familiar statistics for your consideration:
+
+1. Mean(arithmetic), median, mode, harmonic mean, gemoetric mean
+2. Standard deviation, variance, range, interquartile range
+3. R number, rates, rates per capita
+4. Service points won in tennis
+5. Stock market indices
+
+
+<img src="../../www/week_2/Stockmarket.jpg" alt="creative commons stock market indices" width="300px" class = "center"/>
+
+<i class="fa fa-question-circle"></i>
+
+
+It can be difficult for the average person to take a series of numbers and infer some meaning from their distribution. **Summary statistics** are often used to help people think more clearly about the distribution of numbers. 
+
+
+# Central Tendency
+
+
+# Variation
+
+
+# Aggregation
+
+
+# Presenting Data
+
+
+# Ethical Communication of Statistics
+
+
+
+

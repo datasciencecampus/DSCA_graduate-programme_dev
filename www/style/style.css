@@ -1,0 +1,166 @@
+/*Styling of toc elements*/
+#TOC ul>li {
+  color: #323132;
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13pt;
+}
+
+
+
+/*highlighting of toc */
+.list-group-item.active, .list-group-item.active:focus, .list-group-item.active:hover {
+  background-color: #D0D2D3;
+}
+
+
+#TOC {
+    background: #BDBD0080;
+    padding: 10px;
+    border: none;
+}
+
+
+
+
+
+
+body{
+  font-family: 'Open Sans';
+}
+
+h1 {
+  border-radius: 15px;
+  background: #004266FF;
+  font-weight: 500;
+  color: white;
+  width: 50%;
+  font-size: 24pt;
+  padding: 10px 10px 10px 25px;
+}
+
+h2 {
+  border-radius: 15px;
+  background: #004266CC;
+  color: white;
+  width: 40%;
+  font-size: 18pt;
+  padding: 10px 10px 10px 25px;
+  background-clip: padding-box;
+}
+
+h3 {
+  border-radius: 15px;
+  background: #00426699;
+  color: white;
+  width: 30%;
+  font-size: 13pt;
+  padding: 10px 10px 10px 25px;
+}
+
+h4 {
+  border-radius: 15px;
+  background: #00426666;
+  color: white;
+  width: 25%;
+  font-size: 12pt;
+  padding: 10px 10px 10px 25px;
+}
+
+h5 {
+  border-radius: 15px;
+  background: #00426666;
+  color: white;
+  width: 25%;
+  font-size: 11pt;
+  padding: 10px 10px 10px 25px;
+}
+
+
+h1.title {
+  color: white;
+  padding: 50px 30px 50px 30px;
+  width: 100%;
+  font-size: 32pt;
+  font-size: 3.5vw;
+  border-radius: 30px;
+  text-align: left;
+  background-image: url(./DSC_LOGO_RGB_WHITE_300_DPI.png), url(./background.jpg);
+  background-size: 25%, 100%;
+  background-repeat: no-repeat;
+  background-position: top 50% right 4%, left ;
+}
+
+
+h4.author {
+  border-radius: 5px;
+  float: right;
+  width: 25%;
+  color: #004266FF;
+  background: #EAEAEA;
+  padding: 20px;
+}
+
+
+/* Navigation tab styling */
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover{
+    border: 0;
+    font-size: 14pt;
+    border-bottom: 5px solid #003C57;
+    font-weight: 600;
+    color: #003C57;
+}
+
+.nav-tabs>li>a {
+    color: #003C57;
+    font-size: 14pt;
+    font-weight: 600;
+}
+
+
+.marginauto {
+    margin: 10px auto 20px;
+    display: block;
+}
+
+/* centre align any tag with class="center"*/
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+/* Font defining */
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url(OpenSans.ttf) format('truetype');
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url(OpenSansSemibold.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: url(OpenSansItalic.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: url(OpenSansSemiboldItalic.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(SourceCodePro.ttf) format('truetype');
+}
