@@ -898,40 +898,180 @@ hist(lake_r)
 ***
 
 ## Exercise 3c
+```{r include=FALSE}
+#prep code chunk
+rivers_r <- datasets::rivers
+```
+<strong class="navy">Lengths of Major North American Rivers</strong>
+
+<strong class="navy">Description</strong>
+
+This data set gives the lengths (in miles) of 141 “major” rivers in North America, as compiled by the US Geological Survey.
+
+<strong class="navy">Format</strong>
+
+A vector containing 141 observations.
+
+<img src="../../www/week_2/mississippi.jpg" class="center" alt="Mississippi river at sunset">
+
+
 
 ### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
 
+#### Your Code
+
+Produce summary_statistics on the `rivers_py` data.
+
+```{python}
+#convert from r data
+rivers_py = r.rivers_r
+# convert to pandas series
+
+
+# produce summary statistics on the data
+
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+Observing the median and the mean, do you believe there to be outliers present? At what end of the river lengths would you expect them?
+
+plot a histogram specifying 6 bins.
+
+
+```{python}
+# need one executable line to avoid error...
+import matplotlib.pyplot as plt
+# plot a histogram
+
+```
+
+#### Hint
+
+Produce summary_statistics on the `rivers_py` data.
+
+```{python eval=FALSE}
+#convert from r data
+rivers_py = r.rivers_r
+# convert to pandas series
+rivers_py = .........(rivers_py)
+
+# produce summary statistics on the data
+rivers_py.........()
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+Observing the median and the mean, do you believe there to be outliers present? At what end of the river lengths would you expect them?
+
+plot a histogram specifying 6 bins.
+
+
+```{python eval=FALSE}
+# need one executable line to avoid error...
+import matplotlib.pyplot as plt
+# plot a histogram
+histogram = ........(rivers_py, ....=.)
+plt.....(histogram)
+```
+
+
+#### Solution
+
+Produce summary_statistics on the `rivers_py` data.
+
+```{python}
+#convert from r data
+rivers_py = r.rivers_r
+# convert to pandas series
+rivers_py = pd.Series(rivers_py)
+
+# produce summary statistics on the data
+rivers_py.describe()
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+Observing the median and the mean, do you believe there to be outliers present? At what end of the river lengths would you expect them?
+
+plot a histogram specifying 6 bins.
+
+
+```{python}
+# need one executable line to avoid error...
+import matplotlib.pyplot as plt
+# plot a histogram
+histogram = plt.hist(rivers_py, bins=6)
+plt.show(histogram)
+```
 
 
 ### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
 
-```{r}
+#### Your Code
 
-rivers_r <- datasets::rivers
-length(rivers_r)
+Produce summary_statistics on the `rivers_r` data.
+
+```{r}
+# produce summary statistics on the data
+
 ```
 
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
 
+Observing the median and the mean, do you believe there to be outliers present? At what end of the river lengths would you expect them?
+
+plot a histogram specifying 6 bins.
 
 
 ```{r}
+#plot a histogram
 
+```
+
+#### Hint
+
+Produce summary_statistics on the `rivers_r` data.
+
+```{r eval=FALSE}
+# produce summary statistics on the data
+.......(rivers_r)
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+Observing the median and the mean, do you believe there to be outliers present? At what end of the river lengths would you expect them?
+
+plot a histogram specifying 6 bins.
+
+
+```{r eval=FALSE}
+#plot a histogram
+....(rivers_r, ...... = .)
+```
+
+#### Solution
+
+Produce summary_statistics on the `rivers_r` data.
+
+```{r}
+# produce summary statistics on the data
 summary(rivers_r)
-
-
 ```
 
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+Observing the median and the mean, do you believe there to be outliers present? At what end of the river lengths would you expect them?
+
+plot a histogram specifying 6 bins.
 
 
 ```{r}
-
-hist(rivers_r, breaks = 5)
-
-
+#plot a histogram
+hist(rivers_r, breaks = 6)
 ```
 
-
-
+###
 
 # Variation
 
