@@ -21,17 +21,11 @@ suppressMessages(library(dplyr))
 
 
 
-```{python import}
-import os
-os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:\Python36\Library\plugins\platforms'
-
-```
-
 # Dependencies
 
 This notebook uses the `reticulate` package to run python code chunks. In order to run all chunks or knit the markdown, you will need to have python installed on your computer. You may also need to run the following code if you are receiving errors that look like this: `Error in path.expand(path) : invalid 'path' argument`.
 
-```{python}
+```{r}
 # library(reticulate)
 # use_python("/Library/Frameworks/Python.framework/Versions/3.7/bin/python3")
 # py_run_string("import os as os")
@@ -40,7 +34,15 @@ This notebook uses the `reticulate` package to run python code chunks. In order 
 ```
 Ensure that you locate the path to your python executable and replace the path included in the `use_python` function above. On an ONS laptop, I found that reticulate worked fine out of the box when running R version 3.4.0, but that later versions would not run python code chunks.
 
-If the above does not resolve your situation, you are more than welcome to follow along in Spyder of Jupyter by copying out the exercises. Please let me know if this is the case and I can ensure I adapt the pace to account for this. It is also good to have this feedback to help improve course design in more than one language.  
+Alternatively, you can try:
+
+```{python}
+import os
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:\Python36\Library\plugins\platforms'
+# though you will need to ensure the path is correct
+```
+
+If the above does not resolve your situation, please let me know and I will look into these issues for further training development. If issues are experienced running python code chunks, I suggest running the alternative markdown which contains R exercises only.
 
 
 # Introduction
@@ -145,7 +147,7 @@ sleep_py.describe()
 
 #### solution
 
-```{python eval = FALSE}
+```{python}
 # import pandas
 import pandas as pd
 # check the dimensions
@@ -189,7 +191,7 @@ su.....(sleep_r)
 
 #### solution
 
-```{r eval = FALSE}
+```{r}
 # check the dimensions
 dim(sleep_r)
 # check the data types
@@ -278,7 +280,7 @@ np.......(all_salaries)
 
 #### solution
 
-```{python eval = FALSE}
+```{python}
 # import numpy
 import numpy as np
 # assign the salary value
@@ -328,7 +330,7 @@ all_salaries <- ...(med_salary, ..)
 
 #### solution
 
-```{r eval = FALSE}
+```{r}
 # assign the salary value
 med_salary <- 30380
 # Create a numeric vector of 10 observations, all of median salary
@@ -414,7 +416,7 @@ print(all_salaries)
 
 #### solution
 
-```{python eval = FALSE}
+```{python}
 # Assign Bill's earnings
 bills_salary = 12000000000
 print(bills_salary)
@@ -484,7 +486,7 @@ all_salaries
 
 #### solution
 
-```{r eval = FALSE}
+```{r}
 # Assign Bill's earnings
 bills_salary <- 12000000000
 bills_salary
@@ -581,76 +583,78 @@ Produce summary statistics on the `weight` column in the `chicks_py` dataframe.
 ```{python}
 chicks_py = r.chicks_r
 # summary stats on weight column
-chicks_py.weight.describe()
+
 ```
 
 <strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
 
-What do you notice about the mean and median? What does this mean in terms of any outliers within this columns' values?
+What do you notice about the mean and median? What does this mean in terms of any outliers within this column's values?
 
 You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
 
-Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer.Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
+Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that `matplotlib` is used in the hints and solution, but you may use whatever plotting package you prefer. Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
 
 ```{python}
 # plot histogram
-# import matplotlib.pyplot as plt
-# plt.hist(chicks_py.weight)
-# plt.show()
+import matplotlib.pyplot as plt
+
 ```
 
 
 
 #### Hint
 
+Produce summary statistics on the `weight` column in the `chicks_py` dataframe.
 
-Produce summary statistics on the `weight` column in the `chicks_r` dataframe.
-
-```{r eval=FALSE}
-.......(chicks_r$weight)
+```{python eval=FALSE}
+chicks_py = r.chicks_r
+# summary stats on weight column
+chicks_py...............()
 ```
 
 <strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
 
-What do you notice about the mean and median? What does this mean in terms of any outliers within this columns' values?
+What do you notice about the mean and median? What does this mean in terms of any outliers within this column's values?
 
 You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
 
-Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer.Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
+Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that `matplotlib` is used in the hints and solution, but you may use whatever plotting package you prefer. Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
 
-```{r eval=FALSE}
-
-hist(chicks_r$weight, ...... = 20)
-
+```{python eval=FALSE}
+# plot histogram
+import matplotlib.pyplot as plt
+histogram = plt.....(............., ....=20)
+plt.....(.)
 ```
-
 
 
 #### Solution
 
-Produce summary statistics on the `weight` column in the `chicks_r` dataframe.
+Produce summary statistics on the `weight` column in the `chicks_py` dataframe.
 
-```{r}
-summary(chicks_r$weight)
+```{python}
+chicks_py = r.chicks_r
+# summary stats on weight column
+chicks_py.weight.describe()
 ```
 
 <strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
 
-What do you notice about the mean and median? What does this mean in terms of any outliers within this columns' values?
+What do you notice about the mean and median? What does this mean in terms of any outliers within this column's values?
 
 You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
 
-Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer.Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
+Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that `matplotlib` is used in the hints and solution, but you may use whatever plotting package you prefer. Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
 
-```{r}
-
-hist(chicks_r$weight, breaks = 20)
-
+```{python}
+# plot histogram
+import matplotlib.pyplot as plt
+histogram = plt.hist(chicks_py.weight, bins=20)
+plt.show(histogram)
 ```
 
 
-
-
+***
 
 ### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
 
@@ -676,10 +680,7 @@ Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that 
 
 ```
 
-
-
 #### Hint
-
 
 Produce summary statistics on the `weight` column in the `chicks_r` dataframe.
 
@@ -700,7 +701,6 @@ Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that 
 hist(chicks_r$weight, ...... = 20)
 
 ```
-
 
 
 #### Solution
@@ -726,44 +726,173 @@ hist(chicks_r$weight, breaks = 20)
 ```
 
 
-
-
 ***
 
 ## Exercise 3b
 
+```{r include=FALSE}
+#prep code chunk
+lake_r <- datasets::LakeHuron
+```
+
+For this exercise, we shall use the `LakeHuron` dataset from R's `datasets` package. The data type is a time-series object, which for our purposes you can treat exactly like a numeric vector. Lake Huron is in Michigan, USA.
+
+<strong class="navy">Level of Lake Huron 1875–1972</strong>
+
+<strong class="navy">Description</strong>
+Annual measurements of the level, in feet, of Lake Huron 1875–1972.  
+
+<strong class="navy">Format</strong>
+A time series of length 98.
+
+<img src="../../www/week_2/huron.jpg" width=500px class="center" alt="Lake Huron at sunset">
+
+
 
 ### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
 
+#### Your Code
+
+Produce a summary of the lake levels time series
+
+```{python}
+lake_py = r.lake_r
+# Convert to a pandas series
+
+#produce summary statistics of the lake levels
+
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+Observe the mean and median. How do you think the distribution looks?
+
+Plot the distribution with a histogram, specifying the default number of bins.
+
+```{python}
+# need to have 1 executable line to avoid error...
+import matplotlib.pyplot as plt
+# draw a histogram with default number of bins
+
+```
+
+
+#### Hint
+
+Produce a summary of the lake levels time series
+
+```{python eval=FALSE}
+lake_py = r.lake_r
+# Convert to a pandas series
+lake_py = .........(lake_py)
+#produce summary statistics of the lake levels
+lake_py..........()
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+Observe the mean and median. How do you think the distribution looks?
+
+Plot the distribution with a histogram, specifying the default number of bins.
+
+```{python eval=FALSE}
+import matplotlib.pyplot as plt
+# draw a histogram with default number of bins
+histogram = ........(lake_py)
+plt.....(histogram)
+```
+
+#### Solution
+
+Produce a summary of the lake levels time series
+
+```{python}
+lake_py = r.lake_r
+# Convert to a pandas series
+lake_py = pd.Series(lake_py)
+#produce summary statistics of the lake levels
+lake_py.describe()
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+Observe the mean and median. How do you think the distribution looks?
+
+Plot the distribution with a histogram, specifying the default number of bins.
+
+```{python}
+import matplotlib.pyplot as plt
+# draw a histogram with default number of bins
+histogram = plt.hist(lake_py)
+plt.show(histogram)
+```
 
 
 ### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
 
-```{r}
+#### Your Code
 
-lake_r <- datasets::LakeHuron
-head(lake_r)
+Produce a summary of the lake levels time series
+
+```{r}
+#produce summary statistics of the lake levels
 
 
 ```
 
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+Observe the mean and median. How do you think the distribution looks?
+
+Plot the distribution with a histogram, specifying the default number of bins.
+
 ```{r}
+# draw a histogram with default number of bins
+
+```
+
+
+#### Hint
+
+Produce a summary of the lake levels time series
+
+```{r eval=FALSE}
+#produce summary statistics of the lake levels
+.......(lake_r)
+
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+Observe the mean and median. How do you think the distribution looks?
+
+Plot the distribution with a histogram, specifying the default number of bins.
+
+```{r eval=FALSE}
+# draw a histogram with default number of bins
+....(lake_r)
+```
+
+#### Solution
+
+Produce a summary of the lake levels time series
+
+```{r}
+#produce summary statistics of the lake levels
 summary(lake_r)
 
 ```
 
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+Observe the mean and median. How do you think the distribution looks?
+
+Plot the distribution with a histogram, specifying the default number of bins.
 
 ```{r}
-
-
+# draw a histogram with default number of bins
 hist(lake_r)
-
 ```
-
-
-
-
-
 
 
 ***
