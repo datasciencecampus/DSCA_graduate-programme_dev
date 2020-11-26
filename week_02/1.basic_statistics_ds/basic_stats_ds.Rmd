@@ -6,37 +6,500 @@ output:
   html_document:
     toc: true
     toc_float: true
-    number_sections: true
+    smooth_scroll: true
+    toc_depth: 2
     css: "../../www/style/style.css"
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+library(reticulate)
+suppressMessages(library(dplyr))
+
 ```
 
+# Dependencies
+
+This notebook uses the `reticulate` package to run python code chunks. In order to run all chunks or knit the markdown, you will need to have python installed on your computer. You may also need to run the following code if you are receiving errors that look like this: `Error in path.expand(path) : invalid 'path' argument`.
+
+```{r}
+# library(reticulate)
+# use_python("/Library/Frameworks/Python.framework/Versions/3.7/bin/python3")
+# py_run_string("import os as os")
+# py_run_string("os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/Python36/Library/plugins/platforms'")
+
+```
+Ensure that you locate the path to your python executable and replace the path included in the `use_python` function above. On an ONS laptop, I found that reticulate worked fine out of the box when running R version 3.4.0, but that later versions would not run python code chunks.
+
+If the above does not resolve your situation, you are more than welcome to follow along in Spyder of Jupyter by copying out the exercises. Please let me know if this is the case and I can ensure I adapt the pace to account for this. It is also good to have this feedback to help improve course design in more than one language.  
 
 
 # Introduction
 
-Statistics is a broadly applied term. For the purposes of this course, we use the term in reference to **any process undertaken to communicate understanding about a population (of numbers)**. Some widely used, topical and familiar statistics for your consideration:
+Statistics is a broadly applied term. For the purposes of this course, we use the term in reference to <strong class="navy>any process undertaken to communicate understanding about a population (of numbers)</strong>. Some widely used, topical and familiar statistics for your consideration:
 
 1. Mean(arithmetic), median, mode, harmonic mean, gemoetric mean
 2. Standard deviation, variance, range, interquartile range
-3. R number, rates, rates per capita
+3. R number, rates, rates per capita, [indices](https://gov.wales/welsh-index-multiple-deprivation)
 4. Service points won in tennis
 5. Stock market indices
 
 
-<img src="../../www/week_2/Stockmarket.jpg" alt="creative commons stock market indices" width="300px" class = "center"/>
-
-<i class="fa fa-question-circle"></i>
+If data is the raw material, statistics would be the tools used to extract valuable meaning. No tool is perfect, but some are better suited to certain jobs than others.
 
 
-It can be difficult for the average person to take a series of numbers and infer some meaning from their distribution. **Summary statistics** are often used to help people think more clearly about the distribution of numbers. 
+![Coal drilling machinery](../../www/week_2/Twentymile_Underground_Coal_Mine.png)
+
+
+It can be difficult for most people to take a series of numbers and infer some meaning from their distribution. <strong class="navy">Summary statistics</strong> are often used to help people think more clearly about the distribution of numbers. 
+
+***
+
+
+
+## Exercise 1 <i class="fa fa-question-circle"></i> 
+
+For this exercise we will be using the `sleep` dataset from the `datasets` package in R. You may choose to complete the task either in R or Python below. 
+
+### Sleep data dictionary
+
+<strong class="navy">Description</strong>
+
+Data which show the effect of two soporific drugs (increase in hours of sleep compared to control) on 10 patients.
+
+
++------+----------------+--------------------------+
+|Column|Data Type (in R)|Description               |
++======+================+==========================+
+|1     |Numeric         |increase in hours of sleep|
++------+----------------+--------------------------+
+|2     |Factor          |drug given                |
++------+----------------+--------------------------+
+|3     |Factor          |patient ID                |
++------+----------------+--------------------------+
+
+
+```{r include=FALSE}
+# R setup chunk
+sleep_r <- datasets::sleep
+#sleep_py <- r_to_py(sleep_r)
+```
+
+
+
+```{python include=FALSE}
+# python setup chunk
+sleep_py = r.sleep_r
+```
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+Using the `sleep_py` dataframe:
+
+1. import pandas
+2. Check the dimensions of the dataframe
+3. Check the data types of all columns
+4. produce summary statistics on all of its columns.
+
+#### your code 
+```{python}
+# import pandas
+import pandas as pd
+# check the dimensions
+ 
+# check the data types
+
+# produce summary statistics for all columns
+
+```
+
+
+#### hint
+
+```{python eval = FALSE}
+# import pandas
+import pandas as pd 
+# check the dimensions
+sleep_py.s...
+# check the data types
+sleep_py.dt....
+# produce summary statistics for all columns
+sleep_py.describe()
+```
+
+#### solution
+
+```{python eval = FALSE}
+# import pandas
+import pandas as pd
+# check the dimensions
+sleep_py.size
+# check the data types
+sleep_py.dtypes
+# produce summary statistics for all columns
+sleep_py.describe(include="all")
+```
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+Using the `sleep_r` dataframe:
+
+1. Check the dimensions of the dataframe
+2. Check the data types of all columns
+3. produce summary statistics on all of its columns.
+
+
+#### your code 
+```{r}
+# check the dimensions
+
+# check the data types
+
+# produce summary statistics for all columns
+
+```
+
+
+#### hint
+
+```{r eval = FALSE}
+# check the dimensions
+d..(sleep_r)
+# check the data types
+s..(sleep_r)
+# produce summary statistics for all columns
+su.....(sleep_r)
+```
+
+#### solution
+
+```{r eval = FALSE}
+# check the dimensions
+dim(sleep_r)
+# check the data types
+str(sleep_r)
+# produce summary statistics for all columns
+summary(sleep_r)
+```
+
+###
+
+***
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+Observing the summary statistics of the `extra` column, did you notice any interesting observations? What else would you need to do in order to ascertain whether the treatment had an affect on the typical sleep duration?
+
 
 
 # Central Tendency
+
+One of the most commonly employed summary statistics is the <strong class="navy">average</strong>. The average seeks to describe the 'typical' observation, and there are a multitude of averages available. Two of the most important averages are the <strong class="navy">mean</strong> and <strong class="navy">median</strong>.
+
+
+Both of these averages are measures of central tendency, in that they communicate an aspect of the 'typical' observation of a population. The mean and median respond differently to the presence of outliers in a population.
+
+## Exercise 2a <i class="fa fa-question-circle"></i> 
+
+It's 2019. Ten people were sat at a bar. They were comparing their salaries. Strangely, it turned out that they all earned precisely the [UK median annual income](https://www.statista.com/statistics/1002964/average-full-time-annual-earnings-in-the-uk/).
+
+<img src="../../www/week_2/bartender.jfif" class="center" alt="creative commons bartender serving drinks"/>
+
+Using either R or Python, store this information in an appropriate format.
+
+
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+1. Import numpy
+2. Assign the median salary to a named value
+3. Create a numpy array of 10 observations, all of median salary
+4. Calculate the mean salary for everyone at the bar
+5. Calculate the median salary for everyone at the bar
+
+#### your code 
+```{python}
+# import numpy
+import numpy as np
+# assign the salary value
+
+# create the numpy array of 10 repeat observations
+
+#calculate mean salary
+
+#calculate median salary
+
+```
+
+
+#### hint
+
+```{python eval = FALSE}
+# import numpy
+...... numpy .. np
+# assign the salary value
+med_salary = .....
+# create the numpy array of 10 repeat observations
+all_salaries = np.......(med_salary, 10)
+#calculate mean salary
+np.....(all_salaries)
+#calculate median salary
+np.......(all_salaries)
+```
+
+#### solution
+
+```{python eval = FALSE}
+# import numpy
+import numpy as np
+# assign the salary value
+med_salary = 30380
+# create the numpy array of 10 repeat observations
+all_salaries = np.repeat(med_salary, 10)
+#calculate mean salary
+np.mean(all_salaries)
+#calculate median salary
+np.median(all_salaries)
+```
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+1. Assign the median salary to a named value
+2. Create a numeric vector of 10 observations, all of median salary
+3. Calculate the mean salary for everyone at the bar
+4. Calculate the median salary for everyone at the bar
+
+
+#### your code 
+```{r}
+# assign the salary value
+
+# Create a numeric vector of 10 observations, all of median salary
+
+#calculate mean salary
+
+#calculate median salary
+
+
+```
+
+
+#### hint
+
+```{r eval = FALSE}
+# assign the salary value
+med_salary <- .....
+# Create a numeric vector of 10 observations, all of median salary
+all_salaries <- ...(med_salary, ..)
+#calculate mean salary
+....(all_salaries)
+#calculate median salary
+......(all_salaries)
+```
+
+#### solution
+
+```{r eval = FALSE}
+# assign the salary value
+med_salary <- 30380
+# Create a numeric vector of 10 observations, all of median salary
+all_salaries <- rep(med_salary, 10)
+#calculate mean salary
+mean(all_salaries)
+#calculate median salary
+median(all_salaries)
+```
+
+###
+
+Nothing interesting so far. Let's continue...
+
+***
+
+### Exercise 2b <i class="fa fa-question-circle"></i> 
+
+A surprise development - Bill Gates enters the bar and takes a seat. We'll assume based on [this article](https://www.businessinsider.com/how-rich-is-bill-gates-net-worth-mind-blowing-facts-2019-5?r=US&IR=T#11-according-to-the-social-security-administration-the-average-american-man-with-a-bachelors-degree-will-earn-about-22-million-in-his-lifetime-gates-makes-that-in-a-little-over-an-hour-and-a-half-11) that his earnings for that year was <strong class="navy">12 billion dollars</strong>.
+
+
+<img src="../../www/week_2/Bill_Gates.jpg" class="center" alt="Bill Gates enjoying a drink at the World Economic Forum"/>
+
+
+Exchange rate for this calculation is based on [this source](https://www.exchangerates.org.uk/GBP-USD-spot-exchange-rates-history-2019.html), where we will be using the 2019 conversion average of:
+
+1 Pound = 1.2772 USD
+
+1. Convert Bill's earnings into 2019 pounds.
+2. Calculate the reciprocal of the exchange rate (as we want to go from USD to GBP, not the other way)
+3. adjust the data you created in exercise 2a to include Bill's earnings.
+4. Recalculate the mean.
+5. recalculate the median.
+
+
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+1. Assign Bill's earnings
+2. Find the reciprocal of the given exchange rate
+3. Convert Bill's earnings to 2019 pounds
+4. Append Bill's earnings in pounds to the numpy array of all the bar patrons' earnings
+5. Recalculate the mean salary for everyone at the bar
+6. Recalculate the median salary for everyone at the bar
+
+#### your code 
+```{python}
+# Assign Bill's earnings
+bills_salary = 12000000000
+# calculate the reciprocal of the given exchange rate
+
+# Convert them to 2019 pounds
+
+# Add Bill's earnings in pounds to the numpy array of all the bar patrons' earnings
+
+# Recalculate the mean salary for everyone at the bar
+
+# Recalculate the median salary for everyone at the bar
+
+```
+
+
+#### hint
+
+```{python eval = FALSE}
+# Assign Bill's earnings
+bills_salary = ...........
+print(bills_salary)
+# calculate the reciprocal of the given exchange rate
+xrate = ./......
+print(xrate)
+# Convert earnings to 2019 pounds
+bills_salary_gbp = .*.
+print(bills_salary_gbp)
+# Add Bill's earnings in pounds to the numpy array of all the bar patrons' earnings
+all_salaries = ..append(all_salaries, bills_salary_gbp)
+print(all_salaries)
+# Recalculate the mean salary for everyone at the bar
+.......(all_salaries)
+# Recalculate the median salary for everyone at the bar
+.........(all_salaries)
+```
+
+#### solution
+
+```{python eval = FALSE}
+# Assign Bill's earnings
+bills_salary = 12000000000
+print(bills_salary)
+# calculate the reciprocal of the given exchange rate
+xrate = 1/1.2772
+print(xrate)
+# Convert them to 2019 pounds
+bills_salary_gbp = bills_salary*xrate
+print(bills_salary_gbp)
+# Add Bill's earnings in pounds to the numpy array of all the bar patrons' earnings
+all_salaries = np.append(all_salaries, bills_salary_gbp)
+print(all_salaries)
+# Recalculate the mean salary for everyone at the bar
+np.mean(all_salaries)
+# Recalculate the median salary for everyone at the bar
+np.median(all_salaries)
+```
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+1. Assign Bill's earnings
+2. Find the reciprocal of the given exchange rate
+3. Convert Bill's earnings to 2019 pounds
+4. Append Bill's earnings in pounds to the numeric vector of all the bar patrons' earnings
+5. Recalculate the mean salary for everyone at the bar
+6. Recalculate the median salary for everyone at the bar
+
+
+#### your code 
+```{r}
+# Assign Bill's earnings
+
+# calculate the reciprocal of the given exchange rate
+
+# Convert Bill's salary to 2019 pounds
+
+# Append Bill's earnings in pounds to the numeric vector of all the bar patrons' earnings
+
+# Recalculate the mean salary for everyone at the bar
+
+# Recalculate the median salary for everyone at the bar
+
+
+```
+
+
+#### hint
+
+```{r eval = FALSE}
+# Assign Bill's earnings
+bills_salary <- ...........
+bills_salary
+# calculate the reciprocal of the given exchange rate
+xrate <-  ./......
+xrate
+# Convert Bill's salary to 2019 pounds
+bills_salary_gbp <- .*.
+bills_salary_gbp
+# Append Bill's earnings in pounds to the numeric vector of all the bar patrons' earnings
+all_salaries <- .(all_salaries, bills_salary_gbp)
+all_salaries
+# Recalculate the mean salary for everyone at the bar
+.(all_salaries)
+# Recalculate the median salary for everyone at the bar
+.(all_salaries)
+```
+
+#### solution
+
+```{r eval = FALSE}
+# Assign Bill's earnings
+bills_salary <- 12000000000
+bills_salary
+# calculate the reciprocal of the given exchange rate
+xrate <-  1/1.2772
+xrate
+# Convert Bill's salary to 2019 pounds
+bills_salary_gbp <- bills_salary*xrate
+bills_salary_gbp
+# Append Bill's earnings in pounds to the numeric vector of all the bar patrons' earnings
+all_salaries <- c(all_salaries, bills_salary_gbp)
+all_salaries
+# Recalculate the mean salary for everyone at the bar
+mean(all_salaries)
+# Recalculate the median salary for everyone at the bar
+median(all_salaries)
+```
+
+###
+
+***
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+Having recalculated the mean and median of everyone at the bar, you should have noticed that the mean had skyrocketed, but that <strong class="navy">the median did not budge</strong>. None of the 10 bar patrons had gotten any richer when Bill joined the group, so in your mind, which is the better representation of the typical bar patron here? The mean or the median?
+
+In fact, we could continue to add additional wealthy people to the group and the median would still not change. We could continue to add more of the wealthiest people in the world [according to Wikipedia](https://en.wikipedia.org/wiki/The_World%27s_Billionaires), without affecting the median. <strong class="navy">At which point would the median be affected?</strong>:
+
+* Jeff Bezos
+* Bernard Arnault
+* Warren Buffett
+* Larry Ellison
+* Amancio Ortega
+* Mark Zuckerberg
+* Jim Walton
+* Alice Walton
+* Robson Walton
+
+Once all of these super-wealthy pub-goers had joined the group at the bar, the median would no longer be the better choice of the two averages to represent the typical person at that bar. But then again, it would be on ordinary bar!
+
+<span class="summary-box">
+Appropriate use of the mean or median comes down to judgement. Consideration of the distribution of the population and what any outliers mean for an analysis is crucial. Do the outliers obscure the message, or are the outliers the message?</span>
+
 
 
 # Variation
