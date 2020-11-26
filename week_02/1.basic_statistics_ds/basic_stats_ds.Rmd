@@ -19,11 +19,19 @@ suppressMessages(library(dplyr))
 
 ```
 
+
+
+```{python import}
+import os
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:\Python36\Library\plugins\platforms'
+
+```
+
 # Dependencies
 
 This notebook uses the `reticulate` package to run python code chunks. In order to run all chunks or knit the markdown, you will need to have python installed on your computer. You may also need to run the following code if you are receiving errors that look like this: `Error in path.expand(path) : invalid 'path' argument`.
 
-```{r}
+```{python}
 # library(reticulate)
 # use_python("/Library/Frameworks/Python.framework/Versions/3.7/bin/python3")
 # py_run_string("import os as os")
@@ -37,9 +45,9 @@ If the above does not resolve your situation, you are more than welcome to follo
 
 # Introduction
 
-Statistics is a broadly applied term. For the purposes of this course, we use the term in reference to <strong class="navy>any process undertaken to communicate understanding about a population (of numbers)</strong>. Some widely used, topical and familiar statistics for your consideration:
+Statistics is a broadly applied term. For the purposes of this course, we use the term in reference to <strong class="navy">any process undertaken to communicate understanding about a population (of numbers)</strong>. Some widely used, topical and familiar statistics for your consideration:
 
-1. Mean(arithmetic), median, mode, harmonic mean, gemoetric mean
+1. Mean(arithmetic), median, mode, harmonic mean, gemoetric mean, trimmed mean, <strong class="navy">peri peri mean</strong>
 2. Standard deviation, variance, range, interquartile range
 3. R number, rates, rates per capita, [indices](https://gov.wales/welsh-index-multiple-deprivation)
 4. Service points won in tennis
@@ -52,7 +60,14 @@ If data is the raw material, statistics would be the tools used to extract valua
 ![Coal drilling machinery](../../www/week_2/Twentymile_Underground_Coal_Mine.png)
 
 
-It can be difficult for most people to take a series of numbers and infer some meaning from their distribution. <strong class="navy">Summary statistics</strong> are often used to help people think more clearly about the distribution of numbers. 
+It can be difficult for most people to take a series of numbers and infer some meaning from their distribution. <strong class="navy">Summary statistics</strong> are often used to help people think more clearly about the distribution of numbers. Summary statistics are sometimes known as desrciptive statistics. Whenever we collapse a group of numbers into a single, take-away value, we lose some element of nuance and we need to be aware of this. Summary statistics can be helpful or; intentional or not; misleading.
+
+<span class="quote">"It's easy to lie with statistics, but it's hard to tell the truth without it". <br> <strong>Andrejs Dunkels.</strong> </span>
+
+The Data science Campus' corporate statement is:
+<strong class="navy">Data Science for Public Good.</strong>
+
+Therefore, we need to arm ourselves with an intuition and sound understanding of the utility and potential misuse of statistics. 
 
 ***
 
@@ -198,7 +213,20 @@ Observing the summary statistics of the `extra` column, did you notice any inter
 One of the most commonly employed summary statistics is the <strong class="navy">average</strong>. The average seeks to describe the 'typical' observation, and there are a multitude of averages available. Two of the most important averages are the <strong class="navy">mean</strong> and <strong class="navy">median</strong>.
 
 
-Both of these averages are measures of central tendency, in that they communicate an aspect of the 'typical' observation of a population. The mean and median respond differently to the presence of outliers in a population.
+Both of these averages are measures of central tendency, in that they communicate an aspect of the 'typical' observation of a population. 
+
+As we were all taught in school:
+
+* The mean is the sum of all observations divided by the number of observations. There are slightly adjusted equations for calculating population and sample mean, but that is beyond scope for this topic.
+
+__$\bar{X} = \frac{\Sigma x}{n}$__
+
+* If you sorted a group of numbers from smallest to lowest, the median would be the observation in the middle. Exactly half of the observations would be above and below this value. If the number of observations is even, the median value would be exactly halfway between the 2. The equation for calculating the <strong class="navy">position of the median</strong> is lesser known than the mean:
+
+__$\{(n + 1) ÷ 2\}^{th} value$__
+
+
+The mean and median respond differently to the presence of outliers in a population. Let's take a look at a slightly silly context to help build the required intuition.
 
 ## Exercise 2a <i class="fa fa-question-circle"></i> 
 
@@ -317,9 +345,9 @@ Nothing interesting so far. Let's continue...
 
 ***
 
-### Exercise 2b <i class="fa fa-question-circle"></i> 
+## Exercise 2b <i class="fa fa-question-circle"></i> 
 
-A surprise development - Bill Gates enters the bar and takes a seat. We'll assume based on [this article](https://www.businessinsider.com/how-rich-is-bill-gates-net-worth-mind-blowing-facts-2019-5?r=US&IR=T#11-according-to-the-social-security-administration-the-average-american-man-with-a-bachelors-degree-will-earn-about-22-million-in-his-lifetime-gates-makes-that-in-a-little-over-an-hour-and-a-half-11) that his earnings for that year was <strong class="navy">12 billion dollars</strong>.
+A surprise development - Bill Gates enters the bar and takes a seat with the rest of our bar-goers. We'll assume based on [this article](https://www.businessinsider.com/how-rich-is-bill-gates-net-worth-mind-blowing-facts-2019-5?r=US&IR=T#11-according-to-the-social-security-administration-the-average-american-man-with-a-bachelors-degree-will-earn-about-22-million-in-his-lifetime-gates-makes-that-in-a-little-over-an-hour-and-a-half-11) that his earnings for that year was <strong class="navy">12 billion dollars</strong>.
 
 
 <img src="../../www/week_2/Bill_Gates.jpg" class="center" alt="Bill Gates enjoying a drink at the World Economic Forum"/>
@@ -331,9 +359,9 @@ Exchange rate for this calculation is based on [this source](https://www.exchang
 
 1. Convert Bill's earnings into 2019 pounds.
 2. Calculate the reciprocal of the exchange rate (as we want to go from USD to GBP, not the other way)
-3. adjust the data you created in exercise 2a to include Bill's earnings.
+3. Adjust the data you created in exercise 2a to include Bill's earnings.
 4. Recalculate the mean.
-5. recalculate the median.
+5. Recalculate the median.
 
 
 
@@ -483,7 +511,7 @@ median(all_salaries)
 
 Having recalculated the mean and median of everyone at the bar, you should have noticed that the mean had skyrocketed, but that <strong class="navy">the median did not budge</strong>. None of the 10 bar patrons had gotten any richer when Bill joined the group, so in your mind, which is the better representation of the typical bar patron here? The mean or the median?
 
-In fact, we could continue to add additional wealthy people to the group and the median would still not change. We could continue to add more of the wealthiest people in the world [according to Wikipedia](https://en.wikipedia.org/wiki/The_World%27s_Billionaires), without affecting the median. <strong class="navy">At which point would the median be affected?</strong>:
+We could continue to add more of the wealthiest people in the world [according to Wikipedia](https://en.wikipedia.org/wiki/The_World%27s_Billionaires), without affecting the median. <strong class="navy">At which point would the median be affected?</strong>:
 
 * Jeff Bezos
 * Bernard Arnault
@@ -495,14 +523,318 @@ In fact, we could continue to add additional wealthy people to the group and the
 * Alice Walton
 * Robson Walton
 
-Once all of these super-wealthy pub-goers had joined the group at the bar, the median would no longer be the better choice of the two averages to represent the typical person at that bar. But then again, it would be on ordinary bar!
+Once all of these super-wealthy pub-goers had joined the group at the bar, the median would no longer be the better choice of the two averages to represent the typical person at that bar. But then again, it would not be any old bar! As this would now be a hangout for the super rich, then use of the mean would be warranted. It would be more representative of the population than the median. Would the super rich clientele still count as outliers? We will come to the formal definition of outliers later. 
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+Do we know of any ways to define an outlier?
+
+
+### When the median isn't the message
+
+Take a look at the [British Medical Journal's](https://www.bmj.com/rapid-response/2011/11/03/median-not-message) response to a fantastic [essay](https://www.dancingupsidedown.com/wp-content/uploads/2008/12/MedianNotMessageCancer_Gould.pdf) by the evolutionary biologist, Stephen Jay Gould in 2002.
+
+Dr Gould was diagnosed with a terminal form of cancer in the 1980s and while reading around the subject, discovered that the median survival duration following diagnosis was 8 months. Dr Gould died in 2002 of a different, unrelated form of cancer, having survived thirty times longer than the published median survival period. You can see from the BMJ article that his legacy has been a depeer consideration of medical communication of statistics.
+
+If some significant number of patients with this disease (perhaps 20 or 30 %) go on to live long and relatively healthy lives, that absolutely matters and needs to be communicated to any person diagnosed with that disease. The use of the median here would be the wrong type of average to communicate.
+
 
 <span class="summary-box">
 Appropriate use of the mean or median comes down to judgement. Consideration of the distribution of the population and what any outliers mean for an analysis is crucial. Do the outliers obscure the message, or are the outliers the message?</span>
 
 
+### Quick and dirty outlier determination.
+
+Whenever you produce summary statistics for a column, you tend to see median and mean. Noticing differences (if any) between these averages can indicate the presence of outliers and in what direction. Let's have a play.
+
+
+## Exercise 3a
+
+The `ChickWeight` dataset from R's `datasets` package:
+
+<strong class="navy>Weight versus age of chicks on different diets</strong>
+<strong class="navy>Description</strong>
+
+The ChickWeight data frame has 578 rows and 4 columns from an experiment on the effect of diet on early growth of chicks.
+
+<img class="center" src="../../www/week_2/chicks.jpg" alt="2 small chicks standing side by side">
+
+
+Type `?ChickWeight` into the R console or an R code chunk for more detail.
+
+<strong class="navy">Please note that Python tends to refer to the median as `50%` in it's summary statistics output.</strong>
+
+```{r, include=FALSE}
+# prep chunk
+# load dataset
+chicks_r <- datasets::ChickWeight
+```
+
+
+
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+#### Your code
+
+Produce summary statistics on the `weight` column in the `chicks_py` dataframe.
+
+```{python}
+chicks_py = r.chicks_r
+# summary stats on weight column
+chicks_py.weight.describe()
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+What do you notice about the mean and median? What does this mean in terms of any outliers within this columns' values?
+
+You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
+
+Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer.Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
+
+```{python}
+# plot histogram
+# import matplotlib.pyplot as plt
+# plt.hist(chicks_py.weight)
+# plt.show()
+```
+
+
+
+#### Hint
+
+
+Produce summary statistics on the `weight` column in the `chicks_r` dataframe.
+
+```{r eval=FALSE}
+.......(chicks_r$weight)
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+What do you notice about the mean and median? What does this mean in terms of any outliers within this columns' values?
+
+You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
+
+Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer.Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
+
+```{r eval=FALSE}
+
+hist(chicks_r$weight, ...... = 20)
+
+```
+
+
+
+#### Solution
+
+Produce summary statistics on the `weight` column in the `chicks_r` dataframe.
+
+```{r}
+summary(chicks_r$weight)
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+What do you notice about the mean and median? What does this mean in terms of any outliers within this columns' values?
+
+You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
+
+Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer.Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
+
+```{r}
+
+hist(chicks_r$weight, breaks = 20)
+
+```
+
+
+
+
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+#### Your code
+
+Produce summary statistics on the `weight` column in the `chicks_r` dataframe.
+
+```{r}
+# summary stats on weight column
+
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+What do you notice about the mean and median? What does this mean in terms of any outliers within this columns' values?
+
+You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
+
+Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer.Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
+
+```{r}
+# plot histogram
+
+```
+
+
+
+#### Hint
+
+
+Produce summary statistics on the `weight` column in the `chicks_r` dataframe.
+
+```{r eval=FALSE}
+.......(chicks_r$weight)
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+What do you notice about the mean and median? What does this mean in terms of any outliers within this columns' values?
+
+You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
+
+Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer.Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
+
+```{r eval=FALSE}
+
+hist(chicks_r$weight, ...... = 20)
+
+```
+
+
+
+#### Solution
+
+Produce summary statistics on the `weight` column in the `chicks_r` dataframe.
+
+```{r}
+summary(chicks_r$weight)
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+What do you notice about the mean and median? What does this mean in terms of any outliers within this columns' values?
+
+You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
+
+Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer.Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
+
+```{r}
+
+hist(chicks_r$weight, breaks = 20)
+
+```
+
+
+
+
+***
+
+## Exercise 3b
+
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+```{r}
+
+lake_r <- datasets::LakeHuron
+head(lake_r)
+
+
+```
+
+```{r}
+summary(lake_r)
+
+```
+
+
+```{r}
+
+
+hist(lake_r)
+
+```
+
+
+
+
+
+
+
+***
+
+## Exercise 3c
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+```{r}
+
+rivers_r <- datasets::rivers
+length(rivers_r)
+```
+
+
+
+
+```{r}
+
+summary(rivers_r)
+
+
+```
+
+
+
+```{r}
+
+hist(rivers_r, breaks = 5)
+
+
+```
+
+
+
 
 # Variation
+
+Another crucial feature of any group of numbers that we need to conceptualise is the dispersal of the numbers around the middle. Meaning, how spread out are the numbers, are they clustered or evenly distributed? There are a number of descriptive statistics available to us in order to explore this aspect of any numerical data:
+
+* Range
+* Inter Quartile Range (IQR)
+* Variance
+* Standard Deviation.
+
+
+## Univariate Analysis
+
+Univariate analysis simply means considering one variable in isolation. We can employ all of the dispersal statistics mentioned above for univariate analysis.
+
+* **Range** is quite straight forward as I'm sure you know. Simply the maximum observed value minus the minimum observed value. Combined with an awareness of the median, this can give you an indication of skew in any population.
+
+## Exercise 4
+
+
+```{python}
+chicks_py = r.chicks_r
+
+```
+
+
+
+
+
+## Bivariate Analysis
+
+
 
 
 # Aggregation
@@ -511,7 +843,7 @@ Appropriate use of the mean or median comes down to judgement. Consideration of 
 # Presenting Data
 
 
-# Ethical Communication of Statistics
+# Outlier Determination
 
 
 
