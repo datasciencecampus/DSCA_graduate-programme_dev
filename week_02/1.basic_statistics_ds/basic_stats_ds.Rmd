@@ -30,7 +30,7 @@ os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:\Python36\Library\plugins\platfor
 
 Statistics is a broadly applied term. For the purposes of this course, we use the term in reference to <strong class="navy">any process undertaken to communicate understanding about a population (of numbers)</strong>. Some widely used, topical and familiar statistics for your consideration:
 
-1. Mean(arithmetic), median, mode, harmonic mean, gemoetric mean, trimmed mean, <strong class="navy">peri peri mean</strong>
+1. Mean(arithmetic), median, mode, harmonic mean, geometric mean, trimmed mean, <strong class="navy">peri peri mean</strong>
 2. Standard deviation, variance, range, interquartile range
 3. R number, rates, rates per capita, [indices](https://gov.wales/welsh-index-multiple-deprivation)
 4. Service points won in tennis
@@ -1199,27 +1199,252 @@ In reading around the documentation for data, it can be seen that there are 2 dr
 This means analysing the distribution of two variables together. Like high school science,as I change x, what happens to y? To continue with our `sleep` data, we should investigate the distribution of the `extra` hours of sleep column for each of the drugs administered, recorded in the `group` column. 
 
 ## Exercise 4b
+We need to create separate boxplots for each drug administered.
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+`seaborn` has the advantage of allowing you to specify which variable to map to the x and y aesthetics. this will allow us to achieve distinct boxplots for each drug administered.
+
+#### Your Code
+
+```{python eval=FALSE}
+# Suggest using seaborn for simplicity here
+import seaborn as sns
+# create a boxplot, administered drug on x, hours additional sleep on y
+# save as box_1 for use later
+
+# set the y label as something more descriptive
+
+# don't forget to show the plot
+
+```
+
+
+#### Hint
+
+```{python eval=FALSE}
+# Suggest using seaborn for simplicity here
+import seaborn as sns
+# create a boxplot, administered drug on x, hours additional sleep on y
+# save a box_1 for use later
+box_1 = ...........(x=....., y=....., data=........)
+# set the y label as something more descriptive
+box_1....(ylabel=...)
+# don't forget to show the plot
+plt.....()
+```
+
+#### Solution
+
+```{python}
+# Suggest using seaborn for simplicity here
+import seaborn as sns
+# create a boxplot, administered drug on x, hours additional sleep on y
+# save a box_1 for use later
+box_1 = sns.boxplot(x="group", y="extra", data=sleep_py)
+# set the y label as something more descriptive
+box_1.set(ylabel='Additional hours sleep against control group')
+# don't forget to show the plot
+plt.show()
+```
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+Using the first argument of the `boxplot` function, you can specify a formula to group on, using the `y~x` syntax. This would mean, for every value of x, draw me a boxplot of the y variable. This tends to only make sense when x is categorical (or discretized, placed in bins).
+
+#### Your Code
 
 ```{r}
+# create a boxplot, save it for use again as box_1
 
+  # specify a formula that produces separate boxplots of additional sleep for each drug
+
+  # ensure the correct object is passed to the data argument
+
+  #specify a suitable y axis
+
+  
+```
+
+
+#### Hint
+
+```{r eval=FALSE}
+# create a boxplot, save it for use again as box_1
+box_1 <- ........(
+  # specify a formula that produces separate boxplots of additional sleep for each drug
+  formula = .....~.....,
+  # ensure the correct object is passed to the data argument
+  data = .......,
+  #specify a suitable y axis
+  ylab = ...
+  )
+  
+```
+
+
+#### Solution
+
+```{r}
+# create a boxplot, save it for use again as box_1
+
+boxplot(
+  # specify a formula that produces separate boxplots of additional sleep for each drug
+  formula = extra~group,
+  # ensure the correct object is passed to the data argument
+  data = sleep_r,
+  #specify a suitable y axis
+  ylab = "Additional hours sleep against control group"
+  )
+  
+```
+
+###
+
+
+
+## Exercise 4c
+
+One crucial element of the data that a boxplot does not communicate by default is the number of observations. How can we be sure that the number of individuals exposed to each drug. We can resolve this by adding an additional layer to our plots, plotting the points. In this way we can identify if any of the boxplot groups have only have a few observations, which can lead to strange-looking boxes.
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+Begin with the `box_1` boxplot we created with `seaborn` in the previous exercise. Add a swarm plot layer to the plot, visualising the points for each boxplot.
+
+#### Your Code
+
+```{python eval=FALSE}
+# given code from the previous exercise
+box_1 = sns.boxplot(x="group", y="extra", data=sleep_py)
+# add a swarmplot layer to box_1, specify a color and alpha values of your choosing
+
+#show the plot
+
+
+```
+
+#### Hint
+
+```{python eval=FALSE}
+# given code from the previous exercise
+box_1 = sns.boxplot(x="group", y="extra", data=sleep_py)
+# add a swarmplot layer to box_1, specify a color and alpha values of your choosing
+box_1 = .............(x=..., y=..., data=..., color=..., alpha=...)
+#show the plot
+plt.show()
+
+```
+
+#### Solution
+
+```{python}
+# given code from the previous exercise
+box_1 = sns.boxplot(x="group", y="extra", data=sleep_py)
+# add a swarmplot layer to box_1, specify a color and alpha values of your choosing
+box_1 = sns.swarmplot(x="group", y="extra", data=sleep_py, color=".25", alpha=0.6)
+#show the plot
+plt.show()
+
+```
+
+
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+#### Your Code
+
+```{r}
+# start with a new plot canvas
+
+
+# #given code from previous exercise
+# boxplot(
+#   # specify a formula that produces separate boxplots of additional sleep for each drug
+#   formula = extra~group,
+#   # ensure the correct object is passed to the data argument
+#   data = sleep_r,
+#   #specify a suitable y axis
+#   ylab = "Additional hours sleep against control group"
+#   )
+
+# include points on the plot, specifying the color code as 2
 
 
 
 ```
 
 
+#### Hint
+
+```{r eval=FALSE}
+# start with a new plot canvas
+plot....()
+
+#given code from previous exercise
+boxplot(
+  # specify a formula that produces separate boxplots of additional sleep for each drug
+  formula = extra~group,
+  # ensure the correct object is passed to the data argument
+  data = sleep_r,
+  #specify a suitable y axis
+  ylab = "Additional hours sleep against control group"
+  )
+
+# include points on the plot, specifying the color code as 2
+......(x = sleep_r$....., y = sleep_r$....., ... = 2)
+
+
+```
+
+#### Solution
+
+```{r}
+# start with a new plot canvas
+plot.new()
+
+#given code from previous exercise
+boxplot(
+  # specify a formula that produces separate boxplots of additional sleep for each drug
+  formula = extra~group,
+  # ensure the correct object is passed to the data argument
+  data = sleep_r,
+  #specify a suitable y axis
+  ylab = "Additional hours sleep against control group"
+  )
+
+# include points on the plot, specifying the color code as 2
+points(x = sleep_r$group, y = sleep_r$extra, col = 2)
+
+
+```
+
+***
+
+## Scatter Charts
+
+Scatter charts are an indespensible tool for analysing how 2 variables (or more) vary with one another. This time we will be working with the `trees` data from the `datasets` R package. 
+
+<strong class="navy">Girth, Height and Volume for Black Cherry Trees</strong>
+
+<strong class="navy">Description</strong>
+
+This data set provides measurements of the girth, height and volume of timber in 31 felled black cherry trees. Note that girth is the diameter of the tree (in inches) measured at 4 ft 6 in above the ground.
+
+<strong class="navy">Format</strong>
+
+A data frame with 31 observations on 3 variables.
+
+<strong class="navy">Girth</strong>	numeric	Tree diameter in inches
+
+<strong class="navy">Height</strong>	numeric	Height in ft
+
+<strong class="navy">Volume</strong>	numeric	Volume of timber in cubic ft
+
+<img src="../../www/week_2/cherry_trees.jpg" class="center">
+
+
+
 # Aggregation
-
-
-# Presenting Data
-
-## Histograms
-
-## Density Plots
-
-## Boxplots
-
-## Correlation plots
 
 
 
