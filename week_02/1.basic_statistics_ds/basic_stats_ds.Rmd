@@ -1068,29 +1068,159 @@ Another crucial feature of any group of numbers that we need to conceptualise is
 
 Univariate analysis simply means considering one variable in isolation. We can employ all of the dispersal statistics mentioned above for univariate analysis.
 
-* **Range** is quite straight forward as I'm sure you know. Simply the maximum observed value minus the minimum observed value. Combined with an awareness of the median, this can give you an indication of skew in any population.
+* **Range** is quite straight forward as I'm sure you know. Simply the maximum observed value minus the minimum observed value. Combined with an awareness of the median, this can give you an indication of skew in any population. Is the median closer to the maximum or minimum? This indicates where observations may be clustered.
 
-## Exercise 4
+* **Inter Quartile Range**. The median is often described as the 'mid quartile' or 'inter-quartile in that it is the value that divides the number of observations in half. 50% of the observations will be above and below this value. the quartiles are a similar concept, but used to divide the data into quarters instead. Take a look at the image below:
 
+![Numbers being divided with labelled quartiles.](../../www/week_2/quartiles.png)
+
+The vector of numbers can be neatly divided into groups of 3. The <strong class="navy">First Quartile</strong> is the <strong class="navy">value</strong> that establishes the boundary between the lowest quarters of the observed data values. Similarly, the <strong class="navy">Third Quartile</strong> separates the upper quarters of the data values.
+
+Put simply, 25% of the observations would fall above the third quartile. 75 % of the observations would lie below it. 
+
+
+Coming back to the interquartile range, this is simply subtracting the value of Q1 from Q3.
+
+$IQR = Q_3 - Q_1$
+
+The <strong class = "navy">IQR</strong> tells us where the central 50% of the data lies. If the IQR is large, the data could be widely distributed (or even bimodal, though out of scope for this course).The IQR is also a useful too for defining outliers, which we will come to look at later.
+
+<span class="summary-box">As IQR is based on quartiles, it is not so easily affected by outlier values. Just like the median. This is in direct contrast to the standard deviation, which uses the mean. Therefore, a full and sound assessment of what the outliers mean for your analysis should be carefully considered when deciding whether to use IQR or standard deviation in explaining variation in your data.</span>
+
+## Using Boxplots
+
+Sometimes these are referred to as box and whiskers plot. they're useful to quickly assess the distribution of a single variable. Note the labelling on the following diagram.
+
+![Labelled Boxplot](../../www/week_2/labelled-boxplot.png)
+
+The middle 50% of the observations will be shown within the box, the median being represented as a line. Sometimes the mean may also appear.The end of the whiskers represents the minimum and maximum observations <strong class="navy">disregarding any outliers</strong>.
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+Can you think of a crucial weakness of a basic boxplot?
+
+## Exercise 4a
+
+Let's go back to our sleep data, stored as `sleep_r` or `sleep_py`. Recall that the `extra` column recorded the increase in hours of sleep in comparison to a control group.
+
+Create a boxplot for the extra column
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+#### Your Code
 
 ```{python}
-chicks_py = r.chicks_r
+# need an executable line to avoid error...
+import matplotlib.pyplot as plt
+# create a boxplot object
+
+# Add a suitable y axis label
+
+# show the boxplot
+
+```
+
+#### Hint
+
+```{python eval=FALSE}
+
+# need an executable line to avoid error...
+import matplotlib.pyplot as plt
+# create a boxplot object
+box = ............(..............)
+# Add a suitable y axis label
+plt.ylabel(...)
+# show the boxplot
+........(box)
+
+```
+
+#### Solution
+
+```{python}
+
+# need an executable line to avoid error...
+import matplotlib.pyplot as plt
+# create a boxplot object
+box = plt.boxplot(sleep_py.extra)
+# Add a suitable y axis label
+plt.ylabel("Additional hours sleep against control")
+# show the boxplot
+plt.show(box)
+```
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+#### Your Code
+
+```{r}
+# create a base boxplot of the extra column
+
+        #specify a suitable y axis
+        
 
 ```
 
 
+#### Hint
+
+```{r eval=FALSE}
+# create a base boxplot of the extra column
+boxplot(.......$.....,
+        #specify a suitable y axis
+        ylab = ...)
+```
+
+#### Solution
+
+```{r}
+# create a base boxplot of the extra column
+boxplot(sleep_r$extra,
+        #specify a suitable y axis
+        ylab = "Additional hours sleep against control group")
+
+```
+
+
+###
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+What can we infer from the boxplot that we created?
+
+
+
+In reading around the documentation for data, it can be seen that there are 2 drugs used within this trial. Identified by the `group` column as either drug `1` or `2`. In our boxplots, the distributions of the 2 distinct groups may be interfering and ought to be plotted distinctly. 
 
 
 
 ## Bivariate Analysis
 
+This means analysing the distribution of two variables together. Like high school science,as I change x, what happens to y? To continue with our `sleep` data, we should investigate the distribution of the `extra` hours of sleep column for each of the drugs administered, recorded in the `group` column. 
 
+## Exercise 4b
+
+```{r}
+
+
+
+
+```
 
 
 # Aggregation
 
 
 # Presenting Data
+
+## Histograms
+
+## Density Plots
+
+## Boxplots
+
+## Correlation plots
+
 
 
 # Outlier Determination
