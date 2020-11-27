@@ -19,30 +19,11 @@ suppressMessages(library(dplyr))
 
 ```
 
-
-
-# Dependencies
-
-This notebook uses the `reticulate` package to run python code chunks. In order to run all chunks or knit the markdown, you will need to have python installed on your computer. You may also need to run the following code if you are receiving errors that look like this: `Error in path.expand(path) : invalid 'path' argument`.
-
-```{r}
-# library(reticulate)
-# use_python("/Library/Frameworks/Python.framework/Versions/3.7/bin/python3")
-# py_run_string("import os as os")
-# py_run_string("os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:/Python36/Library/plugins/platforms'")
-
-```
-Ensure that you locate the path to your python executable and replace the path included in the `use_python` function above. On an ONS laptop, I found that reticulate worked fine out of the box when running R version 3.4.0, but that later versions would not run python code chunks.
-
-Alternatively, you can try:
-
-```{python}
+```{python include=FALSE}
 import os
 os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:\Python36\Library\plugins\platforms'
-# though you will need to ensure the path is correct
+# though you will need to ensure the path is correct for you
 ```
-
-If the above does not resolve your situation, please let me know and I will look into these issues for further training development. If issues are experienced running python code chunks, I suggest running the alternative markdown which contains R exercises only.
 
 
 # Introduction
