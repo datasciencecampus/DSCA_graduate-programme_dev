@@ -11,4 +11,6 @@
 * Include exercise rmd and rename current to exercise-answers
 * Include R-only rmd
 * cache all python dependencies `to_pickle()` within a cache folder.
-* Include instructions wihtin the pre course folder 
+* Include instructions wihtin the pre course folder
+* ~~Correlation coefficients - scattercharts with unlabelled coefficients to guess R coeff.~~
+* 2d density plots 
