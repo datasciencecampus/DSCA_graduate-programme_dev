@@ -1094,7 +1094,7 @@ The <strong class = "navy">IQR</strong> tells us where the central 50% of the da
 
 ## Using Boxplots
 
-Sometimes these are referred to as box and whiskers plot. they're useful to quickly assess the distribution of a single variable. Note the labelling on the following diagram.
+Sometimes these are referred to as box and whiskers plot. They're useful to quickly assess the distribution of a single variable, just like histograms. Unlike histograms, they explicitly declare the position of the quartiles, allowing you to assess the distribution, the first question being, is the median line positioned in the centre of the box? Histograms however, have the advantage of declaring the frequency of the observations (in a grouped, discretized format) which boxplots do not. Note the labelling on the following diagram.
 
 ![Labelled Boxplot](../../www/week_2/labelled-boxplot.png)
 
@@ -1427,6 +1427,31 @@ points(x = sleep_r$group, y = sleep_r$extra, col = 2)
 
 ## Scatter Charts
 
+One of the first steps in exploring datasets may be to produce column summaries or possibly scatter charts, to help visually assess the <strong src="navy">correlation</strong> of any two variables within the data. Health warning! I'm sure you come across this all the time, but it happens for a good reason:
+
+<span class="summary-box">Correlation != Causation</span>
+
+![](../../www/week_2/causality.jpg)
+
+Please ensure you are conservative with any language you use in this area. Some prerequisites to being able to claim causation would be:
+
+* A scientific method controlling for other influencing variables.
+* Documentation of confounding factors.
+* A falsifiable scientific mechanism.
+* Peer review to ensure reproducibility of your findings.
+
+If you are involved in research, you may eventually arrive at making causal arguments. Otherwise, avoid like the plague.
+
+<span class="quote">"There appears to be a positive trend between x and y."</span> <i class="fas fa-check-circle"></i>
+
+
+<span class="quote">"X and y show a positive correlation."</span> <i class="fas fa-check-circle"></i>
+
+
+<span class="quote">"Yay! X is causing y to increase and nobody has ever found this out before and I can't wait to tell you, the reader, all about it and I'm sure I will go down in history as the clevererest analyst ever to have worked for the civil service."</span> <i class="fas fa-times-circle"></i>
+
+
+
 Scatter charts are an indespensible tool for analysing how 2 variables (or more) vary with one another. This time we will be working with the `trees` data from the `datasets` R package. 
 
 ## Exercise 5a
@@ -1452,10 +1477,20 @@ A data frame with 31 observations on 3 variables.
 
 
 
-```{r}
+```{r include=FALSE}
 #prep chunk
 trees_r <- trees
 ```
+
+
+
+
+
+
+
+
+
+
 
 
 ```{r}

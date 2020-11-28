@@ -1,5 +1,7 @@
 # 28/11/2020
 
+* ~~Use case of boxplots vs histograms.~~
+* Better intuition of histograms.
 * Update dependencies script following on from support chat
 * Add standard deviation to univariate distribution
 * Add more emphasis on intuition of distribution with some examples

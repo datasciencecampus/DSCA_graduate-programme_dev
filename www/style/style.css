@@ -149,6 +149,21 @@ h4.author {
   float: right;
 }
 
+.fa-check-circle{
+  color: green;
+  display: inline-block;
+  width: 100%;
+  text-align:right;
+}
+
+
+.fa-times-circle{
+  color: red;
+  display: inline-block;
+  width: 100%;
+  text-align:right;
+}
+
 /* icon color & pos. in body */
 #body {
   color: #D33781;
