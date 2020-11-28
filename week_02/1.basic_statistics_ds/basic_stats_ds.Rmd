@@ -1070,7 +1070,12 @@ Univariate analysis simply means considering one variable in isolation. We can e
 
 * **Range** is quite straight forward as I'm sure you know. Simply the maximum observed value minus the minimum observed value. Combined with an awareness of the median, this can give you an indication of skew in any population. Is the median closer to the maximum or minimum? This indicates where observations may be clustered.
 
-* **Inter Quartile Range**. The median is often described as the 'mid quartile' or 'inter-quartile in that it is the value that divides the number of observations in half. 50% of the observations will be above and below this value. the quartiles are a similar concept, but used to divide the data into quarters instead. Take a look at the image below:
+## Standard Deviation
+
+
+## Inter Quartile Range
+
+The median is often described as the 'mid quartile' or 'inter-quartile in that it is the value that divides the number of observations in half. 50% of the observations will be above and below this value. the quartiles are a similar concept, but used to divide the data into quarters instead. Take a look at the image below:
 
 ![Numbers being divided with labelled quartiles.](../../www/week_2/quartiles.png)
 
@@ -1424,6 +1429,8 @@ points(x = sleep_r$group, y = sleep_r$extra, col = 2)
 
 Scatter charts are an indespensible tool for analysing how 2 variables (or more) vary with one another. This time we will be working with the `trees` data from the `datasets` R package. 
 
+## Exercise 5a
+
 <strong class="navy">Girth, Height and Volume for Black Cherry Trees</strong>
 
 <strong class="navy">Description</strong>
@@ -1441,6 +1448,61 @@ A data frame with 31 observations on 3 variables.
 <strong class="navy">Volume</strong>	numeric	Volume of timber in cubic ft
 
 <img src="../../www/week_2/cherry_trees.jpg" class="center">
+
+
+
+
+```{r}
+#prep chunk
+trees_r <- trees
+```
+
+
+```{r}
+plot.new()
+plot(x = trees_r$Girth, trees$Volume, col=1)
+
+
+```
+
+```{r}
+
+cor(x = trees_r$Girth, trees$Volume, method = "pearson")
+
+
+```
+
+```{r}
+plot.new()
+plot(x = trees_r$Height, trees$Volume, col=1)
+
+
+```
+
+
+```{r}
+
+cor(x = trees_r$Height, trees$Volume, method = "pearson")
+
+
+```
+
+
+```{r}
+
+cor(trees_r)
+
+
+```
+
+
+```{r}
+
+pairs(trees_r)
+
+
+```
+
 
 
 
