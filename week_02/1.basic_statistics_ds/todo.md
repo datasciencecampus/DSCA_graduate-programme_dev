@@ -8,6 +8,7 @@
 * ~~Parent child knitting~~
 * ~~cache all python dependencies `to_pickle()` within a cache folder.~~
 * ~~Include R-only rmd~~
+* ~~Include instructions within the pre course folder~~
 
 * Better intuition of histograms.
 * Update dependencies script following on from support chat
@@ -15,8 +16,6 @@
 * Add histogram and example of bins selection upstream, prior to the exercises.
 * Add bimodal example of histogram bin selection.
 * Roll on from previous to density plot.
-* Include exercise rmd and rename current to exercise-answers
-* Include instructions within the pre course folder
 * 2d density plots 
 * sections on aggregation, outlier determination, common biases.
 * Adjust toc for part 2, currently flat
