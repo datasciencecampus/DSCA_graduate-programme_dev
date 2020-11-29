@@ -39,9 +39,9 @@ sleep_py = r.sleep_r
 import matplotlib.pyplot as plt
 ```
 
-## Bivariate Analysis
+# Bivariate Analysis
 
-This means analysing the distribution of two variables together. Like high school science,as I change x, what happens to y? To continue with our `sleep` data, we should investigate the distribution of the `extra` hours of sleep column for each of the drugs administered, recorded in the `group` column. 
+This means analysing the distribution of two variables together. Like high school science, as I change x, what happens to y? To continue with our `sleep` data, we should investigate the distribution of the `extra` hours of sleep column for each of the drugs administered, recorded in the `group` column. 
 
 ## Exercise 4b
 We need to create separate boxplots for each drug administered.
@@ -150,7 +150,7 @@ boxplot(
 
 ## Exercise 4c
 
-One crucial element of the data that a boxplot does not communicate by default is the number of observations. How can we be sure that the number of individuals exposed to each drug. We can resolve this by adding an additional layer to our plots, plotting the points. In this way we can identify if any of the boxplot groups have only have a few observations, which can lead to strange-looking boxes.
+One crucial element of the data that a boxplot does not communicate by default is the number of observations. How can we be sure that the number of individuals exposed to each drug? We can resolve this by adding an additional layer to our plots, plotting the points. In this way we can identify if any of the boxplot groups have only have a few observations, which can lead to strange-looking boxes.
 
 ### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
 
@@ -161,7 +161,7 @@ Begin with the `box_1` boxplot we created with `seaborn` in the previous exercis
 ```{python eval=FALSE}
 # given code from the previous exercise
 box_1 = sns.boxplot(x="group", y="extra", data=sleep_py)
-# add a swarmplot layer to box_1, specify a color and alpha values of your choosing
+# add a swarmplot layer to box_1, specify a colour and alpha values of your choosing
 
 #show the plot
 
@@ -173,7 +173,7 @@ box_1 = sns.boxplot(x="group", y="extra", data=sleep_py)
 ```{python eval=FALSE}
 # given code from the previous exercise
 box_1 = sns.boxplot(x="group", y="extra", data=sleep_py)
-# add a swarmplot layer to box_1, specify a color and alpha values of your choosing
+# add a swarmplot layer to box_1, specify a colour and alpha values of your choosing
 box_1 = .............(x=..., y=..., data=..., color=..., alpha=...)
 #show the plot
 plt.show()
@@ -185,7 +185,7 @@ plt.show()
 ```{python}
 # given code from the previous exercise
 box_1 = sns.boxplot(x="group", y="extra", data=sleep_py)
-# add a swarmplot layer to box_1, specify a color and alpha values of your choosing
+# add a swarmplot layer to box_1, specify a colour and alpha values of your choosing
 box_1 = sns.swarmplot(x="group", y="extra", data=sleep_py, color=".25", alpha=0.6)
 #show the plot
 plt.show()
@@ -212,7 +212,7 @@ plt.show()
 #   ylab = "Additional hours sleep against control group"
 #   )
 
-# include points on the plot, specifying the color code as 2
+# include points on the plot, specifying the colour code as 2
 
 
 
@@ -235,7 +235,7 @@ boxplot(
   ylab = "Additional hours sleep against control group"
   )
 
-# include points on the plot, specifying the color code as 2
+# include points on the plot, specifying the colour code as 2
 ......(x = sleep_r$....., y = sleep_r$....., ... = 2)
 
 
@@ -257,7 +257,7 @@ boxplot(
   ylab = "Additional hours sleep against control group"
   )
 
-# include points on the plot, specifying the color code as 2
+# include points on the plot, specifying the colour code as 2
 points(x = sleep_r$group, y = sleep_r$extra, col = 2)
 
 
@@ -294,15 +294,15 @@ If you are involved in research, you may eventually arrive at making causal argu
 
 <span class="quote" id="block-quote">"Yay! X is causing y to increase and nobody has ever found this out before and I can't wait to tell you, the reader, all about it and I'm sure I will go down in history as the clevererest analyst ever to have worked for the civil service."</span> <i class="fas fa-times-circle"></i>
 
-Scatter charts are an indespensible tool for analysing how 2 variables (or more) vary with one another.
+Scatter charts are an indispensable tool for analysing how 2 variables (or more) vary with one another.
 
 ## Correlation Coefficients
 
 After visually assessing trends between variables, we may wish to quantify that trend with a <strong class="navy">summary statistic</strong>. Here's where a correlation coefficient comes in handy. There are a bunch of them for all occasions and it pays to do a bit of reading around the topic, although beyond the scope of this course. All coefficients we will be calculating here should be <strong class="navy">Pearson's</strong>, which is often the default argument. Take care to confirm this when calculating these coefficients.
 
-Developing a familiarity with scatterchart trends and correlation coefficients is a good idea. Take a look at these charts:
+Developing a familiarity with scatter chart trends and correlation coefficients is a good idea. Take a look at these charts:
 
-<img src="../../../www/week_2/correlation-coefficient.png" class="center" alt="Five scattercharts exemplifying different types of trends and their correlation coefficients">
+<img src="../../../www/week_2/correlation-coefficient.png" class="center" alt="Five scatter charts exemplifying different types of trends and their correlation coefficients">
 
 This is a nice image (one of the better ones that Google returned), but would you agree with everything?
 
@@ -359,7 +359,7 @@ trees_py = r.trees_r
 ```{python}
 # Need an executable line to avoid error...
 import seaborn as sns
-# produce a scatterchart of Girth against Volume, need to use lmplot on my version of seaborn
+# produce a scatter chart of Girth against Volume, need to use lmplot on my version of seaborn
 
 # show the plot
 
@@ -371,7 +371,7 @@ import seaborn as sns
 ```{python eval=FALSE}
 # Need an executable line to avoid error...
 import seaborn as sns
-# produce a scatterchart of Girth against Volume, need to use lmplot on my version of seaborn
+# produce a scatter chart of Girth against Volume, need to use lmplot on my version of seaborn
 sns.lmplot(x=..., y=..., data=..., fit_reg=False)
 # show the plot
 ...()
@@ -383,7 +383,7 @@ sns.lmplot(x=..., y=..., data=..., fit_reg=False)
 ```{python}
 # Need an executable line to avoid error...
 import seaborn as sns
-# produce a scatterchart of Girth against Volume, need to use lmplot on my version of seaborn
+# produce a scatter chart of Girth against Volume, need to use lmplot on my version of seaborn
 sns.lmplot(x="Girth", y="Volume", data=trees_py, fit_reg=False)
 # show the plot
 plt.show()
@@ -416,7 +416,7 @@ How would you describe the apparent trend in the data? Did you estimate the corr
 ### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
 
 1. Clear the plotting canvas
-2. Make a scatterchart between `Girth` and `Volume`.
+2. Make a scatter chart between `Girth` and `Volume`.
 3. Once you've plotted the trend, have a guess at the <strong class="navy">correlation coefficient</strong>. Then click on the <strong class="navy">Correlation</strong> tab to see if you were right.
 
 
@@ -425,7 +425,7 @@ How would you describe the apparent trend in the data? Did you estimate the corr
 ```{r}
 # clear the plotting canvas
 
-# produce a scatterchart of Girth against Volume
+# produce a scatter chart of Girth against Volume
 
 ```
 
@@ -434,7 +434,7 @@ How would you describe the apparent trend in the data? Did you estimate the corr
 ```{r eval=FALSE}
 # clear the plotting canvas
 ........()
-# produce a scatterchart of Girth against Volume
+# produce a scatter chart of Girth against Volume
 plot(x = ..., ..., col=1)
 ```
 
@@ -443,7 +443,7 @@ plot(x = ..., ..., col=1)
 ```{r}
 # clear the plotting canvas
 plot.new()
-# produce a scatterchart of Girth against Volume
+# produce a scatter chart of Girth against Volume
 plot(x = trees_r$Girth, trees$Volume, col=1)
 ```
 
@@ -481,7 +481,7 @@ This time plot `Height` against `Volume`. As before, visually assess the trend a
 ```{python}
 # Need an executable line to avoid error...
 import seaborn as sns
-# produce a scatterchart of Height against Volume, using sns.lmplot
+# produce a scatter chart of Height against Volume, using sns.lmplot
 
 # show the plot
 
@@ -493,7 +493,7 @@ import seaborn as sns
 ```{python eval=FALSE}
 # Need an executable line to avoid error...
 import seaborn as sns
-# produce a scatterchart of Height against Volume, using sns.lmplot
+# produce a scatter chart of Height against Volume, using sns.lmplot
 sns.lmplot(x=..., y=..., data=..., fit_reg=False)
 # show the plot
 ...()
@@ -505,7 +505,7 @@ sns.lmplot(x=..., y=..., data=..., fit_reg=False)
 ```{python}
 # Need an executable line to avoid error...
 import seaborn as sns
-# produce a scatterchart of Height against Volume, using sns.lmplot
+# produce a scatter chart of Height against Volume, using sns.lmplot
 sns.lmplot(x="Height", y="Volume", data=trees_py, fit_reg=False)
 # show the plot
 plt.show()
@@ -618,7 +618,7 @@ airquality %>%
 
 <strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
 
-As you can see, there is a problem with the `Ozone` and `Solar.R` columns as no corelation coefficients were returned for those columns. What do you think happened?
+As you can see, there is a problem with the `Ozone` and `Solar.R` columns as no correlation coefficients were returned for those columns. What do you think happened?
 
 Hint: This is a problem with the calculation of many summary statistics and functions usually have optional arguments designed to handle just this issue. 
 
@@ -643,7 +643,7 @@ Could there be a pattern in the missing data? Is it sensible to suggest that day
 
 How could this affect the results of your summary statistics? How could it affect analyses and any supervised learning that you could apply to this dataset? 
 
-<span class="summary-box">Be very careful when handling missing data. Ensure that your decisions are well documented and that you take the time to explore the data in its entireity before making the decision to drop rows. Discuss these decisions with project managers and domain experts.</span>
+<span class="summary-box">Be very careful when handling missing data. Ensure that your decisions are well documented and that you take the time to explore the data in its entirety before making the decision to drop rows. Discuss these decisions with project managers and domain experts.</span>
 
 
 ***
@@ -733,7 +733,7 @@ cor(trees_r)
 
 ## Exercise 6b
 
-It's also possible to do the same pairwise trend analysis with scatter charts instead of correlation coefficients. This can be a bit overwhelming on larger dataframes, but still useful nonetheless. 
+It's also possible to do the same pairwise trend analysis with scatter charts instead of correlation coefficients. This can be a bit overwhelming on larger dataframes, but still useful, nonetheless. 
 
 ### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
 
@@ -785,7 +785,7 @@ plt.show()
 Do you happen to know the correct function? It's in the `graphics` package that comes with your base installation.
 
 ```{r}
-# visualise the same pairwise correlations with scattercharts in one line
+# visualise the same pairwise correlations with scatter charts in one line
 
 
 ```
@@ -796,7 +796,7 @@ Do you happen to know the correct function? It's in the `graphics` package that 
 Do you happen to know the correct function? It's in the `graphics` package that comes with your base installation.
 
 ```{r eval=FALSE}
-# visualise the same pairwise correlations with scattercharts in one line
+# visualise the same pairwise correlations with scatter charts in one line
 pa....(trees_r)
 
 ```
@@ -806,7 +806,7 @@ pa....(trees_r)
 Do you happen to know the correct function? It's in the `graphics` package that comes with your base installation.
 
 ```{r}
-# visualise the same pairwise correlations with scattercharts in one line
+# visualise the same pairwise correlations with scatter charts in one line
 pairs(trees_r)
 
 ```
@@ -814,7 +814,7 @@ pairs(trees_r)
 
 ## Summary
 
-In conclusion, we've taken a bit of a worldwind tour through the utility and some of the pitfalls of some common statistics. Hopefully you've managed to extract some ne knowledge from somewhere in this course and if not, have had the opportunity to recap and consolidate your understanding. we covered:
+In conclusion, we've taken a bit of a whirlwind tour through the utility and some of the pitfalls of some common statistics. Hopefully you've managed to extract some new knowledge from somewhere in this course and if not, have had the opportunity to recap and consolidate your understanding. we covered:
 
 <input type="checkbox" checked>Measures of central tendency</input>  
 <input type="checkbox" checked>Use cases for mean and median</input>  

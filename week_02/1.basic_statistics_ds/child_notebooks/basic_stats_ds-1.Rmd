@@ -57,7 +57,7 @@ If data is the raw material, statistics would be the tools used to extract valua
 ![Coal drilling machinery](../../../www/week_2/Twentymile_Underground_Coal_Mine.png)
 
 
-It can be difficult for most people to take a series of numbers and infer some meaning from their distribution. <strong class="navy">Summary statistics</strong> are often used to help people think more clearly about the distribution of numbers. Summary statistics are sometimes known as desrciptive statistics. Whenever we collapse a group of numbers into a single, take-away value, we lose some element of nuance and we need to be aware of this. Summary statistics can be helpful or; intentional or not; misleading.
+It can be difficult for most people to take a series of numbers and infer some meaning from their distribution. <strong class="navy">Summary statistics</strong> are often used to help people think more clearly about the distribution of numbers. Summary statistics are sometimes known as descriptive statistics. Whenever we collapse a group of numbers into a single, take-away value, we lose some element of nuance and we need to be aware of this. Summary statistics can be helpful or; intentional or not; misleading.
 
 <span class="quote">"It's easy to lie with statistics, but it's hard to tell the truth without it". <br> <strong>Andrejs Dunkels.</strong> </span>
 
@@ -201,7 +201,7 @@ summary(sleep_r)
 
 <strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
 
-Observing the summary statistics of the `extra` column, did you notice any interesting observations? What else would you need to do in order to ascertain whether the treatment had an affect on the typical sleep duration?
+Observing the summary statistics of the `extra` column, did you notice any interesting observations? What else would you need to do in order to ascertain whether the treatment had an effect on the typical sleep duration?
 
 
 
@@ -520,7 +520,7 @@ We could continue to add more of the wealthiest people in the world [according t
 * Alice Walton
 * Robson Walton
 
-Once all of these super-wealthy pub-goers had joined the group at the bar, the median would no longer be the better choice of the two averages to represent the typical person at that bar. But then again, it would not be any old bar! As this would now be a hangout for the super rich, then use of the mean would be warranted. It would be more representative of the population than the median. Would the super rich clientele still count as outliers? We will come to the formal definition of outliers later. 
+Once all of these super-wealthy pub-goers had joined the group at the bar, the median would no longer be the better choice of the two averages to represent the typical person at that bar. But then again, it would not be any old bar! As this would now be a hangout for the super-rich, then use of the mean would be warranted. It would be more representative of the population than the median. Would the super-rich clientele still count as outliers? We will come to the formal definition of outliers later. 
 
 <strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
 Do we know of any ways to define an outlier?
@@ -530,7 +530,7 @@ Do we know of any ways to define an outlier?
 
 Take a look at the [British Medical Journal's](https://www.bmj.com/rapid-response/2011/11/03/median-not-message) response to a fantastic [essay](https://www.dancingupsidedown.com/wp-content/uploads/2008/12/MedianNotMessageCancer_Gould.pdf) by the evolutionary biologist, Stephen Jay Gould in 2002.
 
-Dr Gould was diagnosed with a terminal form of cancer in the 1980s and while reading around the subject, discovered that the median survival duration following diagnosis was 8 months. Dr Gould died in 2002 of a different, unrelated form of cancer, having survived thirty times longer than the published median survival period. You can see from the BMJ article that his legacy has been a depeer consideration of medical communication of statistics.
+Dr Gould was diagnosed with a terminal form of cancer in the 1980s and while reading around the subject, discovered that the median survival duration following diagnosis was 8 months. Dr Gould died in 2002 of a different, unrelated form of cancer, having survived thirty times longer than the published median survival period. You can see from the BMJ article that his legacy has been a deeper consideration of medical communication of statistics.
 
 If some significant number of patients with this disease (perhaps 20 or 30 %) go on to live long and relatively healthy lives, that absolutely matters and needs to be communicated to any person diagnosed with that disease. The use of the median here would be the wrong type of average to communicate.
 
@@ -558,7 +558,7 @@ The ChickWeight data frame has 578 rows and 4 columns from an experiment on the 
 
 Type `?ChickWeight` into the R console or an R code chunk for more detail.
 
-<strong class="navy">Please note that Python tends to refer to the median as `50%` in it's summary statistics output.</strong>
+<strong class="navy">Please note that Python tends to refer to the median as `50%` in its summary statistics output.</strong>
 
 ```{r, include=FALSE}
 # prep chunk
@@ -668,7 +668,7 @@ What do you notice about the mean and median? What does this mean in terms of an
 
 You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
 
-Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer.Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
+Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer. Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
 
 ```{r}
 # plot histogram
@@ -689,7 +689,7 @@ What do you notice about the mean and median? What does this mean in terms of an
 
 You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
 
-Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer.Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
+Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer. Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
 
 ```{r eval=FALSE}
 
@@ -712,7 +712,7 @@ What do you notice about the mean and median? What does this mean in terms of an
 
 You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
 
-Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer.Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
+Plot a histogram of the `weight` column, specifying 20 bins / breaks. Note that base R is used in the hints and solution, but you may use whatever plotting package you prefer. Feel free to make it look jazzy if you have time at the end of exercise 3 (it has 3 parts).
 
 ```{r}
 
@@ -915,7 +915,7 @@ A vector containing 141 observations.
 
 #### Your Code
 
-Produce summary_statistics on the `rivers_py` data.
+Produce summary statistics on the `rivers_py` data.
 
 ```{python}
 #convert from r data
@@ -943,7 +943,7 @@ import matplotlib.pyplot as plt
 
 #### Hint
 
-Produce summary_statistics on the `rivers_py` data.
+Produce summary statistics on the `rivers_py` data.
 
 ```{python eval=FALSE}
 #convert from r data
@@ -973,7 +973,7 @@ plt.....(histogram)
 
 #### Solution
 
-Produce summary_statistics on the `rivers_py` data.
+Produce summary statistics on the `rivers_py` data.
 
 ```{python}
 #convert from r data
@@ -1005,7 +1005,7 @@ plt.show(histogram)
 
 #### Your Code
 
-Produce summary_statistics on the `rivers_r` data.
+Produce summary statistics on the `rivers_r` data.
 
 ```{r}
 # produce summary statistics on the data
@@ -1026,7 +1026,7 @@ plot a histogram specifying 6 bins.
 
 #### Hint
 
-Produce summary_statistics on the `rivers_r` data.
+Produce summary statistics on the `rivers_r` data.
 
 ```{r eval=FALSE}
 # produce summary statistics on the data
@@ -1047,7 +1047,7 @@ plot a histogram specifying 6 bins.
 
 #### Solution
 
-Produce summary_statistics on the `rivers_r` data.
+Produce summary statistics on the `rivers_r` data.
 
 ```{r}
 # produce summary statistics on the data
@@ -1182,7 +1182,7 @@ Great. But now we have a new problem... The more data we have, the larger our nu
 <strong class="navy">Step 4</strong>
 $\frac{\Sigma (x_i - \mu)^2}{n - 1}$
 
-This bit loses some people, so let's lean in to it. Forget about the minus 1 for now. We're dividing by the number of observations in the column. That is going to correct our statistic for the number of observations. Therefore really large datasets can have a comparable value to smaller ones.
+This bit loses some people, so let's lean into it. Forget about the minus 1 for now. We're dividing by the number of observations in the column. That is going to correct our statistic for the number of observations. Therefore really large datasets can have a comparable value to smaller ones.
 
 The minus 1 bit... That's specific to the sample SD. If you could ensure that you have recorded the entire population, you wouldn't bother to subtract minus 1. There is likely to be a bit more variability in an entire population than in a sample. So, in estimating the SD we should nudge the value up a bit. And we should do this all the more when the sample is smaller, the likelihood that the entire range of values sampled has diminished by having fewer observations.
 
@@ -1214,7 +1214,7 @@ This would mean that if the data were normally distributed, 68% of the observati
 
 ## Inter Quartile Range
 
-The median is often described as the 'mid quartile' or 'inter-quartile in that it is the value that divides the number of observations in half. 50% of the observations will be above and below this value. the quartiles are a similar concept, but used to divide the data into quarters instead. Take a look at the image below:
+The median is often described as the 'mid quartile' or 'inter-quartile in that it is the value that divides the number of observations in half. 50% of the observations will be above and below this value. the quartiles are a similar concept but used to divide the data into quarters instead. Take a look at the image below:
 
 ![Numbers being divided with labelled quartiles.](../../../www/week_2/quartiles.png)
 
@@ -1227,17 +1227,17 @@ Coming back to the interquartile range, this is simply subtracting the value of 
 
 $IQR = Q_3 - Q_1$
 
-The <strong class = "navy">IQR</strong> tells us where the central 50% of the data lies. If the IQR is large, the data could be widely distributed (or even bimodal, though out of scope for this course).The IQR is also a useful too for defining outliers, which we will come to look at later.
+The <strong class = "navy">IQR</strong> tells us where the central 50% of the data lies. If the IQR is large, the data could be widely distributed (or even bimodal, though out of scope for this course).The IQR is also a useful tool for defining outliers, which we will come to look at later.
 
 <span class="summary-box">As IQR is based on quartiles, it is not so easily affected by outlier values. Just like the median. This is in direct contrast to the standard deviation, which uses the mean. Therefore, a full and sound assessment of what the outliers mean for your analysis should be carefully considered when deciding whether to use IQR or standard deviation in explaining variation in your data.</span>
 
 ## Using Boxplots
 
-Sometimes these are referred to as box and whiskers plot. They're useful to quickly assess the distribution of a single variable, just like histograms. Unlike histograms, they explicitly declare the position of the quartiles, allowing you to assess the distribution, the first question being, is the median line positioned in the centre of the box? Histograms however, have the advantage of declaring the frequency of the observations (in a grouped, discretized format) which boxplots do not. Note the labelling on the following diagram.
+Sometimes these are referred to as box and whiskers plot. They're useful to quickly assess the distribution of a single variable, just like histograms. Unlike histograms, they explicitly declare the position of the quartiles, allowing you to assess the distribution, the first question being, is the median line positioned in the centre of the box? Histograms, however, have the advantage of declaring the frequency of the observations (in a grouped, discretized format) which boxplots do not. Note the labelling on the following diagram.
 
 ![Labelled Boxplot](../../../www/week_2/labelled-boxplot.png)
 
-The middle 50% of the observations will be shown within the box, the median being represented as a line. Sometimes the mean may also appear.The end of the whiskers represents the minimum and maximum observations <strong class="navy">disregarding any outliers</strong>.
+The middle 50% of the observations will be shown within the box, the median being represented as a line. Sometimes the mean may also appear. The end of the whiskers represents the minimum and maximum observations <strong class="navy">disregarding any outliers</strong>.
 
 <strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
 
