@@ -1,0 +1,38 @@
+---
+title: "Basic Statistics in Data Science"
+author: "R Leyshon"
+date: "20/11/2020"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    smooth_scroll: true
+    toc_depth: 2
+    css: "../../../www/style/style.css"
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+library(reticulate)
+suppressMessages(library(dplyr))
+suppressMessages(library(kableExtra))
+
+```
+
+```{python include=FALSE}
+import os
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:\Python36\Library\plugins\platforms'
+# though you will need to ensure the path is correct for you
+```
+
+
+```{r child= 'basic_stats_ds-1.Rmd'}
+```
+
+
+
+
+
+```{r child= 'basic_stats_ds-2.Rmd'}
+```

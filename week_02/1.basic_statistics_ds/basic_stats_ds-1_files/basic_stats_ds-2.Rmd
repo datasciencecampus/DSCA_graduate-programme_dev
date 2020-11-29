@@ -11,7 +11,7 @@ output:
     css: "../../../www/style/style.css"
 ---
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 library(reticulate)
@@ -577,11 +577,16 @@ round(cor(x = trees_r$Height, trees$Volume, method = "pearson"), digits = 3)
 
 ###
 
-Hopefully this has ensured that we have all developed an intuition for scatter chart trend and correlation coefficients. But when exploring data, analysis in this way could be very time consuming if the dataset contains lots of numerical variables. Luckily, there are ways to quickly assess the correlation coefficients of all variables present in a dataframe.
+Hopefully this has ensured that we have all developed an intuition for scatter chart trend and correlation coefficients. But when exploring data, analysis in this way could be very time consuming if the dataset contains lots of numerical variables. Thankfully, there are ways to quickly assess the correlation coefficients of all variables present in a dataframe.
+
+Some correlation functions are capable of accepting a whole dataframe as an argument, rather than simply `x` and `y`, as I used in the <strong class="navy>correlation</strong> tabs in the previous exercise. Sometimes you may need to drop any columns that are not numerical, depending on the function you are using. Typically, you will return a matrix of correlation coefficients, for all numeric data. These have been calculated two at a time, or <strong class="navy">pairwise</strong>.
 
 ## Pairwise Correlation
 
-Here we will be using the `airquality` dataset from the `datasets` package in R.
+Here we will be considering the `airquality` dataframe from the `datasets` package in R.
+
+![Chimney stacks and pylons against sunset skyline](../../../www/week_2/pollution.jpg)
+
 
 <strong class="navy">New York Air Quality Measurements</strong>
 
@@ -628,7 +633,9 @@ cor(aq_filtered) %>% knitr::kable() %>% kable_styling()
 
 ```
 
-We now have a full correlation matrix but <strong class="navy">beware!</strong> I removed `r nrow(airquality) - nrow(aq_filtered)` rows from the dataframe and this has affected the correlation coefficients returned.
+In order to achieve a full correlation matrix, I had to remove all rows where <strong class="navy">any of the variables contained missing values</strong>. Great! This has improved the analysis and would now let me get on with the important work of completing my report. <strong class="navy">Possibly not.</strong>
+
+We now have a full correlation matrix but <strong class="navy">beware!</strong> I removed `r nrow(airquality) - nrow(aq_filtered)` rows from the dataframe and this has affected <strong class="navy">all</strong> of the correlation coefficients returned. What if the number of rows with missing data had been considerably more?
 
 <strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
 
@@ -641,6 +648,81 @@ How could this affect the results of your summary statistics? How could it affec
 
 ***
 
+## Exercise 6a
+
+As in the last exercise, we will use `trees` from R's `datasets` package.
+
+Calculate the pairwise correlation matrix for all of the data in this dataframe. Remember, you will be using either `trees_r` or `trees_py` depending on the language you are following along in.
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+
+#### Your Code
+
+Use `pandas` to calculate the pairwise correlations of the `trees_py` dataframe.
+
+```{python eval=FALSE}
+# Need an executable line to avoid error...
+import pandas as pd
+
+# calculate corr coefficient
+
+```
+
+#### Hint
+
+Use `pandas` to calculate the pairwise correlations of the `trees_py` dataframe.
+
+```{python eval=FALSE}
+# Need an executable line to avoid error...
+import pandas as pd
+
+# calculate corr coefficient
+.........corr()
+```
+
+
+#### Solution
+
+Use `pandas` to calculate the pairwise correlations of the `trees_py` dataframe.
+
+```{python}
+# Need an executable line to avoid error...
+import pandas as pd
+
+# calculate corr coefficient
+trees_py.corr()
+```
+
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+
+#### Your Code
+
+Use the correlation function from the `stats` package to calculate the pairwise correlations for the `trees_r` dataframe.
+
+```{r}
+# calculate correlation coefficients for all variables in the trees_r dataframe
+
+
+
+```
+
+#### Hint
+
+Use the correlation function from the `stats` package to calculate the pairwise correlations for the `trees_r` dataframe.
+
+```{r eval=FALSE}
+# calculate correlation coefficients for all variables in the trees_r dataframe
+cor(...)
+
+
+```
+
+#### Solution
+
+Use the correlation function from the `stats` package to calculate the pairwise correlations for the `trees_r` dataframe.
 
 ```{r}
 # calculate correlation coefficients for all variables in the trees_r dataframe
@@ -649,24 +731,114 @@ cor(trees_r)
 
 ```
 
+## Exercise 6b
+
+It's also possible to do the same pairwise trend analysis with scatter charts instead of correlation coefficients. This can be a bit overwhelming on larger dataframes, but still useful nonetheless. 
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+#### Solution
+
+Do you happen to know the correct function to do this? I've used `seaborn` in my example.
+
+```{python}
+# need an executable line to avoid error...
+import seaborn as sns
+# use the correct function from seaborn
+
+# show the plots
+
+```
+
+#### Hint
+
+Do you happen to know the correct function to do this? I've used `seaborn` in my example.
+
+```{python eval=FALSE}
+# need an executable line to avoid error...
+import seaborn as sns
+# use the correct function from seaborn
+sns....(trees_py)
+# show the plots
+plt.show()
+```
+
+
+#### Solution
+
+Do you happen to know the correct function to do this? I've used `seaborn` in my example.
+
+```{python}
+# need an executable line to avoid error...
+import seaborn as sns
+# use the correct function from seaborn
+sns.pairplot(trees_py)
+# show the plots
+plt.show()
+```
+
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+#### Your Code
+
+Do you happen to know the correct function? It's in the `graphics` package that comes with your base installation.
 
 ```{r}
 # visualise the same pairwise correlations with scattercharts in one line
-pairs(trees_r)
 
 
 ```
 
 
-# Version 1.1
+#### Hint
+
+Do you happen to know the correct function? It's in the `graphics` package that comes with your base installation.
+
+```{r eval=FALSE}
+# visualise the same pairwise correlations with scattercharts in one line
+pa....(trees_r)
+
+```
+
+#### Solution
+
+Do you happen to know the correct function? It's in the `graphics` package that comes with your base installation.
+
+```{r}
+# visualise the same pairwise correlations with scattercharts in one line
+pairs(trees_r)
+
+```
+
+
+## Summary
+
+In conclusion, we've taken a bit of a worldwind tour through the utility and some of the pitfalls of some common statistics. Hopefully you've managed to extract some ne knowledge from somewhere in this course and if not, have had the opportunity to recap and consolidate your understanding. we covered:
+
+<input type="checkbox" checked>Measures of central tendency</input>  
+<input type="checkbox" checked>Use cases for mean and median</input>  
+<input type="checkbox" checked>Measures of dispersion</input>  
+<input type="checkbox" checked>Calculating standard deviation</input>  
+<input type="checkbox" checked>Interpretation of inter quartile range</input>  
+<input type="checkbox" checked>Univariate / bivariate analysis</input>  
+<input type="checkbox" checked>Interpretation of correlation coefficients</input>  
+<input type="checkbox" checked>Use of histograms, boxplots, scatter charts & pairplots</input>  
+
+## For the Next Version
 
 Here are some of the topics that didn't make it into this version of <strong class="navy"> Basic Statistics for Data science</strong>. It would be great to get your feedback via the feedback form on whether they would have been valuable or what else would have been useful for you to cover on this course:
 
-* Group by aggregations
+* Group by and aggregations
 * Outlier determination
+* Histogram bin width guidance
+* Density plots
 * 2 dimensional density plots
+* Common biases to look out for in the data
 
-Our protocol is to evaluate your feedback, record actions for the next iteration and drive the effectiveness of our training. We value you taking the time you take to complete the course and in completing the surveys. 
+<span class="summary-box">Our protocol is to evaluate your feedback, record actions for the next iteration and drive the effectiveness of our training. We value you taking the time you take to complete the course and in completing the surveys.</span>
+
+
 
 
 

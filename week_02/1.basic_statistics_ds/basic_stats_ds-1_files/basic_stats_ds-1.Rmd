@@ -11,7 +11,7 @@ output:
     css: "../../../www/style/style.css"
 ---
 
-```{r setup, include=FALSE}
+```{r, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 library(reticulate)
@@ -25,6 +25,20 @@ os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:\Python36\Library\plugins\platfor
 # though you will need to ensure the path is correct for you
 ```
 
+
+# Learning Objectives
+
+<input type="checkbox" unchecked>Measures of central tendency</input>  
+<input type="checkbox" unchecked>Use cases for mean and median</input>  
+<input type="checkbox" unchecked>Measures of dispersion</input>  
+<input type="checkbox" unchecked>Calculating standard deviation</input>  
+<input type="checkbox" unchecked>Interpretation of inter quartile range</input>  
+<input type="checkbox" unchecked>Univariate / bivariate analysis</input>  
+<input type="checkbox" unchecked>Interpretation of correlation coefficients</input>  
+<input type="checkbox" unchecked>Use of histograms, boxplots, scatter charts & pairplots</input>
+
+
+***
 
 # Introduction
 
