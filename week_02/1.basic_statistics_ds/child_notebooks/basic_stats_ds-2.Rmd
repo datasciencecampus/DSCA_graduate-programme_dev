@@ -1,0 +1,844 @@
+---
+title: "Basic Stats in Data Science"
+author: "R Leyshon"
+date: "20/11/2020"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    smooth_scroll: true
+    toc_depth: 2
+    css: "../../../www/style/style.css"
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+library(reticulate)
+suppressMessages(library(dplyr))
+suppressMessages(library(kableExtra))
+
+
+```
+
+```{python include=FALSE}
+import os
+os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:\Python36\Library\plugins\platforms'
+# though you will need to ensure the path is correct for you
+```
+
+```{r include=FALSE}
+# dependencies
+sleep_r <- sleep
+```
+
+
+```{python include=FALSE}
+#dependencies
+sleep_py = r.sleep_r
+import matplotlib.pyplot as plt
+```
+
+## Bivariate Analysis
+
+This means analysing the distribution of two variables together. Like high school science,as I change x, what happens to y? To continue with our `sleep` data, we should investigate the distribution of the `extra` hours of sleep column for each of the drugs administered, recorded in the `group` column. 
+
+## Exercise 4b
+We need to create separate boxplots for each drug administered.
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+`seaborn` has the advantage of allowing you to specify which variable to map to the x and y aesthetics. this will allow us to achieve distinct boxplots for each drug administered.
+
+#### Your Code
+
+```{python eval=FALSE}
+# Suggest using seaborn for simplicity here
+import seaborn as sns
+# create a boxplot, administered drug on x, hours additional sleep on y
+# save as box_1 for use later
+
+# set the y label as something more descriptive
+
+# don't forget to show the plot
+
+```
+
+
+#### Hint
+
+```{python eval=FALSE}
+# Suggest using seaborn for simplicity here
+import seaborn as sns
+# create a boxplot, administered drug on x, hours additional sleep on y
+# save a box_1 for use later
+box_1 = ...........(x=....., y=....., data=........)
+# set the y label as something more descriptive
+box_1....(ylabel=...)
+# don't forget to show the plot
+plt.....()
+```
+
+#### Solution
+
+```{python}
+# Suggest using seaborn for simplicity here
+import seaborn as sns
+# create a boxplot, administered drug on x, hours additional sleep on y
+# save a box_1 for use later
+box_1 = sns.boxplot(x="group", y="extra", data=sleep_py)
+# set the y label as something more descriptive
+box_1.set(ylabel='Additional hours sleep against control group')
+# don't forget to show the plot
+plt.show()
+```
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+Using the first argument of the `boxplot` function, you can specify a formula to group on, using the `y~x` syntax. This would mean, for every value of x, draw me a boxplot of the y variable. This tends to only make sense when x is categorical (or discretized, placed in bins).
+
+#### Your Code
+
+```{r}
+# create a boxplot, save it for use again as box_1
+
+  # specify a formula that produces separate boxplots of additional sleep for each drug
+
+  # ensure the correct object is passed to the data argument
+
+  #specify a suitable y axis
+
+  
+```
+
+
+#### Hint
+
+```{r eval=FALSE}
+# create a boxplot, save it for use again as box_1
+box_1 <- ........(
+  # specify a formula that produces separate boxplots of additional sleep for each drug
+  formula = .....~.....,
+  # ensure the correct object is passed to the data argument
+  data = .......,
+  #specify a suitable y axis
+  ylab = ...
+  )
+  
+```
+
+
+#### Solution
+
+```{r}
+# create a boxplot, save it for use again as box_1
+
+boxplot(
+  # specify a formula that produces separate boxplots of additional sleep for each drug
+  formula = extra~group,
+  # ensure the correct object is passed to the data argument
+  data = sleep_r,
+  #specify a suitable y axis
+  ylab = "Additional hours sleep against control group"
+  )
+  
+```
+
+###
+
+
+
+## Exercise 4c
+
+One crucial element of the data that a boxplot does not communicate by default is the number of observations. How can we be sure that the number of individuals exposed to each drug. We can resolve this by adding an additional layer to our plots, plotting the points. In this way we can identify if any of the boxplot groups have only have a few observations, which can lead to strange-looking boxes.
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+Begin with the `box_1` boxplot we created with `seaborn` in the previous exercise. Add a swarm plot layer to the plot, visualising the points for each boxplot.
+
+#### Your Code
+
+```{python eval=FALSE}
+# given code from the previous exercise
+box_1 = sns.boxplot(x="group", y="extra", data=sleep_py)
+# add a swarmplot layer to box_1, specify a color and alpha values of your choosing
+
+#show the plot
+
+
+```
+
+#### Hint
+
+```{python eval=FALSE}
+# given code from the previous exercise
+box_1 = sns.boxplot(x="group", y="extra", data=sleep_py)
+# add a swarmplot layer to box_1, specify a color and alpha values of your choosing
+box_1 = .............(x=..., y=..., data=..., color=..., alpha=...)
+#show the plot
+plt.show()
+
+```
+
+#### Solution
+
+```{python}
+# given code from the previous exercise
+box_1 = sns.boxplot(x="group", y="extra", data=sleep_py)
+# add a swarmplot layer to box_1, specify a color and alpha values of your choosing
+box_1 = sns.swarmplot(x="group", y="extra", data=sleep_py, color=".25", alpha=0.6)
+#show the plot
+plt.show()
+
+```
+
+
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+#### Your Code
+
+```{r}
+# start with a new plot canvas
+
+
+# #given code from previous exercise
+# boxplot(
+#   # specify a formula that produces separate boxplots of additional sleep for each drug
+#   formula = extra~group,
+#   # ensure the correct object is passed to the data argument
+#   data = sleep_r,
+#   #specify a suitable y axis
+#   ylab = "Additional hours sleep against control group"
+#   )
+
+# include points on the plot, specifying the color code as 2
+
+
+
+```
+
+
+#### Hint
+
+```{r eval=FALSE}
+# start with a new plot canvas
+plot....()
+
+#given code from previous exercise
+boxplot(
+  # specify a formula that produces separate boxplots of additional sleep for each drug
+  formula = extra~group,
+  # ensure the correct object is passed to the data argument
+  data = sleep_r,
+  #specify a suitable y axis
+  ylab = "Additional hours sleep against control group"
+  )
+
+# include points on the plot, specifying the color code as 2
+......(x = sleep_r$....., y = sleep_r$....., ... = 2)
+
+
+```
+
+#### Solution
+
+```{r}
+# start with a new plot canvas
+plot.new()
+
+#given code from previous exercise
+boxplot(
+  # specify a formula that produces separate boxplots of additional sleep for each drug
+  formula = extra~group,
+  # ensure the correct object is passed to the data argument
+  data = sleep_r,
+  #specify a suitable y axis
+  ylab = "Additional hours sleep against control group"
+  )
+
+# include points on the plot, specifying the color code as 2
+points(x = sleep_r$group, y = sleep_r$extra, col = 2)
+
+
+```
+
+###
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+If there was a lot more data in our examples, what could be done to avoid <strong class="navy">overplotting</strong>?
+
+***
+
+## Scatter Charts
+
+One of the first steps in exploring datasets may be to produce column summaries or possibly scatter charts, to help visually assess the <strong src="navy">correlation</strong> of any two variables within the data. Health warning! I'm sure you come across this all the time, but it happens for a good reason:
+
+<img class="center" src="../../../www/week_2/causality.jpg" alt="Funny picture of men pushing a van to exemplify the difference between correlation and causation">
+
+
+Please ensure you are conservative with any language you use in this area. Some prerequisites to being able to claim causation would be:
+
+* A scientific method controlling for other influencing variables.
+* Documentation of confounding factors.
+* A falsifiable scientific mechanism.
+* Peer review to ensure reproducibility of your findings.
+
+If you are involved in research, you may eventually arrive at making causal arguments. Otherwise, avoid like the plague.
+
+<span class="quote" id="block-quote">"There appears to be a positive trend between x and y."</span> <i class="fas fa-check-circle"></i>
+
+
+<span class="quote" id="block-quote">"X and y show a positive correlation."</span> <i class="fas fa-check-circle"></i>
+
+<span class="quote" id="block-quote">"Yay! X is causing y to increase and nobody has ever found this out before and I can't wait to tell you, the reader, all about it and I'm sure I will go down in history as the clevererest analyst ever to have worked for the civil service."</span> <i class="fas fa-times-circle"></i>
+
+Scatter charts are an indespensible tool for analysing how 2 variables (or more) vary with one another.
+
+## Correlation Coefficients
+
+After visually assessing trends between variables, we may wish to quantify that trend with a <strong class="navy">summary statistic</strong>. Here's where a correlation coefficient comes in handy. There are a bunch of them for all occasions and it pays to do a bit of reading around the topic, although beyond the scope of this course. All coefficients we will be calculating here should be <strong class="navy">Pearson's</strong>, which is often the default argument. Take care to confirm this when calculating these coefficients.
+
+Developing a familiarity with scatterchart trends and correlation coefficients is a good idea. Take a look at these charts:
+
+<img src="../../../www/week_2/correlation-coefficient.png" class="center" alt="Five scattercharts exemplifying different types of trends and their correlation coefficients">
+
+This is a nice image (one of the better ones that Google returned), but would you agree with everything?
+
+When writing about correlation coefficients and their meaning, it can be useful to have a guide for how to characterise the strength of the correlation. Luckily, there are established conventions for just this. Please see the below table for guidance.
+
+<img src="../../../www/week_2/corr_table.png" class="center" alt="Table of coefficients and their interpretations">
+
+
+
+## Exercise 5
+
+This time we will be working with the `trees` data from the `datasets` R package. 
+
+<strong class="navy">Girth, Height and Volume for Black Cherry Trees</strong>
+
+<strong class="navy">Description</strong>
+
+This data set provides measurements of the girth, height and volume of timber in 31 felled black cherry trees. Note that girth is the diameter of the tree (in inches) measured at 4 ft 6 in above the ground.
+
+<strong class="navy">Format</strong>
+
+A data frame with 31 observations on 3 variables.
+
+<strong class="navy">Girth</strong>	numeric	Tree diameter in inches
+
+<strong class="navy">Height</strong>	numeric	Height in ft
+
+<strong class="navy">Volume</strong>	numeric	Volume of timber in cubic ft
+
+<img src="../../../www/week_2/cherry_trees.jpg" class="center">
+
+
+## Exercise 5a
+
+If following along in python, use `trees_py`, if in R it's `trees_r`.
+
+
+```{r include=FALSE}
+#prep chunk
+trees_r <- trees
+```
+
+
+```{python include=FALSE}
+#prep chunk
+trees_py = r.trees_r
+
+```
+
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+#### Your Code
+```{python}
+# Need an executable line to avoid error...
+import seaborn as sns
+# produce a scatterchart of Girth against Volume, need to use lmplot on my version of seaborn
+
+# show the plot
+
+```
+
+
+#### Hint
+
+```{python eval=FALSE}
+# Need an executable line to avoid error...
+import seaborn as sns
+# produce a scatterchart of Girth against Volume, need to use lmplot on my version of seaborn
+sns.lmplot(x=..., y=..., data=..., fit_reg=False)
+# show the plot
+...()
+
+```
+
+#### Solution
+
+```{python}
+# Need an executable line to avoid error...
+import seaborn as sns
+# produce a scatterchart of Girth against Volume, need to use lmplot on my version of seaborn
+sns.lmplot(x="Girth", y="Volume", data=trees_py, fit_reg=False)
+# show the plot
+plt.show()
+
+```
+
+
+#### Correlation
+
+```{python}
+#import pearsons
+from scipy.stats import pearsonr
+
+# calculate corr coefficient
+r, p = pearsonr(trees_py.Girth, trees_py.Volume)
+# print the coefficient rounded to 2 dp
+print(round(r, 2))
+
+```
+
+
+###
+
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+How would you describe the apparent trend in the data? Did you estimate the correlation coefficient correctly?
+
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+1. Clear the plotting canvas
+2. Make a scatterchart between `Girth` and `Volume`.
+3. Once you've plotted the trend, have a guess at the <strong class="navy">correlation coefficient</strong>. Then click on the <strong class="navy">Correlation</strong> tab to see if you were right.
+
+
+#### Your Code
+
+```{r}
+# clear the plotting canvas
+
+# produce a scatterchart of Girth against Volume
+
+```
+
+#### Hint
+
+```{r eval=FALSE}
+# clear the plotting canvas
+........()
+# produce a scatterchart of Girth against Volume
+plot(x = ..., ..., col=1)
+```
+
+#### Solution
+
+```{r}
+# clear the plotting canvas
+plot.new()
+# produce a scatterchart of Girth against Volume
+plot(x = trees_r$Girth, trees$Volume, col=1)
+```
+
+
+#### Correlation
+
+```{r}
+# calculate the correlation coefficient for Girth vs Volume, rounded to 2dp
+round(cor(x = trees_r$Girth, trees$Volume, method = "pearson"), digits = 2)
+
+```
+
+
+###
+
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+How would you describe the apparent trend in the data? Did you estimate the correlation coefficient correctly?
+
+Perhaps unsurprisingly, `Girth` against `Volume` resulted in a very high correlation coefficient. How do you think the coefficient for `Height` and `Volume` compare? Reason this out in your head before moving on to the next exercise.
+
+***
+
+## Exercise 5b
+
+This time plot `Height` against `Volume`. As before, visually assess the trend and attempt to guess the correlation coefficient.
+
+
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+#### Your Code
+
+```{python}
+# Need an executable line to avoid error...
+import seaborn as sns
+# produce a scatterchart of Height against Volume, using sns.lmplot
+
+# show the plot
+
+```
+
+
+#### Hint
+
+```{python eval=FALSE}
+# Need an executable line to avoid error...
+import seaborn as sns
+# produce a scatterchart of Height against Volume, using sns.lmplot
+sns.lmplot(x=..., y=..., data=..., fit_reg=False)
+# show the plot
+...()
+
+```
+
+#### Solution
+
+```{python}
+# Need an executable line to avoid error...
+import seaborn as sns
+# produce a scatterchart of Height against Volume, using sns.lmplot
+sns.lmplot(x="Height", y="Volume", data=trees_py, fit_reg=False)
+# show the plot
+plt.show()
+
+```
+
+
+#### Correlation
+
+```{python}
+#import pearsons
+from scipy.stats import pearsonr
+
+# calculate corr coefficient
+r, p = pearsonr(trees_py.Height, trees_py.Volume)
+# print the coefficient rounded to 3 dp
+print(round(r, 3))
+
+```
+
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+#### Your Code
+
+Clear the plotting canvas and plot the requested scatter chart.
+
+```{r eval}
+# clear the plotting canvas
+
+# produce a scatter chart of Height against Volume
+
+```
+
+#### Hint
+
+Clear the plotting canvas and plot the requested scatter chart.
+
+```{r eval=FALSE}
+# clear the plotting canvas
+.....new()
+# produce a scatter chart of Height against Volume
+....(x = trees_r$..., y = trees$..., col=1)
+
+```
+
+
+#### Solution
+
+Clear the plotting canvas and plot the requested scatter chart.
+
+```{r}
+# clear the plotting canvas
+plot.new()
+# produce a scatter chart of Height against Volume
+plot(x = trees_r$Height, y = trees$Volume, col=1)
+
+```
+
+
+#### Correlation
+
+```{r}
+# calculate the correlation coefficient for Height vs Volume, round to 3 dp
+round(cor(x = trees_r$Height, trees$Volume, method = "pearson"), digits = 3)
+
+```
+
+
+###
+
+Hopefully this has ensured that we have all developed an intuition for scatter chart trend and correlation coefficients. But when exploring data, analysis in this way could be very time consuming if the dataset contains lots of numerical variables. Thankfully, there are ways to quickly assess the correlation coefficients of all variables present in a dataframe.
+
+Some correlation functions are capable of accepting a whole dataframe as an argument, rather than simply `x` and `y`, as I used in the <strong class="navy>correlation</strong> tabs in the previous exercise. Sometimes you may need to drop any columns that are not numerical, depending on the function you are using. Typically, you will return a matrix of correlation coefficients, for all numeric data. These have been calculated two at a time, or <strong class="navy">pairwise</strong>.
+
+## Pairwise Correlation
+
+Here we will be considering the `airquality` dataframe from the `datasets` package in R.
+
+![Chimney stacks and pylons against sunset skyline](../../../www/week_2/pollution.jpg)
+
+
+<strong class="navy">New York Air Quality Measurements</strong>
+
+<strong class="navy">Description</strong>
+
+Daily air quality measurements in New York, May to September 1973.
+
+<strong class="navy">Format</strong>
+
+A data frame with 154 observations on 6 variables.
+
+<strong class="navy">Ozone</strong>	numeric	Ozone (parts per billion)  
+<strong class="navy">Solar.R</strong>	numeric	Solar R (langleys)  
+<strong class="navy">Wind</strong>	numeric	Wind (mph)  
+<strong class="navy">Temp</strong>	numeric	Temperature (degrees F)  
+<strong class="navy">Month</strong>	numeric	Month (1--12)  
+<strong class="navy">Day</strong>	numeric	Day of month (1--31)  
+
+Type `?airquality` in an R console or code chunk for more detail.
+
+```{r echo=FALSE}
+
+airquality %>% 
+  cor() %>%
+  knitr::kable() %>%
+  kable_styling()
+
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+As you can see, there is a problem with the `Ozone` and `Solar.R` columns as no corelation coefficients were returned for those columns. What do you think happened?
+
+Hint: This is a problem with the calculation of many summary statistics and functions usually have optional arguments designed to handle just this issue. 
+
+I'm going to go ahead and process the dataframe to ensure I can also return coefficients for the 2 problem columns. Pay close attention to the resulting coefficients.
+
+
+```{r echo=FALSE}
+
+aq_filtered <- airquality[complete.cases(airquality), ]
+
+cor(aq_filtered) %>% knitr::kable() %>% kable_styling()
+
+```
+
+In order to achieve a full correlation matrix, I had to remove all rows where <strong class="navy">any of the variables contained missing values</strong>. Great! This has improved the analysis and would now let me get on with the important work of completing my report. <strong class="navy">Possibly not.</strong>
+
+We now have a full correlation matrix but <strong class="navy">beware!</strong> I removed `r nrow(airquality) - nrow(aq_filtered)` rows from the dataframe and this has affected <strong class="navy">all</strong> of the correlation coefficients returned. What if the number of rows with missing data had been considerably more?
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+Could there be a pattern in the missing data? Is it sensible to suggest that days of very low temperature could result in missing readings for solar radiation? Could this be more common in certain months than others?
+
+How could this affect the results of your summary statistics? How could it affect analyses and any supervised learning that you could apply to this dataset? 
+
+<span class="summary-box">Be very careful when handling missing data. Ensure that your decisions are well documented and that you take the time to explore the data in its entireity before making the decision to drop rows. Discuss these decisions with project managers and domain experts.</span>
+
+
+***
+
+## Exercise 6a
+
+As in the last exercise, we will use `trees` from R's `datasets` package.
+
+Calculate the pairwise correlation matrix for all of the data in this dataframe. Remember, you will be using either `trees_r` or `trees_py` depending on the language you are following along in.
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+
+#### Your Code
+
+Use `pandas` to calculate the pairwise correlations of the `trees_py` dataframe.
+
+```{python eval=FALSE}
+# Need an executable line to avoid error...
+import pandas as pd
+
+# calculate corr coefficient
+
+```
+
+#### Hint
+
+Use `pandas` to calculate the pairwise correlations of the `trees_py` dataframe.
+
+```{python eval=FALSE}
+# Need an executable line to avoid error...
+import pandas as pd
+
+# calculate corr coefficient
+.........corr()
+```
+
+
+#### Solution
+
+Use `pandas` to calculate the pairwise correlations of the `trees_py` dataframe.
+
+```{python}
+# Need an executable line to avoid error...
+import pandas as pd
+
+# calculate corr coefficient
+trees_py.corr()
+```
+
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+
+#### Your Code
+
+Use the correlation function from the `stats` package to calculate the pairwise correlations for the `trees_r` dataframe.
+
+```{r}
+# calculate correlation coefficients for all variables in the trees_r dataframe
+
+
+
+```
+
+#### Hint
+
+Use the correlation function from the `stats` package to calculate the pairwise correlations for the `trees_r` dataframe.
+
+```{r eval=FALSE}
+# calculate correlation coefficients for all variables in the trees_r dataframe
+cor(...)
+
+
+```
+
+#### Solution
+
+Use the correlation function from the `stats` package to calculate the pairwise correlations for the `trees_r` dataframe.
+
+```{r}
+# calculate correlation coefficients for all variables in the trees_r dataframe
+cor(trees_r)
+
+
+```
+
+## Exercise 6b
+
+It's also possible to do the same pairwise trend analysis with scatter charts instead of correlation coefficients. This can be a bit overwhelming on larger dataframes, but still useful nonetheless. 
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+#### Solution
+
+Do you happen to know the correct function to do this? I've used `seaborn` in my example.
+
+```{python}
+# need an executable line to avoid error...
+import seaborn as sns
+# use the correct function from seaborn
+
+# show the plots
+
+```
+
+#### Hint
+
+Do you happen to know the correct function to do this? I've used `seaborn` in my example.
+
+```{python eval=FALSE}
+# need an executable line to avoid error...
+import seaborn as sns
+# use the correct function from seaborn
+sns....(trees_py)
+# show the plots
+plt.show()
+```
+
+
+#### Solution
+
+Do you happen to know the correct function to do this? I've used `seaborn` in my example.
+
+```{python}
+# need an executable line to avoid error...
+import seaborn as sns
+# use the correct function from seaborn
+sns.pairplot(trees_py)
+# show the plots
+plt.show()
+```
+
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+#### Your Code
+
+Do you happen to know the correct function? It's in the `graphics` package that comes with your base installation.
+
+```{r}
+# visualise the same pairwise correlations with scattercharts in one line
+
+
+```
+
+
+#### Hint
+
+Do you happen to know the correct function? It's in the `graphics` package that comes with your base installation.
+
+```{r eval=FALSE}
+# visualise the same pairwise correlations with scattercharts in one line
+pa....(trees_r)
+
+```
+
+#### Solution
+
+Do you happen to know the correct function? It's in the `graphics` package that comes with your base installation.
+
+```{r}
+# visualise the same pairwise correlations with scattercharts in one line
+pairs(trees_r)
+
+```
+
+
+## Summary
+
+In conclusion, we've taken a bit of a worldwind tour through the utility and some of the pitfalls of some common statistics. Hopefully you've managed to extract some ne knowledge from somewhere in this course and if not, have had the opportunity to recap and consolidate your understanding. we covered:
+
+<input type="checkbox" checked>Measures of central tendency</input>  
+<input type="checkbox" checked>Use cases for mean and median</input>  
+<input type="checkbox" checked>Measures of dispersion</input>  
+<input type="checkbox" checked>Calculating standard deviation</input>  
+<input type="checkbox" checked>Interpretation of inter quartile range</input>  
+<input type="checkbox" checked>Univariate / bivariate analysis</input>  
+<input type="checkbox" checked>Interpretation of correlation coefficients</input>  
+<input type="checkbox" checked>Use of histograms, boxplots, scatter charts & pairplots</input>  
+
+## For the Next Version
+
+Here are some of the topics that didn't make it into this version of <strong class="navy"> Basic Statistics for Data science</strong>. It would be great to get your feedback via the feedback form on whether they would have been valuable or what else would have been useful for you to cover on this course:
+
+* Group by and aggregations
+* Outlier determination
+* Histogram bin width guidance
+* Density plots
+* 2 dimensional density plots
+* Common biases to look out for in the data
+
+<span class="summary-box">Our protocol is to evaluate your feedback, record actions for the next iteration and drive the effectiveness of our training. We value you taking the time you take to complete the course and in completing the surveys.</span>
+
+
+
+
+
