@@ -349,6 +349,8 @@ trees_r <- trees
 ```{python include=FALSE}
 #prep chunk
 trees_py = r.trees_r
+# cache to binary for use in spyder
+# pd.to_pickle(trees_py, "cache/trees_py.pkl")
 
 ```
 

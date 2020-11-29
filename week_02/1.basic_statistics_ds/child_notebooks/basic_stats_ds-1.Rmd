@@ -103,6 +103,8 @@ sleep_r <- datasets::sleep
 ```{python include=FALSE}
 # python setup chunk
 sleep_py = r.sleep_r
+# save binary for use in spyder
+# pd.to_pickle(sleep_py, "cache/sleep_py.pkl")
 ```
 
 ### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
@@ -577,7 +579,10 @@ Produce summary statistics on the `weight` column in the `chicks_py` dataframe.
 
 ```{python}
 chicks_py = r.chicks_r
+# save binary for use in spyder
+# pd.to_pickle(chicks_py, "cache/chicks_py.pkl")
 # summary stats on weight column
+
 
 ```
 
@@ -752,6 +757,8 @@ Produce a summary of the lake levels time series
 
 ```{python}
 lake_py = r.lake_r
+# convert to binary for use in spyder
+# pd.to_pickle(lake_py, "cache/lake_py.pkl")
 # Convert to a pandas series
 
 #produce summary statistics of the lake levels
@@ -920,6 +927,8 @@ Produce summary statistics on the `rivers_py` data.
 ```{python}
 #convert from r data
 rivers_py = r.rivers_r
+# convert to binary for use in spyder
+# pd.to_pickle(rivers_py, "cache/rivers_py.pkl")
 # convert to pandas series
 
 
