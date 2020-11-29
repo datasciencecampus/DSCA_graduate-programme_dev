@@ -16,6 +16,8 @@ knitr::opts_chunk$set(echo = TRUE)
 htmltools::tagList(rmarkdown::html_dependency_font_awesome())
 library(reticulate)
 suppressMessages(library(dplyr))
+suppressMessages(library(kableExtra))
+
 
 ```
 
@@ -263,6 +265,10 @@ points(x = sleep_r$group, y = sleep_r$extra, col = 2)
 
 ###
 
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+If there was a lot more data in our examples, what could be done to avoid <strong class="navy">overplotting</strong>?
+
 ***
 
 ## Scatter Charts
@@ -429,7 +435,7 @@ How would you describe the apparent trend in the data? Did you estimate the corr
 # clear the plotting canvas
 ........()
 # produce a scatterchart of Girth against Volume
-....(x = ..., ..., col=1)
+plot(x = ..., ..., col=1)
 ```
 
 #### Solution
@@ -458,36 +464,186 @@ round(cor(x = trees_r$Girth, trees$Volume, method = "pearson"), digits = 2)
 
 How would you describe the apparent trend in the data? Did you estimate the correlation coefficient correctly?
 
+Perhaps unsurprisingly, `Girth` against `Volume` resulted in a very high correlation coefficient. How do you think the coefficient for `Height` and `Volume` compare? Reason this out in your head before moving on to the next exercise.
 
 ***
 
+## Exercise 5b
+
+This time plot `Height` against `Volume`. As before, visually assess the trend and attempt to guess the correlation coefficient.
 
 
+
+### Python <i class="fab fa-python"></i> {.tabset .tabset-fade}
+
+#### Your Code
+
+```{python}
+# Need an executable line to avoid error...
+import seaborn as sns
+# produce a scatterchart of Height against Volume, using sns.lmplot
+
+# show the plot
+
+```
+
+
+#### Hint
+
+```{python eval=FALSE}
+# Need an executable line to avoid error...
+import seaborn as sns
+# produce a scatterchart of Height against Volume, using sns.lmplot
+sns.lmplot(x=..., y=..., data=..., fit_reg=False)
+# show the plot
+...()
+
+```
+
+#### Solution
+
+```{python}
+# Need an executable line to avoid error...
+import seaborn as sns
+# produce a scatterchart of Height against Volume, using sns.lmplot
+sns.lmplot(x="Height", y="Volume", data=trees_py, fit_reg=False)
+# show the plot
+plt.show()
+
+```
+
+
+#### Correlation
+
+```{python}
+#import pearsons
+from scipy.stats import pearsonr
+
+# calculate corr coefficient
+r, p = pearsonr(trees_py.Height, trees_py.Volume)
+# print the coefficient rounded to 3 dp
+print(round(r, 3))
+
+```
+
+
+### R <i class="far fa-registered"></i> {.tabset .tabset-fade}
+
+#### Your Code
+
+Clear the plotting canvas and plot the requested scatter chart.
+
+```{r eval}
+# clear the plotting canvas
+
+# produce a scatter chart of Height against Volume
+
+```
+
+#### Hint
+
+Clear the plotting canvas and plot the requested scatter chart.
+
+```{r eval=FALSE}
+# clear the plotting canvas
+.....new()
+# produce a scatter chart of Height against Volume
+....(x = trees_r$..., y = trees$..., col=1)
+
+```
+
+
+#### Solution
+
+Clear the plotting canvas and plot the requested scatter chart.
 
 ```{r}
 # clear the plotting canvas
 plot.new()
-# produce a scatterchart of Height against Volume
-plot(x = trees_r$Height, trees$Volume, col=1)
+# produce a scatter chart of Height against Volume
+plot(x = trees_r$Height, y = trees$Volume, col=1)
 
 ```
 
+
+#### Correlation
 
 ```{r}
-# calculate the correlation coefficient for Height vs Volume
-cor(x = trees_r$Height, trees$Volume, method = "pearson")
+# calculate the correlation coefficient for Height vs Volume, round to 3 dp
+round(cor(x = trees_r$Height, trees$Volume, method = "pearson"), digits = 3)
 
 ```
 
 
+###
 
+Hopefully this has ensured that we have all developed an intuition for scatter chart trend and correlation coefficients. But when exploring data, analysis in this way could be very time consuming if the dataset contains lots of numerical variables. Luckily, there are ways to quickly assess the correlation coefficients of all variables present in a dataframe.
+
+## Pairwise Correlation
+
+Here we will be using the `airquality` dataset from the `datasets` package in R.
+
+<strong class="navy">New York Air Quality Measurements</strong>
+
+<strong class="navy">Description</strong>
+
+Daily air quality measurements in New York, May to September 1973.
+
+<strong class="navy">Format</strong>
+
+A data frame with 154 observations on 6 variables.
+
+<strong class="navy">Ozone</strong>	numeric	Ozone (parts per billion)  
+<strong class="navy">Solar.R</strong>	numeric	Solar R (langleys)  
+<strong class="navy">Wind</strong>	numeric	Wind (mph)  
+<strong class="navy">Temp</strong>	numeric	Temperature (degrees F)  
+<strong class="navy">Month</strong>	numeric	Month (1--12)  
+<strong class="navy">Day</strong>	numeric	Day of month (1--31)  
+
+Type `?airquality` in an R console or code chunk for more detail.
+
+```{r echo=FALSE}
+
+airquality %>% 
+  cor() %>%
+  knitr::kable() %>%
+  kable_styling()
+
+```
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
+
+As you can see, there is a problem with the `Ozone` and `Solar.R` columns as no corelation coefficients were returned for those columns. What do you think happened?
+
+Hint: This is a problem with the calculation of many summary statistics and functions usually have optional arguments designed to handle just this issue. 
+
+I'm going to go ahead and process the dataframe to ensure I can also return coefficients for the 2 problem columns. Pay close attention to the resulting coefficients.
+
+
+```{r echo=FALSE}
+
+aq_filtered <- airquality[complete.cases(airquality), ]
+
+cor(aq_filtered) %>% knitr::kable() %>% kable_styling()
+
+```
+
+We now have a full correlation matrix but <strong class="navy">beware!</strong> I removed `r nrow(airquality) - nrow(aq_filtered)` rows from the dataframe and this has affected the correlation coefficients returned.
+
+<strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
+
+Could there be a pattern in the missing data? Is it sensible to suggest that days of very low temperature could result in missing readings for solar radiation? Could this be more common in certain months than others?
+
+How could this affect the results of your summary statistics? How could it affect analyses and any supervised learning that you could apply to this dataset? 
+
+<span class="summary-box">Be very careful when handling missing data. Ensure that your decisions are well documented and that you take the time to explore the data in its entireity before making the decision to drop rows. Discuss these decisions with project managers and domain experts.</span>
 
 
 ***
 
 
 ```{r}
-# calculate correlation coefficients for all variables in the trees_r dtaaframe
+# calculate correlation coefficients for all variables in the trees_r dataframe
 cor(trees_r)
 
 
@@ -502,14 +658,15 @@ pairs(trees_r)
 ```
 
 
+# Version 1.1
 
+Here are some of the topics that didn't make it into this version of <strong class="navy"> Basic Statistics for Data science</strong>. It would be great to get your feedback via the feedback form on whether they would have been valuable or what else would have been useful for you to cover on this course:
 
-# Aggregation
+* Group by aggregations
+* Outlier determination
+* 2 dimensional density plots
 
-
-
-# Outlier Determination
-
+Our protocol is to evaluate your feedback, record actions for the next iteration and drive the effectiveness of our training. We value you taking the time you take to complete the course and in completing the surveys. 
 
 
 

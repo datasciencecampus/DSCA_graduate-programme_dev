@@ -13,4 +13,6 @@
 * cache all python dependencies `to_pickle()` within a cache folder.
 * Include instructions wihtin the pre course folder
 * ~~Correlation coefficients - scattercharts with unlabelled coefficients to guess R coeff.~~
+* ~~Pairwise correlation matrices~~
 * 2d density plots 
+* sections on aggregation, outlier determination, common biases.
