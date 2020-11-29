@@ -1,5 +1,5 @@
 ---
-title: "Basic Statistics in Data Science"
+title: "Basic Statistics in DS"
 author: "R Leyshon"
 date: "20/11/2020"
 output:

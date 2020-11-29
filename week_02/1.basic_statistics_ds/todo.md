@@ -6,6 +6,8 @@
 * ~~Pairwise correlation matrices~~
 * ~~Include learning objectives & review sections~~
 * ~~Parent child knitting~~
+* ~~cache all python dependencies `to_pickle()` within a cache folder.~~
+* ~~Include R-only rmd~~
 
 * Better intuition of histograms.
 * Update dependencies script following on from support chat
@@ -14,8 +16,6 @@
 * Add bimodal example of histogram bin selection.
 * Roll on from previous to density plot.
 * Include exercise rmd and rename current to exercise-answers
-* Include R-only rmd
-* cache all python dependencies `to_pickle()` within a cache folder.
 * Include instructions within the pre course folder
 * 2d density plots 
 * sections on aggregation, outlier determination, common biases.

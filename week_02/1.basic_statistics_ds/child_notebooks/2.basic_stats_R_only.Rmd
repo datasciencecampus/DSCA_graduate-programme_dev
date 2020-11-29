@@ -1,0 +1,32 @@
+---
+title: "Basic Statistics in DS"
+author: "R Leyshon"
+date: "20/11/2020"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+    smooth_scroll: true
+    toc_depth: 2
+    css: "../../../www/style/style.css"
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+htmltools::tagList(rmarkdown::html_dependency_font_awesome())
+suppressMessages(library(dplyr))
+suppressMessages(library(kableExtra))
+
+```
+
+
+
+```{r child= 'basic_stats_ds-1_R_only.Rmd'}
+```
+
+
+
+
+
+```{r child= 'basic_stats_ds-2_R_only.Rmd'}
+```
