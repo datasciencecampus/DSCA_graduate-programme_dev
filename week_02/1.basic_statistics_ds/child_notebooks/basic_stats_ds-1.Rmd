@@ -44,7 +44,7 @@ os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:\Python36\Library\plugins\platfor
 
 Statistics is a broadly applied term. For the purposes of this course, we use the term in reference to <strong class="navy">any process undertaken to communicate understanding about a population (of numbers)</strong>. Some widely used, topical and familiar statistics for your consideration:
 
-1. Mean(arithmetic), median, mode, harmonic mean, geometric mean, trimmed mean, <strong class="navy">peri peri mean</strong>
+1. Mean (arithmetic), median, mode, harmonic mean, geometric mean, trimmed mean, <strong class="navy">peri peri mean</strong>
 2. Standard deviation, variance, range, interquartile range
 3. R number, rates, rates per capita, [indices](https://gov.wales/welsh-index-multiple-deprivation)
 4. Service points won in tennis
@@ -218,11 +218,11 @@ As we were all taught in school:
 
 * The mean is the sum of all observations divided by the number of observations. There are slightly adjusted equations for calculating population and sample mean, but that is beyond scope for this topic.
 
-__$\bar{X} = \frac{\Sigma x}{n}$__
+__$$\bar{X} = \frac{\Sigma x}{n}$$__
 
 * If you sorted a group of numbers from smallest to lowest, the median would be the observation in the middle. Exactly half of the observations would be above and below this value. If the number of observations is even, the median value would be exactly halfway between the 2. The equation for calculating the <strong class="navy">position of the median</strong> is lesser known than the mean:
 
-__$\{(n + 1) ÷ 2\}^{th} value$__
+__$$\{(n + 1) ÷ 2\}^{th} value$$__
 
 
 The mean and median respond differently to the presence of outliers in a population. Let's take a look at a slightly silly context to help build the required intuition.
@@ -488,10 +488,10 @@ all_salaries
 bills_salary <- 12000000000
 bills_salary
 # calculate the reciprocal of the given exchange rate
-xrate <-  1/1.2772
+xrate <- 1/1.2772
 xrate
 # Convert Bill's salary to 2019 pounds
-bills_salary_gbp <- bills_salary*xrate
+bills_salary_gbp <- bills_salary * xrate
 bills_salary_gbp
 # Append Bill's earnings in pounds to the numeric vector of all the bar patrons' earnings
 all_salaries <- c(all_salaries, bills_salary_gbp)
@@ -589,6 +589,8 @@ chicks_py = r.chicks_r
 <strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
 
 What do you notice about the mean and median? What does this mean in terms of any outliers within this column's values?
+
+<!-- TODO --JM the above question could be answered in the example solution which would help with self learning -->
 
 You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
 
@@ -737,6 +739,8 @@ lake_r <- datasets::LakeHuron
 
 For this exercise, we shall use the `LakeHuron` dataset from R's `datasets` package. The data type is a time-series object, which for our purposes you can treat exactly like a numeric vector. Lake Huron is in Michigan, USA.
 
+<!-- TODO --JM For this and other data sets in the course it may be useful to show with Kable what the data set looks like to help get a better feel for the values and data types of each column -->
+
 <strong class="navy">Level of Lake Huron 1875–1972</strong>
 
 <strong class="navy">Description</strong>
@@ -754,6 +758,8 @@ A time series of length 98.
 #### Your Code
 
 Produce a summary of the lake levels time series
+
+<!-- TODO --JM Instead of working between R and python for the R data sets could the data be exported to a csv outside of the course and just loaded with either R or python, not an important change though -->
 
 ```{python}
 lake_py = r.lake_r
@@ -812,7 +818,7 @@ Produce a summary of the lake levels time series
 lake_py = r.lake_r
 # Convert to a pandas series
 lake_py = pd.Series(lake_py)
-#produce summary statistics of the lake levels
+# produce summary statistics of the lake levels
 lake_py.describe()
 ```
 
@@ -837,7 +843,7 @@ plt.show(histogram)
 Produce a summary of the lake levels time series
 
 ```{r}
-#produce summary statistics of the lake levels
+# produce summary statistics of the lake levels
 
 
 ```
@@ -859,7 +865,7 @@ Plot the distribution with a histogram, specifying the default number of bins.
 Produce a summary of the lake levels time series
 
 ```{r eval=FALSE}
-#produce summary statistics of the lake levels
+# produce summary statistics of the lake levels
 .......(lake_r)
 
 ```
@@ -880,7 +886,7 @@ Plot the distribution with a histogram, specifying the default number of bins.
 Produce a summary of the lake levels time series
 
 ```{r}
-#produce summary statistics of the lake levels
+# produce summary statistics of the lake levels
 summary(lake_r)
 
 ```
@@ -907,6 +913,8 @@ rivers_r <- datasets::rivers
 <strong class="navy">Lengths of Major North American Rivers</strong>
 
 <strong class="navy">Description</strong>
+
+<!-- TODO --JM Same as for previous exercises it would be useful to add in the explaination in the answer of the qualitive / non-code parts of the questions. -->
 
 This data set gives the lengths (in miles) of 141 “major” rivers in North America, as compiled by the US Geological Survey.
 
@@ -1089,7 +1097,7 @@ Another crucial feature of any group of numbers that we need to conceptualise is
 
 ## Univariate Analysis
 
-Univariate analysis simply means considering one variable in isolation. We can employ all of the dispersal statistics mentioned above for univariate analysis.
+Univariate analysis considers one variable in isolation. We can employ all of the dispersal statistics mentioned above for univariate analysis. 
 
 * **Range** is quite straight forward as I'm sure you know. Simply the maximum observed value minus the minimum observed value. Combined with an awareness of the median, this can give you an indication of skew in any population. Is the median closer to the maximum or minimum? This indicates where observations may be clustered.
 
@@ -1099,7 +1107,7 @@ Standard deviation is a measure of dispersal around the mean. As it references t
 
 ![Diagram of parametric distribution with %data characterised by standard deviation from the mean](../../../www/week_2/sd.png)
 
-In this way, it's possible to use the standard deviation to classify outliers, for example any value beyond 3 standard deviations away from the mean. There may be certain conditions where this does not work well, particularly if outliers of similar magnitude exist at both upper and lower extremes of the variable. This can have the net effect of increasing the value of the standard deviation also. Again, there is no 'one size fits all' method of operating. Knowing your data and the nature of its distribution must take precedence.
+In this way, it's possible to use the standard deviation to classify outliers, for example any value beyond 3 standard deviations away from the mean is likely to be an outlier. There may be certain conditions where this does not work well, particularly if outliers of similar magnitude exist at both upper and lower extremes of the variable. This can have the net effect of increasing the value of the standard deviation also. Again, there is no 'one size fits all' method of operating. Knowing your data and the nature of its distribution must take precedence.
 
 Standard deviation is closely related to the variance, which we will briefly consider. The advantage that S.D. has over the variance is that S.D. is in the units of the variable being analysed. This makes it more intuitive to use than the variance, which is in the variable units to the power of 2.
 
@@ -1107,7 +1115,7 @@ Despite its utility, the standard deviation is poorly understood and often not t
 
 <Strong class="navy">Sample Standard Deviation Formula.</strong>
 
-$\sigma = \sqrt{\frac{\Sigma (x_i - \mu)^2}{n - 1}}$
+$$\sigma = \sqrt{\frac{\Sigma (x_i - \mu)^2}{n - 1}}$$
 
 Where...
 $\sigma$ =	population standard deviation
@@ -1127,8 +1135,8 @@ This data set gives the average heights and weights for American women aged 30�
 <strong class="navy">Format</strong>
 A data frame with 15 observations on 2 variables.
 
-<strong class="navy">height</strong>	numeric	Height (in)
-<strong class="navy">weight</strong>	numeric	Weight (lbs)
+<strong class="navy">height</strong> numeric	Height (in)
+<strong class="navy">weight</strong> numeric	Weight (lbs)
 
 For simplicity, let's just look at the weight column.
 
@@ -1197,6 +1205,8 @@ The minus 1 bit... That's specific to the sample SD. If you could ensure that yo
 
 In subtracting 1 from **n**, we ensure that we correct proportionately more for smaller samples than larger ones. Don't let this nuance distract from the main purpose of this step though, that is to correct for varying observation sizes.
 
+<!-- --JM love this explaination, wish I'd had it years ago! -->
+
 
 ``` {r echo=FALSE}
 
@@ -1231,12 +1241,15 @@ The vector of numbers can be neatly divided into groups of 3. The <strong class=
 
 Put simply, 25% of the observations would fall above the third quartile. 75 % of the observations would lie below it. 
 
+<!-- TODO --JM consider adding a brief mention of the difference in this area around discrete vs continuous variables -->
 
 Coming back to the interquartile range, this is simply subtracting the value of Q1 from Q3.
 
 $IQR = Q_3 - Q_1$
 
-The <strong class = "navy">IQR</strong> tells us where the central 50% of the data lies. If the IQR is large, the data could be widely distributed (or even bimodal, though out of scope for this course).The IQR is also a useful tool for defining outliers, which we will come to look at later.
+<!-- TODO --JM If bimodal is being mentioned it would be useful to briefly explain or link to what it means -->
+
+The <strong class = "navy">IQR</strong> tells us where the central 50% of the data lies. If the IQR is large, the data could be widely distributed (or even bimodal, though out of scope for this course). The IQR is also a useful tool for defining outliers, which we will come to look at later.
 
 <span class="summary-box">As IQR is based on quartiles, it is not so easily affected by outlier values. Just like the median. This is in direct contrast to the standard deviation, which uses the mean. Therefore, a full and sound assessment of what the outliers mean for your analysis should be carefully considered when deciding whether to use IQR or standard deviation in explaining variation in your data.</span>
 
@@ -1290,12 +1303,14 @@ plt.ylabel(...)
 
 #### Solution
 
+<!-- --JM I have changed references to columns using .column in python in favour of ["column"] -->
+
 ```{python}
 
 # need an executable line to avoid error...
 import matplotlib.pyplot as plt
 # create a boxplot object
-box = plt.boxplot(sleep_py.extra)
+box = plt.boxplot(sleep_py["extra"])
 # Add a suitable y axis label
 plt.ylabel("Additional hours sleep against control")
 # show the boxplot

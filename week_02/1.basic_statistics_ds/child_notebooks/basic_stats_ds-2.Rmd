@@ -25,6 +25,9 @@ suppressMessages(library(kableExtra))
 import os
 os.environ['QT_QPA_PLATFORM_PLUGIN_PATH'] = 'C:\Python36\Library\plugins\platforms'
 # though you will need to ensure the path is correct for you
+# Adding to supress warnings in python (cant be done chunk wise)
+import warnings
+warnings.filterwarnings('ignore')
 ```
 
 ```{r include=FALSE}
@@ -38,6 +41,9 @@ sleep_r <- sleep
 sleep_py = r.sleep_r
 import matplotlib.pyplot as plt
 ```
+
+
+<!-- TODO --JM the rmd all falls under one single h1 level, consider breaking it up into multiple. -->
 
 # Bivariate Analysis
 
@@ -81,7 +87,7 @@ plt.....()
 
 #### Solution
 
-```{python}
+```{python, message=FALSE, warning=FALSE}
 # Suggest using seaborn for simplicity here
 import seaborn as sns
 # create a boxplot, administered drug on x, hours additional sleep on y
@@ -268,6 +274,8 @@ points(x = sleep_r$group, y = sleep_r$extra, col = 2)
 <strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i> 
 
 If there was a lot more data in our examples, what could be done to avoid <strong class="navy">overplotting</strong>?
+
+<!-- TODO --JM worth giving an answer here for how to deal with this, not everyone will work it out -->
 
 ***
 
