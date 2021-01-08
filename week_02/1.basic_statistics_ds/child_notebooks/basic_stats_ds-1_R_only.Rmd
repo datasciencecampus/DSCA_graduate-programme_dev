@@ -447,7 +447,7 @@ summary(chicks_r$weight)
 
 <strong class="navy">Pause for thought</strong> <i class="fa fa-question-circle" id="body"></i>
 
-What do you notice about the mean and median? What does this mean in terms of any outliers within this columns' values?
+What do you notice about the mean and median? What does this mean in terms of any outliers within this column's values?
 
 You can confirm any suspicions here in a number of ways. Typically you would get frequencies of the column values. You can also visualise these frequencies in a variety of ways.
 
