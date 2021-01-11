@@ -1,0 +1,15 @@
+# Week 3
+
+## 1. Statistics in R - Analytical Learning course.
+
+## 2. [Modular Code in R & Python.](https://github.com/datasciencecampus/DSCA_modular_programming_dev) - private dev repo.
+
+## 3. Business Insight Software.
+
+## 4. Statistics in Python. 
+
+***
+
+# Actions for 2021:
+* 
+
