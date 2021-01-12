@@ -1,4 +1,4 @@
-# 1.basic Dashboard help
+# 1. Basic Dashboard help
 
 To do this, you will need to be familiar with:
 - importing csv / xlsx
