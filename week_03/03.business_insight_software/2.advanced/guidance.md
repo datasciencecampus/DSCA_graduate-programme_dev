@@ -1,13 +1,13 @@
 # 2. Advanced Dashboard Help
 
-## 1. parliament_odata_feed.pbix
-
 To do this, you will need to be familiar with:
-- all content in the basic task
+
+- All content in the basic task
 - OData feeds
 - Relational database modelling
-- API queries, handling JSON
-- Conditional formatting 
+- Conditional formatting
+- Card measures with basic DAX
+- Dashboard design - bookmarks, action buttons.
 
 
 
@@ -18,37 +18,91 @@ steps under 'transform data` to assist you.
 
 * [UK Parliament api documentation](http://data.parliament.uk/membersdataplatform/open.aspx)
 * Odata endpoint: http://data.parliament.uk/membersdataplatform/open/OData.svc
-* [ONS Open Geography Portal LAD codes](https://geoportal.statistics.gov.uk/datasets/fe6bcee87d95476abc84e194fe088abb_0/geoservice)
-* API query used from above: https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD_APR_2020_UK_NC/FeatureServer/0/query?where=1%3D1&outFields=LAD20CD,LAD20NM&outSR=4326&f=json
-
-[shapefiles link](https://geoportal.statistics.gov.uk/datasets/7f83b82ef6ce46d3a5635d371e8a3e7c_0/geoservice)
-shapefile query not working: https://ons-inspire.esriuk.com/arcgis/rest/services/Administrative_Boundaries/Local_Authority_Districts_May_2020_Boundaries_UK_BFE/MapServer/0/query?where=1%3D1&outFields=lad20cd,lad20nm,long,lat&outSR=4326&f=json
-
 * [Conditional formatting table fields on hex colours.](https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-conditional-table-formatting)
 
-Need to go over how to import from JSON.
-Then build a map that can be used to filter the data.
-Also, use this as a good use case for DAX meeasure cards and buttons to present geo vs card filters.
+### Instructions
 
+In this report, we will create a report with one page. The user will be able to toggle between 2 views.
 
-1. Download the data from [ONS website](https://www.ons.gov.uk/generator?format=csv&uri=/employmentandlabourmarket/peopleinwork/employmentandemployeetypes/timeseries/lf24/lms)
+#### View 1
 
-- This can be downloaded and stored locally, then loaded to the .pbix.
-- Or you can download directly from the webpage that hosts the table.
+![Dashboard with parliamentary party slicers](images/success_1.png)
 
-2. Cleaning the data. Use Power Query to:
+In this view, the user can see a table of all listed parliament members with various informative fields.
+There are cards with counts of members belonging to specified parties. A bar chart showing counts of parliamentary
+members by party affiliation is also displayed. 
 
-- Remove unrequired rows from the top of the table.
-- Create a valid date column.
-- Filter to the smallest level of granularity.
-- Rename columns as required.
-- Change data types. Advise keeping year as text.
+Specific to view 1, you will see a group of slicers allowing the users to select from all listed parties, whether
+the parliamentary member has an active status, or whether the member is listed as a member of the house of
+commons or lords.
 
-3. Present the data:
+#### View 2
 
-- 2 line charts showing time series against **average** employment rates.
-- 1 table showing all data rows currently selected by the user.
-- 1 slicer for a categorical year field. Specify the slicer as `Paint Roller` > `General` > `Orientation` > `Horizontal`.
-- Top time series will be for user selected year. Display quarter by default.
-- Bottom time series will be total time series data. Display year by default. Make this non responsive to filter interactions.
-- Under the paint roller, select `shapes`, increase `stroke width` to 5 and toggle show marker to `on`.
+![Dashboard with country of birth map](images/success_2.png)
+
+View 2 also shows the cards, table and bar chart as in view one. However, instead of the slicers, this view will
+display a map of the parliamentary members' birth countries.
+
+#### Notes
+
+* The selections you make on one page **should carry over** to the next page selected.
+* The buttons used to navigate can be made to disappear / appear as required.
+
+#### Additional material
+
+* Can you create a button that resets all user-selected filters? This helps users to wipe the slate clean.
+* Can you create cards that remind the user which selections they have made? (sometimes referred to as a 'breadcrumbs trail).
+
+### Guide
+
+1. Importing the data.
+
+- paste the endpoint into the required field under `Get data` > `Odata`.
+- Select the following tables (but feel free to experiment with the others, too):
+
+* Members
+* Countries
+* Houses
+* Parties
+* MemberParties
+
+2. Cleaning the data
+
+Not much is required with this data. To achieve conditional formatting of party colours within the table, you
+will need to adjust the Colour column of the Parties table. Please see the [PBI guidance](https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-conditional-table-formatting)
+on what needs to be done to achieve that. 
+
+3. Creating View 1.
+
+- Check the data model to ensure that all tables have active relationships. Adjust as needed.
+- Create a table with the following fields:
+
+* 'Houses'[Name]
+* 'Members'[NameFullTitle]
+* 'Members'[Forename]
+* 'Members'[Surname]
+* 'Members'[Party]
+* 'Parties'[Colour]
+* 'Members'[StartDate]
+* 'Members'[TownOfBirth]
+* 'Countries'[Name] -> rename as 'Birth Country'
+* 'Countries'[IsUnitedKingdom]
+
+- Apply conditional formatting to the 'Parties'[Colour] column, based on its field value.
+- Create the bar chart, counting member_id by party.
+- Create the required slicers.
+- Produce the cards required. The party specific ones need you to use DAX measures. Hint:
+
+`FILTER()` can be used to filter a table on conditional statements. 
+`COUNTROWS()` can then be used to get the number you need for display in a card.
+- Create the 2 buttons used to navigate between views.
+
+4. Create View 2.
+
+- Create 2 new bookmarks in the `Bookmarks` pane (found under the `View` menu).
+- Ensure the `data` option is unchecked - find this in the ellipsis next to each bookmark.
+- Open up `View` > `Selection`.
+- Ensure the slicers are hidden for bookmark 2. Remember to update the bookmark before navigating away.
+- Create the map. Then remember to hide it in bookmark 1. Always remember to update the bookmark in the state
+that you want it.
+- Can you figure out how to show/hide the navigation buttons as required?
