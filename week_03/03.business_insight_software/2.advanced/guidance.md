@@ -19,7 +19,11 @@ steps under 'transform data` to assist you.
 * [UK Parliament api documentation](http://data.parliament.uk/membersdataplatform/open.aspx)
 * Odata endpoint: http://data.parliament.uk/membersdataplatform/open/OData.svc
 * [ONS Open Geography Portal LAD codes](https://geoportal.statistics.gov.uk/datasets/fe6bcee87d95476abc84e194fe088abb_0/geoservice)
-* LAD code endpoint used: https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD_APR_2020_UK_NC/FeatureServer/0/query?where=1%3D1&outFields=LAD20CD,LAD20NM&outSR=4326&f=json
+* API query used from above: https://services1.arcgis.com/ESMARspQHYMw9BZ9/arcgis/rest/services/LAD_APR_2020_UK_NC/FeatureServer/0/query?where=1%3D1&outFields=LAD20CD,LAD20NM&outSR=4326&f=json
+
+[shapefiles link](https://geoportal.statistics.gov.uk/datasets/7f83b82ef6ce46d3a5635d371e8a3e7c_0/geoservice)
+shapefile query not working: https://ons-inspire.esriuk.com/arcgis/rest/services/Administrative_Boundaries/Local_Authority_Districts_May_2020_Boundaries_UK_BFE/MapServer/0/query?where=1%3D1&outFields=lad20cd,lad20nm,long,lat&outSR=4326&f=json
+
 * [Conditional formatting table fields on hex colours.](https://docs.microsoft.com/en-us/power-bi/create-reports/desktop-conditional-table-formatting)
 
 Need to go over how to import from JSON.
