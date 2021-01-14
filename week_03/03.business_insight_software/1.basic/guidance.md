@@ -1,12 +1,13 @@
 # 1. Basic Dashboard help
 
 To do this, you will need to be familiar with:
+
 - importing csv / xlsx
 - basic power query
 - aggregation behaviour of PBI
 - creating visuals
 - edit interactions
-- 
+
 
 Please use the guidance below to help you create the report. You can also 
 

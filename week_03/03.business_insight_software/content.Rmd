@@ -1,0 +1,114 @@
+---
+title: "Business Insight Software"
+author: "Lead Developer: Richard Leyshon"
+output: 
+  html_document:
+    css: "./style/style.css"
+    highlight: pygments
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+---
+
+<br>
+
+
+## Learning Objectives {-}
+
+The aim of this course is for participants to:
+
+* The use case analysis for using BI software.
+* How to import data from different sources.
+* Simple cleaning & data manipulation techniques.
+* Basic relational data modelling.
+* Report design.
+
+The aim is to provide you with just enough guidance to begin exploring how to efficiently create reports.
+
+## Target Audience {-}
+
+This course is designed for those with a basic or limited understanding of business insight software.
+
+
+## Introduction
+
+**Course Duration:** 2 Hours.
+
+**Agenda:** 
+
+- Slido survey and discussion. (~ 5 mins)
+- Use case analysis. (~ 5 mins)
+- Tour of Power BI, including: (~ 20 mins)
+
+<input type="checkbox" unchecked>importing local data</input>  
+<input type="checkbox" unchecked>basic power query</input>  
+<input type="checkbox" unchecked>aggregation behaviour</input>  
+<input type="checkbox" unchecked>creating visuals</input>  
+<input type="checkbox" unchecked>edit interactions</input>  
+
+- <strong>Exercise 1 - basic dashboard.</strong> (~ 15 mins)
+- Building a data model in PBI, including: (~20 mins)
+
+<input type="checkbox" unchecked>OData feeds</input>  
+<input type="checkbox" unchecked>Relational database modelling</input>  
+<input type="checkbox" unchecked>Conditional formatting</input>  
+<input type="checkbox" unchecked>Card measures with basic DAX</input>  
+<input type="checkbox" unchecked>Dashboard design - bookmarks, action buttons.</input>
+
+- <strong>Exercise 2 - Advanced dashboards</strong> (~30 mins)
+
+- Python & R integration. (~10 mins)
+
+R integration is pending.
+
+- Hints & Tips. (~5 mins)
+
+- Questions / reflections. (~5 mins)
+
+**Breaks will be included in task duration due to short course duration.**
+
+## Use Case Analysis
+
+Please use the Slido and the included images in this section as a source for debate. Bias warning - promotional materials used here to inform debate.
+
+![Source: <a href="https://www.itbusinessedge.com/business-intelligence/power-bi-vs-tableau-2019-comparison.html">IT Business Edge</a>. Table comparing Power BI & Tableau pros & cons.](images/PowerBIvsTableauComparison.png)
+
+Would you agree with all of the rating comparisons?
+Are there any important comparisons that are missing?
+
+
+![Source: <a href="https://www.itbusinessedge.com/business-intelligence/power-bi-vs-tableau-2019-comparison.html">IT Business Edge</a>. Table comparing Power BI & Tableau strengths.](images/Features_PowerBIvsTableau.png)
+
+![Source: <a href="https://looker.com/compare/business-intelligence-tools">Looker promotional material</a>. Table comparing user ratings of BI software.](images/3.png)
+
+Obviously, the above is promotional material. Note that I can't say from the website whether a user is a person who create or consumes the report.
+
+
+
+
+![Source: <a href="https://www.r-bloggers.com/2020/03/r-shiny-vs-tableau-3-business-application-examples/">R Bloggers</a>. Article comparing dashboarding software by various dimensions.](images/dashboard-ecosystem.png)
+
+Does a good job of looking more impartial, but opinionated and R-centric in my own opinion.Interesting article, I recommend reading for a take on the current dashboarding landscape.
+
+
+![Reproducibility spectrum diagram.](images/Reproducibility-Spectrum.png)
+
+It may also be useful to consider where you would place some of the above software, or any familiar analytical software on the reproducibility spectrum above.
+
+### In Review
+
+Consider the following for your project:
+
+* Does your analysis need a dashboard?
+* How data literate are your audience?
+* Consider your project team. Where are their strengths and what solution presents the quickest path to the required product?
+* Accessibility and quality assurance.
+* Cost incurred for use case?
+
+
+## Hints & Tips.
+
+* [SQLBI Dax Formatter](https://www.daxformatter.com/)
+* Enter data
+* Measures table
