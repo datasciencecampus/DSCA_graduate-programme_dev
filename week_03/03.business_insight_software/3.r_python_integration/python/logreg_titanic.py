@@ -87,18 +87,16 @@ def classification_report_df(report):
     for line in lines[2:-3]:
         row = {}
         row_data = line.split('      ')
-        row['class'] = row_data[0]
-        row['precision'] = float(row_data[1])
-        row['recall'] = float(row_data[2])
-        row['f1_score'] = float(row_data[3])
-        row['support'] = float(row_data[4])
+        row['class'] = float(row_data[1])
+        row['precision'] = float(row_data[2])
+        row['recall'] = float(row_data[3])
+        row['f1_score'] = float(row_data[4])
+        row['support'] = float(row_data[5])
         report_data.append(row)
     dataframe = pd.DataFrame.from_dict(report_data)
     return(dataframe)
 
 class_report = classification_report_df(class_report)
-class_report['class'] = class_report.index
-
 
 # tidy up environment
 del X_test, X_train, features, steps, target, y_pred, y_test, y_train
