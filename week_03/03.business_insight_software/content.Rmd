@@ -112,3 +112,7 @@ Consider the following for your project:
 * [SQLBI Dax Formatter](https://www.daxformatter.com/)
 * Enter data
 * Measures table
+* Tips for troubleshooting issues with dashboards
+* [Querying apis example.](https://geoportal.statistics.gov.uk/datasets/fe6bcee87d95476abc84e194fe088abb_0)
+
+## Power BI Pro Pilot
