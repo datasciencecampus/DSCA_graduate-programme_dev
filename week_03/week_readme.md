@@ -8,6 +8,9 @@
 
 ## 4. Statistics in Python. 
 
+## Note: [Unit Testing](https://learninghub.ons.gov.uk/course/view.php?id=539) was delivered in place of Statistics in R
+This was during the delivery week itself 2020. Statistics in R has been postponed to an alternative date.
+
 ***
 
 # Actions for 2021:
@@ -16,4 +19,9 @@
 
 * Write scikit learn logreg equivalent for example of R implementation.
 * Overhaul python / R implementation reports to compare correct vs incorrect predictions of class.
+
+## Modular Programming:
+
+* Improve Programming Style example
+* Add introduction example, earlier exercises and more analysis focus
 
