@@ -11,5 +11,9 @@
 ***
 
 # Actions for 2021:
-* 
+
+## BI software:
+
+* Write scikit learn logreg equivalent for example of R implementation.
+* Overhaul python / R implementation reports to compare correct vs incorrect predictions of class.
 
