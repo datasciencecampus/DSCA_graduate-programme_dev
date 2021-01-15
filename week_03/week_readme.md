@@ -23,5 +23,10 @@ This was during the delivery week itself 2020. Statistics in R has been postpone
 ## Modular Programming:
 
 * Improve Programming Style example
-* Add introduction example, earlier exercises and more analysis focus
+
+## Unit Testing:
+
+* Add introduction example
+* Earlier exercises
+* More analysis focus (another case study?)
 
