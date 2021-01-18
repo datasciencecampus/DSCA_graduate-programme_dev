@@ -16,4 +16,5 @@
 
 * Write scikit learn logreg equivalent for example of R implementation.
 * Overhaul python / R implementation reports to compare correct vs incorrect predictions of class.
+* Next year would need 3 to 4 hours, with more time for learner exploration of case studies.  
 
