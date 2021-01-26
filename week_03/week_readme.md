@@ -19,7 +19,11 @@ This was during the delivery week itself 2020. Statistics in R has been postpone
 
 * Write scikit learn logreg equivalent for example of R implementation.
 * Overhaul python / R implementation reports to compare correct vs incorrect predictions of class.
-* Next year would need 3 to 4 hours, with more time for learner exploration of case studies.  
+* Next year would need 4 hours, with more time for learner exploration of case studies.
+* A short activity after the initial introduction to the software where participants could follow along a set of instructions
+(accompanied by screenshots perhaps), which they could quickly do and be able to gauge the functionalities in powerBI and understand
+where all screen elements are located.
+* Pairing up and breakout rooms for tasks.
 
 ## Modular Programming:
 
