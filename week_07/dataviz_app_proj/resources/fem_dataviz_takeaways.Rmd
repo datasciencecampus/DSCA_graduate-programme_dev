@@ -234,4 +234,12 @@ A powerful reinterpretation of identical charts.
 
 
 
-## Call to Action
+## Call to Action (Optional)
+
+complete the data visualisations to a standard that you are happy with. If you have incorporated suggested improvements from other groups, please take the opportunity to acknowledge them. Consider sharing the visualisation on Twitter, along the lines of:
+
+"Look how data feminist visualisation changed my chart...", tagging:  
+
+#DataFeminism (camel case on this one)  
+[\@kanarinka](https://twitter.com/kanarinka?lang=en)  
+[\@laurenfklein](https://twitter.com/laurenfklein?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)  

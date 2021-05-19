@@ -23,8 +23,8 @@
 * It would be useful for learners and trainers to read through the short article on [Feminist Data Visualisation](http://www.kanarinka.com/wp-content/uploads/2015/07/IEEE_Feminist_Data_Visualization.pdf)
 * Access to the Analysis Function's data visualisation courses.
 * Faculty-led checkpoints.
-* Data feminism implications for data visualisation (resource to be developed).
-* Collaborative document (to be developed, SharePoint Online, Google Docs etc).
+* [Feminist DataViz Takeaways](https://github.com/datasciencecampus/DSCA_graduate-programme_dev/tree/main/week_07)  
+* [Collaborative SharePoint site](https://officenationalstatistics.sharepoint.com/:f:/r/sites/dscdsc/Cap/Faculty/Training/Workshops/Dataviz_App_Projects?csf=1&web=1&e=rjAkIK) for reflect activity.
 
 ## Success Criteria
 ***
@@ -99,14 +99,16 @@ The 2 visualisations will present the same underlying data in different ways:
 
 The chosen context may be any of the case studies set out in the selected course or any open source data the trainees may have encountered that they would consider appropriate for the task.
 
+Once the group has completed both visualisation tasks, they will need to save high quality copies (suggested 300dpi) to our examples folder, duplicate the example sheet in the Workbook and fill in the fields, ready for the group reflection in the afternoon. I have set up a [SharePoint Folder](https://officenationalstatistics.sharepoint.com/:f:/r/sites/dscdsc/Cap/Faculty/Training/Workshops/Dataviz_App_Projects?csf=1&web=1&e=rjAkIK) with a folder to store the grads' output and a spreadsheet for peer reflection.
+
 ## Reflect
 ***
 
 Suggested time ~ 1 hour. 
 
-The completed visuals should be pasted into a collaborative document such as Google Docs, SharePoint Word Doc / PowerPoint presentation etc.
+The grads should have now completed their visualisations, saved high quality versions for us to present as examples and completed their own duplicated page in the review spreadsheet. This work should be saved within this [SharePoint Folder](https://officenationalstatistics.sharepoint.com/:f:/r/sites/dscdsc/Cap/Faculty/Training/Workshops/Dataviz_App_Projects?csf=1&web=1&e=rjAkIK).
 
-Bring the trainees back together to present their visualisations to the group. The presenting group should focus on explaining the differences between the two approaches they took and how this has influenced the end product. They should also point to any improvements that could increase the effectiveness of the data visualisations if more resource were available. During the presentations, the other groups can be encouraged to add comments to the collaborative doc, aiming to add at least:
+Bring the trainees back together to present their visualisations to the group. The presenting groups can talk through the fields in the tabs, where they should have recorded their reflections. During the presentations, the other groups can be encouraged to add comments (by right-clicking and add comment) to the collaborative doc, aiming to add at least:
 
 * One point of interest / observation / positive comment
 * One potential improvement / unanswered question
