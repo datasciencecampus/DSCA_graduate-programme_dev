@@ -4,12 +4,14 @@ author: "Richard Leyshon"
 date: "`r format(Sys.Date(), '%d %b %Y')`"
 output:
   html_document:
+    css: "../www/style.css"
     toc: true
     toc_float: true
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
 ```
 
 ## Introduction
@@ -21,6 +23,8 @@ Data feminism is not a movement restricted to women and considers the often unde
 
 This document relies completely on the work of Catherine D'Ignazio and Lauren Klein and directly quotes from their publications throughout.
 
+***
+
 ## Suggested Reading {#sugread}
 
 
@@ -29,6 +33,10 @@ Both of the following texts are available open source online.
 [Feminist Data Visualisation](http://www.kanarinka.com/wp-content/uploads/2015/07/IEEE_Feminist_Data_Visualization.pdf)  
 
 [Data feminism](https://data-feminism.mitpress.mit.edu/)
+
+***
+
+<a id="6princ"></a>
 
 ## Six Principles for DataViz {.tabset}
 
@@ -105,7 +113,7 @@ Any knowledge is situated at a particular intersection of **social, material & c
 
 ### 5. Embodiment.
 
-Legitimise embodiment and affect. Sensation and emotion are placed on a par with quantitative means of understanding. **Affect an emotional bond** with the data subject. Some of the provided data visuals, notably [stolen years](#datviz_eg) are particularly effective in this regard.
+Legitimise embodiment and affect. Sensation and emotion are placed on a par with quantitative means of understanding. **Affect an emotional bond** with the data subject. Some of the provided data visuals, notably [stolen years](#dataviz_eg) are particularly effective in this regard.
 
 #### Design Process Questions:
 
@@ -134,31 +142,95 @@ data murals, data sculptures, public walks, quilts and installations?"
 * Is it feasible to provide a metadata visualization that shows the provenance of the data and their stakeholders (caregivers) at each step?
 *  Have we properly attributed work on the project?"
 
-##  Dataviz Examples{#datviz_eg .tabset}
+##{.unnumbered}
+
+***
+
+
+##  Dataviz Examples{.tabset}
+
+<a id="dataviz_eg"></a>
+
+The examples provided were all sourced from Data Feminism, linked to in [suggested reading](#sugread). Please browse them and consider how they have chosen to design their visualisations. Consider if they address any of the [6 principles](#6princ) set out above. Can you incorporate any element of their design within visualisations of your own? 
 
 ### Stolen Years
+
+To view the animation, please [visit periscopic](https://guns.periscopic.com/).
+
+![](../www/stolen_years1.jpg)
+
+
+![](../www/stolen_years2.jpg)
 
 
 ### US Unemployment
 
+In the below charts, the New York Times embraces pluralism for Republican and Democrat interpretations of the same data.
+
+![](../www/unemployment1.png)
+![](../www/unemployment2.png)
 
 ### Parental Leave
 
+![](../www/parental_leave.png)
+
 ### Gendered clothes
+
+![](../www/gendered_clothes.png)
 
 ### Gender Gap
 
+To access the interactive visual, please follow the link to the [Telegraph.](https://www.telegraph.co.uk/women/business/women-mean-business-interactive/)
+
+Scroll down the page until you reach the charts. Continue to scroll to proceed through the animations.
+
+![](../www/gender_gap1.jpg)
+
+![](../www/gender_gap2.jpg)
+
 ### US Congress
+
+To view the interactive visualisation, please follow the link to the [US Guardian](https://www.theguardian.com/us-news/ng-interactive/2018/nov/15/new-congress-us-house-of-representatives-senate)
+
+Select multiple filters to apply to the data as below.
+
+![](../www/congress1.jpg)
+
+And observe the resultant hexmap.
+
+![](../www/congress2.jpg)
+
 
 ### Evictions
 
+Please follow the link to the [anti eviction mapping project](http://www.antievictionmappingproject.net/narratives.html).
+
+Hover over points for contextual tooltips.
+
+![](../www/eviction1.jpg)
+
+Click on a blue point for oral case study links on sound cloud.
+
+![](../www/eviction2.jpg)
+
 ### Climate Change
 
-### Jefferson
+To view the interactive visualisatoin, please follow the link to [Bloomberg.](https://www.bloomberg.com/graphics/2015-whats-warming-the-world/)
+
+This site does a great job of "self declaration", adding context that reveal the authors' standpoint on anthropogenic climate change.
+
+![](../www/climate_change1.jpg)
+
+The visuals as shown in Data Feminism below, allocate 30 % of the total panel space to self-disclosure. 
+
+<img src="../www/climate_change2.png" class="center">
+
 
 ### Mental Health
 
+A powerful reinterpretation of identical charts.
 
+![](../www/jail.png)
 
 
 
