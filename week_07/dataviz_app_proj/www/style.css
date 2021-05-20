@@ -2,5 +2,23 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 25%;
+  width: 30%;
+}
+
+#TOC {
+  background: url(AF_DSC_logo.png);
+  background-size: contain;
+  padding-top: 130px !important;
+  background-repeat: no-repeat;
+  border: 0 ;
+}
+/*AF and DSC Banner with words with bars. Alternatively an image that relates to the course*/
+
+.hr {
+  width:100%;
+  height:4px;
+  border-width:0;
+  color:gray;
+  background-color:#dd4814;
+  opacity:1 
 }

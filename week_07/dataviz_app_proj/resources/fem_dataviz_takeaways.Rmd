@@ -5,14 +5,34 @@ date: "`r format(Sys.Date(), '%d %b %Y')`"
 output:
   html_document:
     css: "../www/style.css"
-    toc: true
-    toc_float: true
+    toc: yes
+    toc_float: yes
+    theme: united
+    highlight: zenburn
 ---
+
+<hr class="hr"> 
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 ```
+
+
+```{r, echo=FALSE}
+htmltools::img(src = knitr::image_uri("../www/AF_DSC_logo.png"),
+               alt = 'Learning Academy, Analysis Function and Data Science Campus Logos', 
+               align = "centre",
+               width = 350)
+```
+
+<hr class="hr">
+
+<p class="center">Course Release: `r format(Sys.Date(), "%b %Y")`</p> 
+<p class="center">[Need help? Contact the team.](mailto:Data.Science.Campus.Faculty@ons.gov.uk)</p>
+
+
 
 ## Introduction
 
@@ -23,18 +43,18 @@ Data feminism is not a movement restricted to women and considers the often unde
 
 This document relies completely on the work of Catherine D'Ignazio and Lauren Klein and directly quotes from their publications throughout.
 
-***
+<hr class="hr"> 
 
 ## Suggested Reading {#sugread}
 
 
 Both of the following texts are available open source online.
 
-[Feminist Data Visualisation](http://www.kanarinka.com/wp-content/uploads/2015/07/IEEE_Feminist_Data_Visualization.pdf)  
+[Feminist Data Visualisation, D'Ignazio & Klein, 18.05.21](http://www.kanarinka.com/wp-content/uploads/2015/07/IEEE_Feminist_Data_Visualization.pdf)  
 
 [Data feminism](https://data-feminism.mitpress.mit.edu/)
 
-***
+<hr class="hr"> 
 
 <a id="6princ"></a>
 
@@ -142,9 +162,9 @@ data murals, data sculptures, public walks, quilts and installations?"
 * Is it feasible to provide a metadata visualization that shows the provenance of the data and their stakeholders (caregivers) at each step?
 *  Have we properly attributed work on the project?"
 
-##{.unnumbered}
+## {.unlisted .unnumbered .toc-ignore}
 
-***
+<hr class="hr"> 
 
 
 ##  Dataviz Examples{.tabset}
@@ -232,7 +252,7 @@ A powerful reinterpretation of identical charts.
 
 ![](../www/jail.png)
 
-
+## {.unlisted .unnumbered .toc-ignore}
 
 ## Call to Action (Optional)
 
