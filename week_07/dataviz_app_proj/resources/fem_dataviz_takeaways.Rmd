@@ -76,7 +76,8 @@ All principles may not apply to all visualisations. The **Design Process** and *
 
 * How do we communicate the limits of our categories in the final representation?
 * How can we allow the user to refactor the categories we have presented for view?"
-
+	
+(D'Ignazio, Klein, 2020)
 
 ### 2. Pluralism.
 
@@ -95,6 +96,8 @@ All principles may not apply to all visualisations. The **Design Process** and *
 * Whose view of the world does the visualization represent?
 * Can the visualization communicate whose voices are missing?
 * Could perspective-taking be a useful strategy to consider for multiple views on the data?"
+
+(D'Ignazio, Klein, 2020)
 
  
 ### 3. Power.
@@ -115,6 +118,8 @@ Examine Power & **Aspire to Empowerment**. Women and marginalised groups traditi
 * Can the visualization empower the end user and/or her community, group, or organization?
 *  When do values often assumed to be a social good, such as “choice,” “openness,” or “access,” result in disempowerment instead?
 
+(D'Ignazio, Klein, 2020)
+
 
 ### 4. Context.
 
@@ -130,6 +135,9 @@ Any knowledge is situated at a particular intersection of **social, material & c
 * What kinds of terminology, symbols, and cultural artifacts have meaning to end users, and how can we incorporate those into our designs? 
 *  What might we learn if we were to visualize “messy” data?  
 * How do we take context into account in the assessment of visualizations?"
+
+(D'Ignazio, Klein, 2020)
+
 
 ### 5. Embodiment.
 
@@ -148,6 +156,9 @@ order to do that? (e.g. fine art, graphic design, animation, or communication sp
 * Can we consider visualization outputs in an expanded field, such as
 data murals, data sculptures, public walks, quilts and installations?"
 
+(D'Ignazio, Klein, 2020)
+
+
 ### 6. Acknowledge.
 
 **Make labor visible.** Work backwards to the people who have helped to generate any data used in the process. All the way. Acknowledge their work. Consider collection, digitisation, cleaning, maintenance. Focus on the people rather than the technical processes. Consider the data subjects or those who are likely affected by an analysis of your visual.
@@ -161,6 +172,9 @@ data murals, data sculptures, public walks, quilts and installations?"
 
 * Is it feasible to provide a metadata visualization that shows the provenance of the data and their stakeholders (caregivers) at each step?
 *  Have we properly attributed work on the project?"
+
+(D'Ignazio, Klein, 2020)
+
 
 ## {.unlisted .unnumbered .toc-ignore}
 
@@ -182,6 +196,7 @@ To view the animation, please [visit periscopic](https://guns.periscopic.com/).
 
 ![The end of the stolen years animation, showing 11,356 deaths resulting in 472,332 stolen years lost to gun violence in the US for 2018.](../www/stolen_years2.jpg)
 
+Read more about this in [Data feminism chapter 3](https://data-feminism.mitpress.mit.edu/pub/5evfe9yd/release/2#principle-elevate-emotion-and-embodiment)
 
 ### US Unemployment
 
@@ -190,13 +205,19 @@ In the below charts, the New York Times embraces pluralism for Republican and De
 ![New York Times chart displaying employment rate changes from a Republican perspective.](../www/unemployment1.png)
 ![New York Times chart showing employment rate changes from a democrat perspective.](../www/unemployment2.png)
 
+Read more about this in [Data feminism chapter 3](https://data-feminism.mitpress.mit.edu/pub/5evfe9yd/release/3#visualization-as-rhetoric)
+
 ### Parental Leave
 
 ![Custom sunburst chart showing parental leave entitlements in countries around the world.](../www/parental_leave.png)
 
+Read more about this in [Data feminism chapter 4](https://data-feminism.mitpress.mit.edu/pub/h1w0nbqp/release/2#principle-rethink-binaries-and-hierarchies)
+
 ### Gendered clothes
 
 ![A visual displaying average and variation in Mens' and Womens' pocket sizes.](../www/gendered_clothes.png)
+
+Read more about this in [Data feminism chapter 4](https://data-feminism.mitpress.mit.edu/pub/h1w0nbqp/release/2#questioning-classification-systems)
 
 ### Gender Gap
 
@@ -207,6 +228,8 @@ Scroll down the page until you reach the charts. Continue to scroll to proceed t
 ![Still from animation showing UK universities receive 11 % more applications from females than males.](../www/gender_gap1.jpg)
 
 ![Still from animation showing only 4 % of UK prime ministers were female.](../www/gender_gap2.jpg)
+
+Read more about this in [Data feminism chapter 4](https://data-feminism.mitpress.mit.edu/pub/h1w0nbqp/release/2#rethinking-binaries-in-data-visualization)
 
 ### US Congress
 
@@ -220,6 +243,7 @@ And observe the resultant hexmap.
 
 ![Still from the interactive visual showing the resultant US congress hexmap, identifying those members of congress who identify as in the selected filters.](../www/congress2.jpg)
 
+Read more about this in [Data feminism chapter 4](https://data-feminism.mitpress.mit.edu/pub/h1w0nbqp/release/2#rethinking-binaries-in-data-visualization)
 
 ### Evictions
 
@@ -233,9 +257,11 @@ In the interactive map, click on a blue point for oral case study links on sound
 
 ![Still from the interactive map displaying the linked narrative, adding context to the data subjects.](../www/eviction2.jpg)
 
+Read more about this in [Data feminism chapter 5](https://data-feminism.mitpress.mit.edu/pub/2wu7aft8/release/1#principle-embrace-pluralism)
+
 ### Climate Change
 
-To view the interactive visualisatoin, please follow the link to [Bloomberg.](https://www.bloomberg.com/graphics/2015-whats-warming-the-world/)
+To view the interactive visualisation, please follow the link to [Bloomberg.](https://www.bloomberg.com/graphics/2015-whats-warming-the-world/)
 
 This site does a great job of "self declaration", adding context that reveal the authors' standpoint on anthropogenic climate change.
 
@@ -245,6 +271,9 @@ The visuals as shown in Data Feminism below, allocate 30 % of the total panel sp
 
 <img src="../www/climate_change2.png" class="center" alt="The proportion of the visual dedicated to self disclosure is 30 %">
 
+Read more about this in [Data feminism chapter 5](https://data-feminism.mitpress.mit.edu/pub/2wu7aft8/release/2#data-for-good-versus-data-for-co-liberation)
+
+
 
 ### Mental Health
 
@@ -252,10 +281,22 @@ A powerful reinterpretation of identical charts.
 
 ![2 identical charts with differing titles giving completely alternate perspectives on the underlying cause of racial differences mental health diagnosis rates in US prisons. ](../www/jail.png)
 
+Read more about this in [Data feminism chapter 6](https://data-feminism.mitpress.mit.edu/pub/czq9dfs5/release/2#communicating-context)
+
+
 ## {.unlisted .unnumbered .toc-ignore}
 
 ## Call to Action
 
-complete the data visualisations to a standard that you are happy with. If you have incorporated suggested improvements from other groups, please take the opportunity to acknowledge them. Consider sharing the visualisation on Slack, along the lines of:
+Complete the data visualisations to a standard that you are happy with. If you have incorporated suggested improvements from other groups, please take the opportunity to acknowledge them. Consider sharing the visualisation on Slack, along the lines of:
 
 "Look how data feminist visualisation changed my chart...", aligning the plots side by side to allow for easy comparison.
+
+
+## References
+
+D'Ignazio, C. & Klein, L.F. ( Accessed 2021, May 18). *Feminist Data Visualisation*. www.kanarinka.com. http://www.kanarinka.com/wp-content/uploads/2015/07/IEEE_Feminist_Data_Visualization.pdf
+
+D'Ignazio, C. & Klein, L.F. (2020). *Data Feminism*. MIT Press.
+
+
