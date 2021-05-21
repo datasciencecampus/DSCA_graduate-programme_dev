@@ -1,3 +1,10 @@
+
+<html>
+  <head>
+    <title>DataViz in R / Python Day 3</title>
+  </head>
+
+  <body>
 # Dataviz in R / Python Day 03 Plan
 ***
 
@@ -113,13 +120,19 @@ Bring the trainees back together to present their visualisations to the group. T
 * One point of interest / observation / positive comment
 * One potential improvement / unanswered question
 
-## Optional Homework
+## Homework
 ***
 
-To complete the data visualisations to a standard that they would be happy to share them online. If they have incorporated suggested improvements from other trainees, they can also take this opportunity to acknowledge them. Suggesting that they do so on Twitter, along the lines of:
+To complete the data visualisations to a standard that they would be happy to share them online. If they have incorporated suggested improvements from other trainees, they can also take this opportunity to acknowledge them. Suggesting that they do so on **Slack** (channel to be confirmed), along the lines of:
 
-"Look how data feminist visualisation changed my chart...", tagging:  
+"Look how data feminist visualisation changed my chart...", with the 2 visuals aligned side by side. 
 
+There may be the opportunity for an official blog post, I'll discuss with Gareth and confirm. Potentially tweeting under the new grad curriculum hashtag also. To be discussed with Laura. 
+
+Twitter links / hashtags:  
 #DataFeminism (camel case on this one)  
 [\@kanarinka](https://twitter.com/kanarinka?lang=en)  
 [\@laurenfklein](https://twitter.com/laurenfklein?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)  
+
+  </body>
+</html>

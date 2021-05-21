@@ -177,26 +177,26 @@ The examples provided were all sourced from Data Feminism, linked to in [suggest
 
 To view the animation, please [visit periscopic](https://guns.periscopic.com/).
 
-![](../www/stolen_years1.jpg)
+![the start of the stolen years animation, showing 1 death resulting in 42 stolen years lost to gun violence in the US for 2018.](../www/stolen_years1.jpg)
 
 
-![](../www/stolen_years2.jpg)
+![The end of the stolen years animation, showing 11,356 deaths resulting in 472,332 stolen years lost to gun violence in the US for 2018.](../www/stolen_years2.jpg)
 
 
 ### US Unemployment
 
 In the below charts, the New York Times embraces pluralism for Republican and Democrat interpretations of the same data.
 
-![](../www/unemployment1.png)
-![](../www/unemployment2.png)
+![New York Times chart displaying employment rate changes from a Republican perspective.](../www/unemployment1.png)
+![New York Times chart showing employment rate changes from a democrat perspective.](../www/unemployment2.png)
 
 ### Parental Leave
 
-![](../www/parental_leave.png)
+![Custom sunburst chart showing parental leave entitlements in countries around the world.](../www/parental_leave.png)
 
 ### Gendered clothes
 
-![](../www/gendered_clothes.png)
+![A visual displaying average and variation in Mens' and Womens' pocket sizes.](../www/gendered_clothes.png)
 
 ### Gender Gap
 
@@ -204,9 +204,9 @@ To access the interactive visual, please follow the link to the [Telegraph.](htt
 
 Scroll down the page until you reach the charts. Continue to scroll to proceed through the animations.
 
-![](../www/gender_gap1.jpg)
+![Still from animation showing UK universities receive 11 % more applications from females than males.](../www/gender_gap1.jpg)
 
-![](../www/gender_gap2.jpg)
+![Still from animation showing only 4 % of UK prime ministers were female.](../www/gender_gap2.jpg)
 
 ### US Congress
 
@@ -214,11 +214,11 @@ To view the interactive visualisation, please follow the link to the [US Guardia
 
 Select multiple filters to apply to the data as below.
 
-![](../www/congress1.jpg)
+![Still from interactive animation highlighting the different ways in which the data can be filtered, selecting Age 35 to 39 and LGB sexual orientation.](../www/congress1.jpg)
 
 And observe the resultant hexmap.
 
-![](../www/congress2.jpg)
+![Still from the interactive visual showing the resultant US congress hexmap, identifying those members of congress who identify as in the selected filters.](../www/congress2.jpg)
 
 
 ### Evictions
@@ -227,11 +227,11 @@ Please follow the link to the [anti eviction mapping project](http://www.antievi
 
 Hover over points for contextual tooltips.
 
-![](../www/eviction1.jpg)
+![Still from the interactive map diplaying sheer number fo evictions.](../www/eviction1.jpg)
 
-Click on a blue point for oral case study links on sound cloud.
+In the interactive map, click on a blue point for oral case study links on sound cloud.
 
-![](../www/eviction2.jpg)
+![Still from the interactive map displaying the linked narrative, adding context to the data subjects.](../www/eviction2.jpg)
 
 ### Climate Change
 
@@ -239,27 +239,23 @@ To view the interactive visualisatoin, please follow the link to [Bloomberg.](ht
 
 This site does a great job of "self declaration", adding context that reveal the authors' standpoint on anthropogenic climate change.
 
-![](../www/climate_change1.jpg)
+![Still from the animation showing upward trend in global average temperatures since 1880.](../www/climate_change1.jpg)
 
 The visuals as shown in Data Feminism below, allocate 30 % of the total panel space to self-disclosure. 
 
-<img src="../www/climate_change2.png" class="center">
+<img src="../www/climate_change2.png" class="center" alt="The proportion of the visual dedicated to self disclosure is 30 %">
 
 
 ### Mental Health
 
 A powerful reinterpretation of identical charts.
 
-![](../www/jail.png)
+![2 identical charts with differing titles giving completely alternate perspectives on the underlying cause of racial differences mental health diagnosis rates in US prisons. ](../www/jail.png)
 
 ## {.unlisted .unnumbered .toc-ignore}
 
-## Call to Action (Optional)
+## Call to Action
 
-complete the data visualisations to a standard that you are happy with. If you have incorporated suggested improvements from other groups, please take the opportunity to acknowledge them. Consider sharing the visualisation on Twitter, along the lines of:
+complete the data visualisations to a standard that you are happy with. If you have incorporated suggested improvements from other groups, please take the opportunity to acknowledge them. Consider sharing the visualisation on Slack, along the lines of:
 
-"Look how data feminist visualisation changed my chart...", tagging:  
-
-#DataFeminism (camel case on this one)  
-[\@kanarinka](https://twitter.com/kanarinka?lang=en)  
-[\@laurenfklein](https://twitter.com/laurenfklein?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor)  
+"Look how data feminist visualisation changed my chart...", aligning the plots side by side to allow for easy comparison.
