@@ -127,7 +127,7 @@ Any knowledge is situated at a particular intersection of **social, material & c
 
 #### Design Process Questions:
 
-* "How can we leverage humancentered design [14] and participatory design methods to learn about and with our end users, including learning more about their culture, history, circumstances, and worldviews? 
+* "How can we leverage humancentered design and participatory design methods to learn about and with our end users, including learning more about their culture, history, circumstances, and worldviews? 
 *  How can we let these insights shape our design practice and change our notions about what constitutes “good” information design?
 
 #### Design Output Questions:
@@ -285,6 +285,34 @@ Read more about this in [Data feminism chapter 6](https://data-feminism.mitpress
 
 
 ## {.unlisted .unnumbered .toc-ignore}
+
+<hr class="hr">
+
+## Self Assess
+
+You can use the below assessment grid to help inform your visualisation development and peer assess the output of others.
+
+| Level 1       | Little evidence of adaptation.                                      |
+|---------------|:--------------------------------------------------------------------|
+| 1.1           | Presents chart with similar spec to GSS / ONS style visualisation.  |
+| 1.2           | Additional metadata included but limited to source metadata. Limited consideration of any of the 6 principles.                                             |  
+
+| Level 2       | Evidence of adaptation.                                                     |
+|---------------|:----------------------------------------------------------------------------|
+| 2.1           | Presents chart with evidence of clear iterative direction away from GSS / ONS style visualisation.                                                                          |
+| 2.2           | Metadata treatment is thorough with clear and adequate consideration of 1 or more of the 6 principles (not all principles can be applied equally to all contexts). This may include:                                                                                      |
+| 2.2.1         | Effort to deconstruct binaries or point to limitations in data.             |
+| 2.2.2         | Self disclosure evident.                                                    |
+| 2.2.3         | Consideration for those at risk of marginalisation, treatment of outliers, minority groups, power dynamics in the design process.                                        |
+| 2.2.4         | Intersectional context of visualisation acknowledged.                       |
+| 2.2.5         | Adapts metadata to give an adequate treatment to acknowledging labour at all stages in the visualisation process.                                                          |
+| 2.2.6         | An attempt to consider the data from multiple perspectives, embracing plurality.                                                                                    |
+
+| Level 3       | Significant adaptation to visual design & principles.                       |
+|---------------|:----------------------------------------------------------------------------|
+| 3.1           | Exhibits creative consideration in adapting the GSS / ONS style visualisation, implementing design changes capable of invoking affect, empathy, embodiment of the data subject.                                                                             |
+| 3.2           | Metadata builds on level 2 standard with all applicable principles given adequate treatment (noting that not all principles can be applied equally to all contexts). Significant panel space dedicated to contextualisation / separate metadata visualisation produced.                                                                                     | 
+<hr class="hr">
 
 ## Call to Action
 
