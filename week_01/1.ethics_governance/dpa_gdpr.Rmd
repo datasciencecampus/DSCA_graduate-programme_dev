@@ -120,13 +120,14 @@ You also need to be careful when transferring data to another country. Informati
 
 ## Scenario 3
 
-You have a show and tell session booked in with a senior manager of in the probation service. The project uses personal data to predict offenders' likelihood to reoffend within the next 5 years, with an astonishing accuracy of 90 %. You have diligently booked a meeting room for a remote conference call where you will be undisturbed. However, on starting the meeting, the manager is unable to connect and asks you to use an alternative browser-based conferencing service.
+You have a show and tell session booked in with a senior manager of in the probation service. The project uses personal data to predict offenders' likelihood to re-offend within the next 5 years, with an astonishing accuracy of 90 %. You have diligently booked a meeting room for a remote conference call where you will be undisturbed. However, on starting the meeting, the manager is unable to connect and asks you to use an alternative browser-based conferencing service.
 
 ## Response 3
 
-While pressured situations like this can lead to stress, you should be cautious of using unsupported confreencing software. Many widely-available ocnferencing solutions store their data on servers located outside of the EEC and some have recently been in the media for security breaches. 
+While pressured situations like this can lead to stress, you should be cautious of using unsupported conferencing software. Many widely-available conferencing solutions store their data on servers located outside of the EEC and some have recently been in the media for security breaches. 
 
 Use a supported alternative if available. If not, Politely ask to reschedule the meeting until you are able to diagnose the cause of the connection issue or meet in person. Explain that sharing of sensitive information on unsupported platforms is against corporate guidance.
+
 
 ## Review Outcomes:
 
@@ -138,6 +139,8 @@ Use a supported alternative if available. If not, Politely ask to reschedule the
 ## Helpful Resources
 
 [Reggie GDPR guidance](https://intranet.ons.statistics.gov.uk/task/data-protection/undertaking-a-data-protection-impact-assessment/) 
+
+[ONS data provacy notice](https://www.ons.gov.uk/aboutus/transparencyandgovernance/dataprotection#:~:text=It%20also%20includes%20genetic%20and,purposes%20based%20on%20UK%20law.%E2%80%9D)  
 
 
 UKSA Data Protection Officer Email: [DPO@Statistics.gov.uk](mailto:DPO@Statistics.gov.uk)
