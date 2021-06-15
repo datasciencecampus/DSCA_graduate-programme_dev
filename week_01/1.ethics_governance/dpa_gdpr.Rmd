@@ -73,6 +73,36 @@ Navigate to the links in the previous slides. Use the information provided at th
 +------------------+-----------------------------+----------------------------------+
 
 
+## Classifying Data
+
+Have a go at classifying the following data dimensions as either **open**, **personal** or **special** category data.
+
+* County death records (date of birth, date of deceased, full name, occupation)
+
+* Names and contact details
+
+* ip addresses
+
+* Fingerprints
+
+* A CEOs salary
+
+
+## Answers
+
+Have a go at classifying the following data dimensions as either **open**, **personal** or **special** category data.
+
+* County death records (date of birth, date of deceased, full name, occupation) **open**
+
+* Names and contact details **personal**
+
+* ip addresses **personal** in GDPR-zone
+
+* Fingerprints **special** - biometric data
+
+* A CEOs salary **personal**, providing the post is filled by a specified person. See the [ICO guidance on determining personal data](https://ico.org.uk/media/for-organisations/documents/1554/determining-what-is-personal-data.pdf) (p11)
+
+
 
 ## Scenarios
 
@@ -139,6 +169,8 @@ Use a supported alternative if available. If not, Politely ask to reschedule the
 ## Helpful Resources
 
 [Reggie GDPR guidance](https://intranet.ons.statistics.gov.uk/task/data-protection/undertaking-a-data-protection-impact-assessment/) 
+
+[ICO guidance on determining personal data](https://ico.org.uk/media/for-organisations/documents/1554/determining-what-is-personal-data.pdf)  
 
 [ONS data provacy notice](https://www.ons.gov.uk/aboutus/transparencyandgovernance/dataprotection#:~:text=It%20also%20includes%20genetic%20and,purposes%20based%20on%20UK%20law.%E2%80%9D)  
 
