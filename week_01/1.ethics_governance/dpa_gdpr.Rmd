@@ -156,7 +156,7 @@ You have a show and tell session booked in with a senior manager of in the proba
 
 While pressured situations like this can lead to stress, you should be cautious of using unsupported conferencing software. Many widely-available conferencing solutions store their data on servers located outside of the EEC and some have recently been in the media for security breaches. 
 
-Use a supported alternative if available. If not, Politely ask to reschedule the meeting until you are able to diagnose the cause of the connection issue or meet in person. Explain that sharing of sensitive information on unsupported platforms is against corporate guidance.
+Use a supported alternative if available. If not, politely ask to reschedule the meeting until you are able to diagnose the cause of the connection issue or meet in person. Explain that sharing of sensitive information on unsupported platforms is against corporate guidance.
 
 
 ## Review Outcomes:
@@ -172,7 +172,7 @@ Use a supported alternative if available. If not, Politely ask to reschedule the
 
 [ICO guidance on determining personal data](https://ico.org.uk/media/for-organisations/documents/1554/determining-what-is-personal-data.pdf)  
 
-[ONS data provacy notice](https://www.ons.gov.uk/aboutus/transparencyandgovernance/dataprotection#:~:text=It%20also%20includes%20genetic%20and,purposes%20based%20on%20UK%20law.%E2%80%9D)  
+[ONS data privacy notice](https://www.ons.gov.uk/aboutus/transparencyandgovernance/dataprotection#:~:text=It%20also%20includes%20genetic%20and,purposes%20based%20on%20UK%20law.%E2%80%9D)  
 
 
 UKSA Data Protection Officer Email: [DPO@Statistics.gov.uk](mailto:DPO@Statistics.gov.uk)
