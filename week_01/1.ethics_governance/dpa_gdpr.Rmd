@@ -20,6 +20,14 @@ knitr::opts_chunk$set(echo = FALSE)
 * Awareness of implications upon our day to day work.
 * Consideration of potential sanctions set out in legislation.
 
+## The Role of the ICO
+
+* The Information Commissioner's Office is charged with the responsibility of upholding information rights in the public interest.  
+* ICO is an independent regulatory office, reporting directly to parliament.  
+* Investigatory and enforcement powers.
+* Point of contact for the public to report concerns.
+* Outreach work, helping gov departments to compliantly share data.
+
 
 ## DPA Brief Overview
 [**D**ata **P**rotection **A**ct](https://www.gov.uk/data-protection)  
@@ -71,6 +79,33 @@ Navigate to the links in the previous slides. Use the information provided at th
 |Penalties / Fines |                             |                                  |
 |                  |                             |                                  |
 +------------------+-----------------------------+----------------------------------+
+
+## Open Data
+
+"Open data is data that can be freely used, re-used and redistributed by anyone - subject only, at most, to the requirement to attribute and sharealike." [Open Data Handbook accessed, `r format(Sys.Date(), "%d/%m/%y")`](https://opendatahandbook.org/guide/en/what-is-open-data/)
+
+
+
+## Personal Data
+
+"Personal data is information that relates to an identified or identifiable individual.
+What identifies an individual could be as simple as a name or a number or could include other identifiers such as... a cookie identifier, or other factors."
+
+"If you cannot directly identify an individual from that information, then you need to consider whether the individual is still identifiable. You should take into account the information you are processing together with all the means reasonably likely to be used by either you or any other person to identify that individual."
+
+
+"Information which has had identifiers removed or replaced in order to pseudonymise the data is still personal data for the purposes of UK GDPR." [ICO - what is personal data, accessed `r format(Sys.Date(), "%d/%m/%y")`](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/key-definitions/what-is-personal-data/)
+
+
+## Special Category Data
+
+"The UK GDPR defines special category data as:
+
+personal data revealing racial or ethnic origin; political opinions;
+religious or philosophical beliefs; trade union membership; genetic data; biometric data (where used for identification purposes); data concerning health; data concerning a person’s sex life; sexual orientation.
+
+This does not include personal data about criminal allegations, proceedings or convictions, as separate rules apply." [ICO - what is special category data, accessed `r format(Sys.Date(), "%d/%m/%y")`](https://ico.org.uk/for-organisations/guide-to-data-protection/guide-to-the-general-data-protection-regulation-gdpr/lawful-basis-for-processing/special-category-data/#scd1)
+
 
 
 ## Classifying Data
