@@ -80,10 +80,33 @@ Navigate to the links in the previous slides. Use the information provided at th
 |                  |                             |                                  |
 +------------------+-----------------------------+----------------------------------+
 
+## Information & Asset Register (IAR)
+
+In 2008, following 2 high-profile data loss incidents, the **Data Handling Procedures in Government review** was published. This required **all government departments** to **maintain a register of information assets**.
+
+Note that this register should include pertinent metadata and risk assessments of all data, including open data and personal information accessible in any format, including information held in external systems.
+
+If data processing results in a change to the schema of a registered asset, then a new entry should be created.
+
+## IAR roles
+
+The Security Policy Framework requires that government organisations should appoint and train Information Asset Owners for each of their information assets. Their role is to protect and manage information and to ensure that its value to the organisation is fully exploited.
+
+
+
+## IAR roles (2)
+
+<img src="../../www/week_1/register-roles.png" alt="Information Asset Process roles" height="500"/>
+
+## IAR roles (3)
+
+<img src="../../www/week_1/SPF-reporting-chain.png" alt="Security Policy Framework reporting chain" height="500"/>
+
+
+
 ## Open Data
 
 "Open data is data that can be freely used, re-used and redistributed by anyone - subject only, at most, to the requirement to attribute and sharealike." [Open Data Handbook accessed, `r format(Sys.Date(), "%d/%m/%y")`](https://opendatahandbook.org/guide/en/what-is-open-data/)
-
 
 
 ## Personal Data
