@@ -152,7 +152,7 @@ Have a go at classifying the following data dimensions as either **open**, **per
 
 ## Scenario 1
 
-You successfully host a coffee and coding event with civil service colleagues. It seemed to go well but you would like to survey your attendees. You gain access to the Campus' Smart Survey license and spin up a questionnaire, anonymously enquiring on subjects such as:
+You successfully host a coffee and coding event with civil service colleagues. It seemed to go well but you would like to survey your attendees. You gain access to a Smart Survey license and spin up a questionnaire, seeking **anonymous** responses on the following:
 
 * Attendees opinions on the coding tasks used.
 
@@ -165,9 +165,9 @@ You successfully host a coffee and coding event with civil service colleagues. I
 
 Smart survey responses are pseudo-anonymised. IP addresses are one of the collected fields and could potentially be used to identify any given respondent. 
 
-It is crucial that one of the Campus' question templates are used as the basis of your survey. This will contain the necessary **fair usage notices** that would ensure compliance with our duties under GDPR. 
+It is crucial that the the necessary **fair usage notices** are included, ensuring compliance with duties under GDPR. 
 
-Campus currently collects data on organisations engaged with. However, collection of special category data such as that identified in the scenario are not currently collected. Collection of this data would require a **D**ata **P**rotection **I**mpact **A**ssessment form and risk assessment by the ONS **D**ata **P**rotection **O**fficer prior to collection.
+Collection of special category data such as that identified in the scenario are not currently collected. Collection of this data would require completion of a **D**ata **P**rotection **I**mpact **A**ssessment and risk assessment by the **D**ata **P**rotection **O**fficer prior to collection.
 
 
 
@@ -185,7 +185,7 @@ You also need to be careful when transferring data to another country. Informati
 
 ## Scenario 3
 
-You have a show and tell session booked in with a senior manager of in the probation service. The project uses personal data to predict offenders' likelihood to re-offend within the next 5 years, with an astonishing accuracy of 90 %. You have diligently booked a meeting room for a remote conference call where you will be undisturbed. However, on starting the meeting, the manager is unable to connect and asks you to use an alternative browser-based conferencing service.
+You have a show and tell session booked in with an external senior manager in the probation service. The project you've been developing uses personal data to predict offenders' likelihood to re-offend within the next 5 years, with an astonishing accuracy of 90 %. You have diligently booked a meeting room for a remote conference call where you will be undisturbed. However, on starting the meeting, the manager is unable to connect and asks you to use an alternative browser-based conferencing service.
 
 ## Response 3
 
