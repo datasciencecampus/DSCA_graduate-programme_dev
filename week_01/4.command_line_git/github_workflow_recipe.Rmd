@@ -17,7 +17,8 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(comment = "")
 ```
-  
+
+
 ## Introduction
 
 This document is a self-contained task to help newcomers to Git & GitHub build
@@ -26,7 +27,152 @@ familiarity with the Git workflow, using a toy example.
 It assumes that you have followed the instructions within the main course, have
 a GitHub account and are set up to work with remote repositories.
 
+***
+
 ## Task
+
+### Extension
+
+If you have a remote git service configured, please work through the steps below
+while updating your remote repo.
+
+***
+
+### Initialising a repo
+
+1. Open up a file explorer window and navigate to a safe test area.
+
+2. Open up the Bash interface at this location.
+
+3. From this point, use Bash to complete the task, unless specified not to.
+
+4. Create a new folder called ds_poetry
+
+5. Change your working directory to ds_poetry.
+
+6. Activate git.
+
+***
+
+### gitignore
+
+7. create a file called `.gitignore`.
+
+8. Go to the [toptal website](https://www.toptal.com/developers/gitignore) and
+create a template gitignore for the following:
+- macOS
+- Windows
+- Linux
+- Python
+- R
+
+9. Copy the template gitignore into your `.gitignore` file. Save the file. If
+you cannot see the file you created, you will need to make hidden items visible.
+(Use the view option on Windows, on macOS cmd + shift + [.]).
+
+10. Check the status of your repository.
+
+11. Stage any changes.
+
+12. Let's test if the gitignore works. Create a file - `.ipynb_checkpoints`.
+
+13. Check the status of your repo again. the file you created in step 12 should
+not appear as an untracked file. (If it does, check there are no typos in your
+filename or gitignore. Check that you have committed your gitignore.)
+
+14. Add this line to your `.gitignore`: .git_ignore/
+
+15. Create a folder in your repo called `.git_ignore`
+
+16. Create a file within your .git_ignore folder called `secrets.txt`. It is
+common practice to store api keys and other secrets within this file.
+
+17. Check the status of your repo. The contents of your `.git_ignore` folder
+should not show up as a tracked or untracked change. See step 13 for common
+troubleshooting.
+
+***
+
+### Branching
+
+18. Check the names of all branches in your repo.
+
+19. If you have a master branch, rename it to main.
+
+20. Create a new branch called **poem_1**.
+
+21. Switch to that branch.
+
+22. Create a new file called `ds_poetry.txt`.
+
+23. Edit the file with the following content:
+
+> Roses are red,  
+> Violets are blue,  
+> Data is great,  
+> Science is cool.
+
+24. Save the file.
+
+25. Check the repo status.
+
+26. Add and commit the changes with a single command. Specify a memorable commit
+message, something like `nice poem`.
+
+27. Check all branches available in your repo.
+
+28. Switch back to the main branch. 
+
+29. Merge the poem_1 branch to your main branch.
+
+30. Check that the merge has happened without conflict. Is your main branch now
+up to date with poem_1?
+
+31. If you're happy with the merge, go ahead and delete the poem_1 branch.
+
+32. Check all branches available in your repo.
+
+***
+
+### merge conflicts
+
+33. Create a new branch called **poem_2**. 
+
+34. Switch to that branch.
+
+35. Edit the last line of the poem to:
+
+> Science is poo.
+
+36. Save the file.
+
+37. Check the status of your repo.
+
+38. Add and commit the changes.
+
+39. Switch back to the main branch.
+
+40. Attempt to merge the poem_2 branch to main.
+
+41. A merge conflict should arise. Open the file to resolve the conflict.
+
+42. Save the file.
+
+43. Add and commit the changes.
+
+44. Check the version history of your repo.
+
+### Reverting to a previous version
+
+44. You decide you prefer the older version of the poem. Check the version 
+history of the repo to identify the commit with your memorable message.
+
+45. Copy the commit hash associated with the memorable commit message.
+
+46. Revert the repo to the version specified by the commit hash.
+
+***
+
 
 
   </body>

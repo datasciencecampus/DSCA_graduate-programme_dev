@@ -341,12 +341,117 @@ Rich Leyshon
 <body>
 <div id="introduction" class="section level2">
 <h2>Introduction</h2>
-<p>This document is a self-contained task to help newcomers to Git &amp; GitHub build familiarity with the Git workflow. It outlines the workflow with a toy example. It assumes that you have followed the instructions within the main course, have a GitHub account and are set up to work with remote repositories.</p>
+<p>This document is a self-contained task to help newcomers to Git &amp; GitHub build familiarity with the Git workflow, using a toy example.</p>
+<p>It assumes that you have followed the instructions within the main course, have a GitHub account and are set up to work with remote repositories.</p>
+<hr />
 </div>
 <div id="task" class="section level2">
 <h2>Task</h2>
+<div id="extension" class="section level3">
+<h3>Extension</h3>
+<p>If you have a remote git service configured, please work through the steps below while updating your remote repo.</p>
+<hr />
+</div>
+<div id="initialising-a-repo" class="section level3">
+<h3>Initialising a repo</h3>
+<ol style="list-style-type: decimal">
+<li><p>Open up a file explorer window and navigate to a safe test area.</p></li>
+<li><p>Open up the Bash interface at this location.</p></li>
+<li><p>From this point, use Bash to complete the task, unless specified not to.</p></li>
+<li><p>Create a new folder called ds_poetry</p></li>
+<li><p>Change your working directory to ds_poetry.</p></li>
+<li><p>Activate git.</p></li>
+</ol>
+<hr />
+</div>
+<div id="gitignore" class="section level3">
+<h3>gitignore</h3>
+<ol start="7" style="list-style-type: decimal">
+<li><p>create a file called <code>.gitignore</code>.</p></li>
+<li><p>Go to the <a href="https://www.toptal.com/developers/gitignore">toptal website</a> and create a template gitignore for the following:</p></li>
+</ol>
+<ul>
+<li>macOS</li>
+<li>Windows</li>
+<li>Linux</li>
+<li>Python</li>
+<li>R</li>
+</ul>
+<ol start="9" style="list-style-type: decimal">
+<li><p>Copy the template gitignore into your <code>.gitignore</code> file. Save the file. If you cannot see the file you created, you will need to make hidden items visible. (Use the view option on Windows, on macOS cmd + shift + [.]).</p></li>
+<li><p>Check the status of your repository.</p></li>
+<li><p>Stage any changes.</p></li>
+<li><p>Let’s test if the gitignore works. Create a file - <code>.ipynb_checkpoints</code>.</p></li>
+<li><p>Check the status of your repo again. the file you created in step 12 should not appear as an untracked file. (If it does, check there are no typos in your filename or gitignore. Check that you have committed your gitignore.)</p></li>
+<li><p>Add this line to your <code>.gitignore</code>: .git_ignore/</p></li>
+<li><p>Create a folder in your repo called <code>.git_ignore</code></p></li>
+<li><p>Create a file within your .git_ignore folder called <code>secrets.txt</code>. It is common practice to store api keys and other secrets within this file.</p></li>
+<li><p>Check the status of your repo. The contents of your <code>.git_ignore</code> folder should not show up as a tracked or untracked change. See step 13 for common troubleshooting.</p></li>
+</ol>
+<hr />
+</div>
+<div id="branching" class="section level3">
+<h3>Branching</h3>
+<ol start="18" style="list-style-type: decimal">
+<li><p>Check the names of all branches in your repo.</p></li>
+<li><p>If you have a master branch, rename it to main.</p></li>
+<li><p>Create a new branch called <strong>poem_1</strong>.</p></li>
+<li><p>Switch to that branch.</p></li>
+<li><p>Create a new file called <code>ds_poetry.txt</code>.</p></li>
+<li><p>Edit the file with the following content:</p></li>
+</ol>
+<blockquote>
+<p>Roses are red,<br />
+Violets are blue,<br />
+Data is great,<br />
+Science is cool.</p>
+</blockquote>
+<ol start="24" style="list-style-type: decimal">
+<li><p>Save the file.</p></li>
+<li><p>Check the repo status.</p></li>
+<li><p>Add and commit the changes with a single command. Specify a memorable commit message, something like <code>nice poem</code>.</p></li>
+<li><p>Check all branches available in your repo.</p></li>
+<li><p>Switch back to the main branch.</p></li>
+<li><p>Merge the poem_1 branch to your main branch.</p></li>
+<li><p>Check that the merge has happened without conflict. Is your main branch now up to date with poem_1?</p></li>
+<li><p>If you’re happy with the merge, go ahead and delete the poem_1 branch.</p></li>
+<li><p>Check all branches available in your repo.</p></li>
+</ol>
+<hr />
+</div>
+<div id="merge-conflicts" class="section level3">
+<h3>merge conflicts</h3>
+<ol start="33" style="list-style-type: decimal">
+<li><p>Create a new branch called <strong>poem_2</strong>.</p></li>
+<li><p>Switch to that branch.</p></li>
+<li><p>Edit the last line of the poem to:</p></li>
+</ol>
+<blockquote>
+<p>Science is poo.</p>
+</blockquote>
+<ol start="36" style="list-style-type: decimal">
+<li><p>Save the file.</p></li>
+<li><p>Check the status of your repo.</p></li>
+<li><p>Add and commit the changes.</p></li>
+<li><p>Switch back to the main branch.</p></li>
+<li><p>Attempt to merge the poem_2 branch to main.</p></li>
+<li><p>A merge conflict should arise. Open the file to resolve the conflict.</p></li>
+<li><p>Save the file.</p></li>
+<li><p>Add and commit the changes.</p></li>
+<li><p>Check the version history of your repo.</p></li>
+</ol>
+</div>
+<div id="reverting-to-a-previous-version" class="section level3">
+<h3>Reverting to a previous version</h3>
+<ol start="44" style="list-style-type: decimal">
+<li><p>You decide you prefer the older version of the poem. Check the version history of the repo to identify the commit with your memorable message.</p></li>
+<li><p>Copy the commit hash associated with the memorable commit message.</p></li>
+<li><p>Revert the repo to the version specified by the commit hash.</p></li>
+</ol>
+<hr />
 </body>
 </html>
+</div>
 </div>
 
 
