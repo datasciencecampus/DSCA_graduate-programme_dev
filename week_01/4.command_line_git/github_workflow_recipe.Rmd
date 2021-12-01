@@ -12,46 +12,21 @@ output:
   <h2 class="author toc-ignore">Rich Leyshon</h2>
   <h2 class="date toc-ignore">01 Dec 2021</h2>
 </header>
-<body>
+  <body>
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_chunk$set(comment = "")
 ```
   
-## Adapted R Markdown
+## Introduction
 
-This R Markdown template has been adapted using the 'accessrmd' package. This
-template has a different header and HTML structure to the standard R markdown
-template. This is to improve the accessibility of the knitted HTML documents for
-screen readers.
+This document is a self-contained task to help newcomers to Git & GitHub build
+familiarity with the Git workflow. It outlines the workflow with a toy example.
+It assumes that you have followed the instructions within the main course, have
+a GitHub account and are set up to work with remote repositories.
 
-For more help in using R Markdown see <http://rmarkdown.rstudio.com>.
+## Task
 
-Clicking the **Knit** button will generate a document including typed content
-and the output of any R code chunks. For example:
-    
-```{r cars}
-summary(cars)
-```
 
-## Plots
-  
-```{r pressure, echo=FALSE, message=FALSE}
-plt <- ggplot2::ggplot(
-  pressure,
-  ggplot2::aes(temperature, pressure)
-  ) +
-  ggplot2::geom_point()
-
-accessrmd::access_img(
-  plt, 
-  alt = "Vapor Pressure of Mercury as a Function of Temperature",
-  ht = 400
-  )
-
-```
-
-In the above chunk, `echo=FALSE` was used to hide the R code that produced the
-plot from the knitted HTML document. `message=FALSE` was also used to stop
-  messages being knitted to the HTML output.</body>
+  </body>
 </html>
