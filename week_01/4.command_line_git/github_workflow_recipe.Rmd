@@ -21,7 +21,8 @@ knitr::opts_chunk$set(comment = "")
 ## Introduction
 
 This document is a self-contained task to help newcomers to Git & GitHub build
-familiarity with the Git workflow. It outlines the workflow with a toy example.
+familiarity with the Git workflow, using a toy example.
+
 It assumes that you have followed the instructions within the main course, have
 a GitHub account and are set up to work with remote repositories.
 
