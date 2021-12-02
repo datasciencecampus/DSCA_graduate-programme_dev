@@ -3,6 +3,8 @@ output:
     html_document:
       highlight: null
       theme: default
+      toc: true
+      toc_float: true
 ---
 <html lang="en">
 <header>
@@ -24,19 +26,17 @@ knitr::opts_chunk$set(comment = "")
 This document is a self-contained task to help newcomers to Git & GitHub build
 familiarity with the Git workflow, using a toy example.
 
-It assumes that you have followed the instructions within the main course, have
-a GitHub account and are set up to work with remote repositories.
+It assumes that you have followed the instructions within the main course. In order to do the extension, you should have a GitHub / GitLab account and be set
+up to work with remote repositories.
 
-***
-
-## Task
-
-### Extension
+### <font size="+0.5">Extension</font>
 
 If you have a remote git service configured, please work through the steps below
 while updating your remote repo.
 
 ***
+
+## Task
 
 ### Initialising a repo
 
@@ -51,6 +51,8 @@ while updating your remote repo.
 5. Change your working directory to ds_poetry.
 
 6. Activate git.
+
+7. Check and update (if neccessary) specify the **local** username and Email for your directory.
 
 ***
 
@@ -80,12 +82,20 @@ you cannot see the file you created, you will need to make hidden items visible.
 not appear as an untracked file. (If it does, check there are no typos in your
 filename or gitignore. Check that you have committed your gitignore.)
 
-14. Add this line to your `.gitignore`: .git_ignore/
+14. Add this line to your `.gitignore`: 
+
+>.git_ignore/
+
+15. Stage the change.
+
+16. Commit the change to the repo version history.
+
 
 15. Create a folder in your repo called `.git_ignore`
 
 16. Create a file within your .git_ignore folder called `secrets.txt`. It is
 common practice to store api keys and other secrets within this file.
+
 
 17. Check the status of your repo. The contents of your `.git_ignore` folder
 should not show up as a tracked or untracked change. See step 13 for common
@@ -116,7 +126,9 @@ troubleshooting.
 
 25. Check the repo status.
 
-26. Add and commit the changes with a single command. Specify a memorable commit
+26. Stage the changes.
+
+27. Commit the changes to the version history. Specify a memorable commit
 message, something like `nice poem`.
 
 27. Check all branches available in your repo.
@@ -148,9 +160,13 @@ up to date with poem_1?
 
 37. Check the status of your repo.
 
-38. Add and commit the changes.
+38. Add and commit the changes using a single command.
 
 39. Switch back to the main branch.
+
+40. Edit the last line of the poem to:
+
+> Science, wahoo!
 
 40. Attempt to merge the poem_2 branch to main.
 
@@ -164,7 +180,7 @@ up to date with poem_1?
 
 ### Reverting to a previous version
 
-44. You decide you prefer the older version of the poem. Check the version 
+44. You decide you prefer the original version of the poem. Check the version 
 history of the repo to identify the commit with your memorable message.
 
 45. Copy the commit hash associated with the memorable commit message.
