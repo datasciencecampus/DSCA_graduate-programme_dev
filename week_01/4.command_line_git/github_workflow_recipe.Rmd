@@ -10,7 +10,7 @@ output:
 <header>
   <meta charset="utf-8"/>
   <title>Git &amp; GitHub Workflow</title>
-  <h1 class="title toc-ignore">Git &amp; GitHub Workflow</h1>
+  <h1 class="title toc-ignore">Git Workflow Practice</h1>
   <h2 class="author toc-ignore">Rich Leyshon</h2>
   <h2 class="date toc-ignore">01 Dec 2021</h2>
 </header>
